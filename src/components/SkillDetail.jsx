@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Info, HelpCircle, CheckCircle2, Award, Zap, Trophy, Sparkles, Loader2 } from 'lucide-react';
+import { ChevronLeft, Info, HelpCircle, CheckCircle2, Award, Zap, Trophy, Sparkles, Loader2, Globe2 } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import skillsData from '../data/skills.json';
-import { getSkillDescription } from '../services/aiService';
+import { getLocalSkillDescription } from '../services/skillService';
 
 const SkillDetail = () => {
     const { skillName } = useParams();
@@ -11,24 +12,31 @@ const SkillDetail = () => {
     const [showAnswer, setShowAnswer] = useState({});
     const [description, setDescription] = useState('');
     const [isDescLoading, setIsDescLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchDescription = async () => {
-            setIsDescLoading(true);
-            const desc = await getSkillDescription(skillName);
-            setDescription(desc);
-            setIsDescLoading(false);
-        };
-        fetchDescription();
-    }, [skillName]);
+    const [language, setLanguage] = useState('es');
 
     // Find the skill in our data
     const decodedSkillName = decodeURIComponent(skillName);
     let currentSkill = null;
+    let currentGroup = null;
+
     skillsData.forEach(group => {
         const skill = group.skills.find(s => s.name === decodedSkillName);
-        if (skill) currentSkill = skill;
+        if (skill) {
+            currentSkill = skill;
+            currentGroup = group.group;
+        }
     });
+
+    useEffect(() => {
+        const fetchDescription = async () => {
+            if (!currentGroup || !decodedSkillName) return;
+            setIsDescLoading(true);
+            const desc = await getLocalSkillDescription(currentGroup, decodedSkillName, language);
+            setDescription(desc);
+            setIsDescLoading(false);
+        };
+        fetchDescription();
+    }, [decodedSkillName, currentGroup, language]);
 
     if (!currentSkill) {
         return (
@@ -43,6 +51,10 @@ const SkillDetail = () => {
 
     const toggleAnswer = (idx) => {
         setShowAnswer(prev => ({ ...prev, [idx]: !prev[idx] }));
+    };
+
+    const toggleLanguage = () => {
+        setLanguage(prev => prev === 'en' ? 'es' : 'en');
     };
 
     const levels = [
@@ -63,16 +75,26 @@ const SkillDetail = () => {
                         <div className="flex items-center gap-3">
                             <h1 className="text-4xl font-black tracking-tight">{currentSkill.name}</h1>
                             <div className="px-2 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center gap-1.5 mt-1">
-                                <Sparkles size={12} className="text-blue-400" />
-                                <span className="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">AI Enhanced</span>
+                                <span className="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">Verified Content</span>
                             </div>
                         </div>
                         <p className="text-gray-500 text-sm font-medium uppercase tracking-[0.2em]">Technical Assessment Questions</p>
                     </div>
+
+                    {/* Language Toggle */}
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
+                    >
+                        <Globe2 size={16} className="text-blue-400 group-hover:rotate-12 transition-transform" />
+                        <span className="text-xs font-bold uppercase tracking-widest">
+                            {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                        </span>
+                    </button>
                 </div>
             </header>
 
-            {/* AI Description Section */}
+            {/* Description Section */}
             <section className="mb-10">
                 <AnimatePresence mode="wait">
                     {isDescLoading ? (
@@ -84,7 +106,7 @@ const SkillDetail = () => {
                             className="w-full bg-white/[0.02] border border-white/10 rounded-[2rem] p-8 min-h-[120px] flex items-center justify-center gap-3"
                         >
                             <Loader2 className="animate-spin text-blue-500" size={20} />
-                            <p className="text-gray-500 text-sm font-medium">Generando análisis experto...</p>
+                            <p className="text-gray-500 text-sm font-medium">Cargando documentación técnica...</p>
                         </motion.div>
                     ) : (
                         <motion.div
@@ -99,10 +121,23 @@ const SkillDetail = () => {
                             <div className="relative z-10">
                                 <h2 className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                                     <Sparkles size={14} />
-                                    Teoría y Características
+                                    Teoría y Características ({language.toUpperCase()})
                                 </h2>
-                                <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
-                                    {description}
+                                <div className="text-gray-300 leading-relaxed space-y-4 markdown-content">
+                                    <ReactMarkdown
+                                        components={{
+                                            p: ({ node, ...props }) => <p className="mb-4" {...props} />,
+                                            ul: ({ node, ...props }) => <ul className="list-disc ml-6 mb-4 space-y-2" {...props} />,
+                                            code: ({ node, inline, ...props }) =>
+                                                inline
+                                                    ? <code className="bg-white/10 px-1 rounded text-blue-300" {...props} />
+                                                    : <pre className="bg-black/50 p-4 rounded-xl border border-white/10 overflow-x-auto my-4 text-sm font-mono text-blue-200">
+                                                        <code {...props} />
+                                                    </pre>
+                                        }}
+                                    >
+                                        {description}
+                                    </ReactMarkdown>
                                 </div>
                             </div>
                         </motion.div>

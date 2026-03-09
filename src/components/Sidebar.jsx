@@ -14,10 +14,7 @@ const Sidebar = () => {
             group.skills.some(skill => `/skill/${encodeURIComponent(skill.name)}` === location.pathname)
         );
         if (activeGroup) {
-            setExpandedGroups(prev => ({
-                ...prev,
-                [activeGroup.group]: true
-            }));
+            setExpandedGroups({ [activeGroup.group]: true });
         }
     }, [location.pathname]);
 
@@ -30,10 +27,7 @@ const Sidebar = () => {
 
     const handleSkillClick = (groupName) => {
         setSearchTerm('');
-        setExpandedGroups(prev => ({
-            ...prev,
-            [groupName]: true
-        }));
+        setExpandedGroups({ [groupName]: true });
     };
 
     const filteredData = skillsData.map(item => {
