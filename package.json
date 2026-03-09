@@ -2,6 +2,7 @@
   "name": "valoracion-perficient",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://camiloGiraldoR.github.io/bancopreguntasvaloracion",
   "type": "module",
   "scripts": {
     "dev": "vite",

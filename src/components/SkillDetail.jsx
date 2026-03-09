@@ -126,14 +126,19 @@ const SkillDetail = () => {
                                 <div className="text-gray-300 leading-relaxed space-y-4 markdown-content">
                                     <ReactMarkdown
                                         components={{
-                                            p: ({ node, ...props }) => <p className="mb-4" {...props} />,
+                                            // Render paragraphs normally, but if a paragraph's children include a block-level
+                                            // <pre> (code block), avoid wrapping it in a <p> to prevent invalid nesting.
+                                            p: ({ node, children, ...props }) => {
+                                                const hasPreChild = Array.isArray(children) && children.some(child => child && child.type === 'pre');
+                                                if (hasPreChild) return <>{children}</>;
+                                                return <p className="mb-4" {...props}>{children}</p>;
+                                            },
                                             ul: ({ node, ...props }) => <ul className="list-disc ml-6 mb-4 space-y-2" {...props} />,
+                                            // Let block code be handled by the default <pre> wrapper; only customize inline code.
                                             code: ({ node, inline, ...props }) =>
                                                 inline
                                                     ? <code className="bg-white/10 px-1 rounded text-blue-300" {...props} />
-                                                    : <pre className="bg-black/50 p-4 rounded-xl border border-white/10 overflow-x-auto my-4 text-sm font-mono text-blue-200">
-                                                        <code {...props} />
-                                                    </pre>
+                                                    : <code {...props} />
                                         }}
                                     >
                                         {description}

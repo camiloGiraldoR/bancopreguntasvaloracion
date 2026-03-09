@@ -200,3 +200,49 @@ Debido a que los JWT son autónomos y sin estado, permiten un escalado horizonta
 const token = header.payload.signature;
 // El servidor verifica la firma con su clave secreta
 ```
+
+---
+
+## 9. Node Js | Microservices Patterns (Node.js | Microservices Patterns)
+**Descripción**
+Node.js es una plataforma orientada a eventos construida sobre el motor V8 de Chrome que destaca por su modelo de E/S no bloqueante y su bajo consumo de memoria por conexión. Estas características la hacen especialmente adecuada para implementar microservicios ligeros y de alta concurrencia.
+
+En arquitecturas de microservicios, Node.js suele usarse para construir servicios responsables de una única capacidad del dominio (bounded context), exponiendo APIs HTTP/REST o gRPC, y comunicándose con otros servicios mediante mensajería (AMQP, Kafka, NATS) o APIs síncronas. Los patrones comunes que acompañan a microservicios en Node.js incluyen: API Gateway, Service Discovery, Circuit Breaker, Bulkhead, Retry/Backoff, Saga para transacciones distribuidas y Event Sourcing/CQRS para separar comandos y consultas.
+
+Implementar estos patrones en Node.js requiere atención a la resiliencia (timeouts, reintentos, circuit breakers), a la observabilidad (logs estructurados, trazas distribuidas, métricas) y a la gestión de estado (stateless services vs. externalización del estado en bases de datos o caches). Además, la contenedorización (Docker) y la orquestación (Kubernetes) son prácticas habituales para escalar y desplegar microservicios Node.js en producción.
+
+**Puntos Clave**
+*   E/S no bloqueante y alto rendimiento para cargas concurrentes ligeras.
+*   Patrones de resiliencia: Circuit Breaker, Retry, Bulkhead y timeouts para proteger servicios dependientes.
+*   Comunicación: preferir mensajería asíncrona para desacoplar y mejorar la tolerancia a fallos.
+*   Observabilidad: métricas (Prometheus), trazas (OpenTelemetry) y logs estructurados para depuración y SLOs.
+*   Considerar la limitación de CPU-bound tasks (usar workers o servicios especializados) y la gestión de memory leaks en long-running processes.
+
+**Ejemplo**
+```javascript
+// Ejemplo sencillo: microservicio Express con health-check y publicación a un broker (conceptual)
+const express = require('express');
+const bodyParser = require('body-parser');
+// const amqp = require('amqplib'); // Ejemplo con AMQP
+
+const app = express();
+app.use(bodyParser.json());
+
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
+app.post('/orders', async (req, res) => {
+    const order = req.body;
+    // Validar y persistir en BD...
+    // Publicar evento a un broker para que otros servicios reaccionen
+    // await channel.publish('exchange', 'order.created', Buffer.from(JSON.stringify(order)));
+    res.status(201).json({ id: 'order-123', ...order });
+});
+
+app.listen(3000, () => console.log('Orders service listening on 3000'));
+```
+
+**Recomendaciones prácticas**
+*   Mantener servicios pequeños y con una única responsabilidad para facilitar despliegues independientes.
+*   Externalizar estado (bases de datos, caches) y usar contratos de API/versionado para evitar roturas entre versiones.
+*   Implementar pruebas de contrato (contract testing) y pruebas de integración con entornos que simulen el broker y dependencias.
+*   Usar circuit breakers (p.ej. `opossum`), retries con backoff y bulkheads para mejorar resiliencia.

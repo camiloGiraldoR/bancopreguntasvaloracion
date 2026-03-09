@@ -34,8 +34,9 @@ export const getLocalSkillDescription = async (groupName, skillName, lang = 'es'
     }
 
     try {
-        const response = await fetch(`/docs/skills/${fileName}_${lang}.md`);
-        if (!response.ok) throw new Error(`File not found: /docs/skills/${fileName}_${lang}.md`);
+        const path = `${import.meta.env.BASE_URL}docs/skills/${fileName}_${lang}.md`.replace(/\/+/g, '/');
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`File not found: ${path}`);
 
         const text = await response.text();
 
