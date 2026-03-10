@@ -1,6 +1,7 @@
 ````markdown
 # Microservices Patterns
 
+
 This document describes common architectural and design patterns used in microservices architectures. Each section provides a concise overview of the pattern, when to use it, benefits and considerations.
 
 ---
@@ -85,4 +86,17 @@ A conceptual pattern to map and design business flows (customer journeys) across
 **Considerations**
 * Useful to align architecture with business processes and stage metrics.
 
+---
+
+## Microservicio (Microservice)
+**Description**
+A microservice is a small, independently deployable unit that implements a single business capability. Microservices communicate via APIs or asynchronous messaging and typically own their data to preserve autonomy and isolation.
+
+**Considerations**
+* Difference from a monolith: a monolith bundles many capabilities within a single deployable application, while microservices separate responsibilities and deployments.
+* Benefits: independent deployment, per-service scalability, and reduced blast radius on failures.
+* Challenges: increased operational complexity, data coordination, distributed testing, and the need for observability and automation.
+
+````
+````` 
 ````

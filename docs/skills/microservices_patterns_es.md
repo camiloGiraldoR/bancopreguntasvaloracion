@@ -8,6 +8,17 @@ Este documento describe patrones arquitectónicos y de diseño comunes en arquit
 ## CQRS (Command Query Responsibility Segregation)
 **Descripción**
 CQRS separa las operaciones de lectura (queries) de las de escritura (commands), permitiendo optimizar y escalar de forma independiente ambos caminos. Su uso facilita modelos de lectura especializados y mejora el rendimiento en sistemas con requisitos distintos para lectura y escritura.
+`````markdown
+````markdown
+# Patrones de Microservicios
+
+Este documento describe patrones arquitectónicos y de diseño comunes en arquitecturas de microservicios. Cada sección ofrece una visión concisa del patrón, cuándo usarlo, ventajas y consideraciones.
+
+---
+
+## CQRS (Command Query Responsibility Segregation)
+**Descripción**
+CQRS separa las operaciones de lectura (queries) de las de escritura (commands), permitiendo optimizar y escalar de forma independiente ambos caminos. Su uso facilita modelos de lectura especializados y mejora el rendimiento en sistemas con requisitos distintos para lectura y escritura.
 
 **Consideraciones**
 * Útil cuando los modelos de lectura y escritura tienen necesidades diferentes.
@@ -85,4 +96,16 @@ Patrón conceptual para mapear y diseñar flujos de negocio (customer journeys) 
 **Consideraciones**
 * Útil para alinear arquitectura con procesos de negocio y métricas por etapa.
 
+---
+
+## Microservicio
+**Descripción**
+Un microservicio es una unidad pequeña e independiente que implementa una única responsabilidad de negocio y puede desplegarse de forma autónoma. Se comunica con otros servicios mediante APIs o mensajería y suele tener su propia base de datos para garantizar el aislamiento.
+
+**Consideraciones**
+* Diferencia con un monolito: en un monolito las distintas funcionalidades conviven en la misma aplicación desplegable; los microservicios separan responsabilidades y despliegues.
+* Ventajas: despliegue independiente, escalado por servicio y reducción del blast radius ante fallos.
+* Retos: mayor complejidad operativa, coordinación de datos, testing distribuido y necesidad de observabilidad y automatización.
+
 ````
+````` 
