@@ -3843,15 +3843,105 @@
   {
     "group": "Microservices Patterns",
     "skills": [
-      { "name": "CQRS", "questions": [] },
-      { "name": "Database per service", "questions": [] },
-      { "name": "Saga", "questions": [] },
-      { "name": "API Gateway", "questions": [] },
-      { "name": "Event Sourcing", "questions": [] },
-      { "name": "Sidecar", "questions": [] },
-      { "name": "Circuit Breaker", "questions": [] },
-      { "name": "BFF Pattern", "questions": [] },
-      { "name": "Journey", "questions": [] }
+      {
+        "name": "CQRS",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es CQRS y en qué se diferencia del enfoque CRUD tradicional?", "answer": "CQRS (Command Query Responsibility Segregation) separa las operaciones de lectura (queries) de las de escritura (commands), permitiendo modelos optimizados para cada caso y a menudo diferentes stores para lectura/escritura." },
+          { "level": "junior", "question": "Menciona un caso simple donde CQRS aporte valor respecto a un CRUD único.", "answer": "Cuando las consultas son muy frecuentes y requieren agregaciones/pipelines distintas a las operaciones de escritura, por ejemplo dashboards en tiempo real." },
+          { "level": "intermediate", "question": "¿Qué es una proyección en CQRS y para qué sirve?", "answer": "Una proyección es un read model materializado creado a partir del write model o eventos para servir consultas de forma eficiente y especializada." },
+          { "level": "intermediate", "question": "¿Cómo gestionarías inconsistencias temporales entre write model y proyecciones?", "answer": "Aceptar consistencia eventual, implementar reintentos/idempotencia en los handlers de proyección y ofrecer mecanismos de reconciliación y reconciliación manual si es necesario." },
+          { "level": "senior", "question": "¿Qué impacto tiene CQRS en operaciones transaccionales y cómo lo resolverías?", "answer": "Introduce la necesidad de manejar consistencia eventual; se puede usar sagas, compensaciones y diseñar operaciones críticas con garantías adicionales o transacciones locales donde sea imprescindible." },
+          { "level": "senior", "question": "Propón una estrategia de despliegue para migrar partes de un monolito CRUD a CQRS sin interrumpir usuarios.", "answer": "Extraer funcionalidades de lectura con proyecciones, desplegar lecturas en paralelo y usar canary releases; mantener sincronización mediante eventos hasta completar la migración." }
+        ]
+      },
+      {
+        "name": "Database per service",
+        "questions": [
+          { "level": "junior", "question": "¿Qué significa 'database per service' y por qué se usa en microservicios?", "answer": "Cada servicio tiene su propia base de datos para evitar acoplamientos por esquema y permitir elegir tecnologías optimizadas por dominio." },
+          { "level": "junior", "question": "¿Cuál es un beneficio inmediato de tener bases separadas por servicio?", "answer": "Independencia en despliegue y cambios de esquema sin afectar otros servicios." },
+          { "level": "intermediate", "question": "¿Cómo compartirías información entre servicios cuando necesitan datos de otros dominios?", "answer": "Mediante APIs públicas, eventos publicados o proyecciones/replicación controlada; evitar accesos directos a la BD de otro servicio." },
+          { "level": "intermediate", "question": "¿Qué técnicas usas para consultas que combinarían datos de múltiples servicios?", "answer": "BFF/aggregator, materialized views, denormalización o pipelines ETL para conjuntos de datos de lectura." },
+          { "level": "senior", "question": "¿Cómo diseñas backups y restauraciones cuando hay dependencias cross-service?", "answer": "Planificar backups independientes, documentar órdenes de restauración y tener procesos de reconciliación y compensación para restaurar consistencia entre servicios." },
+          { "level": "senior", "question": "Explique trade-offs entre consistencia y disponibilidad al elegir bases por servicio.", "answer": "Mayor independencia mejora disponibilidad y escalabilidad, pero complica la consistencia y transacciones distribuidas; exige diseño para eventual consistency cuando sea aceptable." }
+        ]
+      },
+      {
+        "name": "Saga",
+        "questions": [
+          { "level": "junior", "question": "Define brevemente qué es una Saga en microservicios.", "answer": "Una Saga coordina una serie de pasos locales en múltiples servicios para lograr una operación distribuida, con acciones compensatorias en caso de fallo." },
+          { "level": "junior", "question": "¿Qué diferencia hay entre una saga coreografiada y una orquestada?", "answer": "Coreografiada: los servicios reaccionan a eventos. Orquestada: existe un coordinador que invoca los pasos y controla el flujo." },
+          { "level": "intermediate", "question": "Da un ejemplo de flujo que requiera una saga y su compensación.", "answer": "Proceso de pedido: reservar inventario, cobrar tarjeta, confirmar envío; si el cobro falla, la saga compensa liberando la reserva y notificando el pedido fallido." },
+          { "level": "intermediate", "question": "¿Cómo garantizas idempotencia en acciones de saga?", "answer": "Uso de identificadores de correlación y persistencia de eventos/estado para que reintentos no apliquen efectos duplicados." },
+          { "level": "senior", "question": "¿Qué retos trae el diagnóstico y depuración de sagas y cómo mitigarlos?", "answer": "El flujo distribuido dificulta trazabilidad; mitigar con trazas distribuidas (OpenTelemetry), logs correlacionados y visualización del estado de sagas." },
+          { "level": "senior", "question": "Diseña una estrategia para sagas de larga duración y manejo de expiraciones.", "answer": "Persistir checkpoints, definir timeouts y jobs de reconciliación periódica; diseñar pasos compensatorios seguros y notificaciones a operadores si la saga queda en estado indeterminado." }
+        ]
+      },
+      {
+        "name": "API Gateway",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es el propósito principal de un API Gateway?", "answer": "Servir como punto de entrada que enruta peticiones, aplica autenticación, caching y políticas de seguridad para los clientes." },
+          { "level": "junior", "question": "Enumera responsabilidades comunes que implementaría un gateway.", "answer": "Autenticación, rate limiting, enrutamiento, agregación de respuestas y manejo de CORS." },
+          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de APIs en un Gateway?", "answer": "Exponiendo rutas versionadas, usando headers para versionado y soportando transformaciones para compatibilidad entre versiones." },
+          { "level": "intermediate", "question": "¿Qué consideraciones de seguridad debe cubrir el gateway?", "answer": "Validación de tokens, limitación por cliente, protección contra ataques DDoS, sanitización de inputs y propagación segura de identidad a backend." },
+          { "level": "senior", "question": "¿Qué riesgos introduce y cómo diseñar redundancia para un Gateway?", "answer": "Riesgo de single point of failure y cuello de botella; mitigar con múltiples instancias, balanceo, CDNs y circuit breakers en el gateway mismo." },
+          { "level": "senior", "question": "Propón una arquitectura para offload de lógica no funcional (auth, caching) desde microservicios al gateway.", "answer": "Delegar autenticación y caching en el gateway, usar tokens mínimos para backend, y mantener mecanismos de revalidación/propagación de claims cuando sea necesario." }
+        ]
+      },
+      {
+        "name": "Event Sourcing",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es Event Sourcing en una frase?", "answer": "Persistir la secuencia de eventos que describen los cambios de estado en lugar de persistir solo el estado actual." },
+          { "level": "junior", "question": "Nombra una ventaja práctica de usar Event Sourcing.", "answer": "Permite reconstruir el estado en cualquier punto y ofrece un registro audit trail completo." },
+          { "level": "intermediate", "question": "¿Para qué sirven las proyecciones y snapshots?", "answer": "Proyecciones: vistas materializadas para consultas eficientes. Snapshots: puntos de partida para acelerar la reconstrucción evitando reprocesar todos los eventos." },
+          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de eventos?", "answer": "Usando formatos versionados, adaptadores en consumidores o migraciones de eventos para mantener compatibilidad hacia atrás." },
+          { "level": "senior", "question": "¿Qué retos operativos presenta Event Sourcing y cómo mitigarlos?", "answer": "Crecimiento de la store de eventos, complejidad en queries y migraciones; mitigarlos con particionado, archivado, snapshots y proyecciones eficientes." },
+          { "level": "senior", "question": "Explica cómo asegurar idempotencia y orden en el procesamiento de eventos en consumidores distribuidos.", "answer": "Persistir checkpoints, usar event ids para deduplicación y diseñar particionado por aggregate id que preserve orden por agregado." }
+        ]
+      },
+      {
+        "name": "Sidecar",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un sidecar en despliegues cloud-native?", "answer": "Un contenedor que corre junto al servicio principal para ofrecer funcionalidades transversales (proxy, logging, certs) sin modificar la aplicación." },
+          { "level": "junior", "question": "Da un ejemplo de herramienta usada como sidecar.", "answer": "Envoy como proxy de malla (service mesh) o un sidecar para recolección de métricas y logs." },
+          { "level": "intermediate", "question": "¿Qué costes y complicaciones operativas introduce el patrón sidecar?", "answer": "Mayor consumo de recursos por pod, complejidad en lifecycle y escalado, y necesidad de coordinar readiness/liveness entre contenedores." },
+          { "level": "intermediate", "question": "¿Cómo implementarías actualizaciones del sidecar sin interrumpir el servicio principal?", "answer": "Desplegar rolling updates, usar probes independientes y diseñar degradación si el sidecar no está disponible temporalmente." },
+          { "level": "senior", "question": "¿Qué estrategias usarías para aislar fallos del sidecar y evitar que afecten al servicio?", "answer": "Timeouts, circuit breakers y límites de recursos; diseñar paths alternativos si el sidecar falla y monitorizar health metrics del sidecar por separado." },
+          { "level": "senior", "question": "Compara sidecars con agentes centralizados en cuanto a seguridad y performance.", "answer": "Sidecars ofrecen aislamiento y proximidad (mejor latencia y control), mientras que agentes centralizados reducen overhead pero pueden ser puntos únicos de fallo y centralizar datos sensibles." }
+        ]
+      },
+      {
+        "name": "Circuit Breaker",
+        "questions": [
+          { "level": "junior", "question": "¿Qué función cumple un circuit breaker?", "answer": "Evitar que llamadas repetidas a un servicio fallido empeoren la situación, ofreciendo fallback o fallos rápidos." },
+          { "level": "junior", "question": "Enumera los estados principales de un circuit breaker.", "answer": "Closed, Open y Half-Open." },
+          { "level": "intermediate", "question": "¿Cómo configuras un circuit breaker para equilibrar sensibilidad y robustez?", "answer": "Ajustando umbrales de error, ventanas de tiempo para cálculo de tasas, periodos de prueba y backoff en reintentos." },
+          { "level": "intermediate", "question": "¿Qué fallback implementarías para llamadas a un servicio no crítico?", "answer": "Respuesta cacheada, default degradado o cola para procesar later, junto con alertas y métricas." },
+          { "level": "senior", "question": "¿Cómo evitas que retries empeoren una situación cuando el circuit breaker está detectando fallos?", "answer": "Limitar retries, aplicar exponential backoff y combinarlos con bulkheads para aislar recursos y evitar sobrecarga adicional." },
+          { "level": "senior", "question": "Qué métricas son más útiles para evaluar el comportamiento de un circuito en producción?", "answer": "Tasa de apertura, latencias, tasa de fallos, éxito de reintentos y número de invocaciones a fallbacks; correlacionarlas con incidentes para tuning." }
+        ]
+      },
+      {
+        "name": "BFF Pattern",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un BFF y por qué se crea uno?", "answer": "Backend For Frontend es una capa específica por tipo de cliente (mobile/web) que adapta y compone llamadas para optimizar la experiencia del cliente." },
+          { "level": "junior", "question": "Menciona una ventaja de usar BFFs.", "answer": "Reducción de llamadas desde el cliente y payloads adaptados a las necesidades del cliente, mejorando latencia y UX." },
+          { "level": "intermediate", "question": "¿Cómo evitarías la duplicación de lógica entre varios BFFs?", "answer": "Extraer utilidades y librerías compartidas, estandarizar contratos y usar tests contractuales para mantener coherencia." },
+          { "level": "intermediate", "question": "¿Qué responsabilidades de seguridad puede tener un BFF?", "answer": "Validar tokens, sanitizar inputs, gestionar sesiones y aplicar rate limiting por cliente." },
+          { "level": "senior", "question": "Describe una estrategia de despliegue para varios BFFs que deben evolucionar independientemente.", "answer": "Versionado por ruta/header, despliegues canary, pruebas contractuales y un repositorio de contratos/shared libs para evitar romper clientes." },
+          { "level": "senior", "question": "¿Cuándo NO recomendarías un BFF?", "answer": "Cuando la complejidad adicional y mantenimiento de múltiples BFFs supera los beneficios, por ejemplo en sistemas muy pequeños o con pocos tipos de clientes." }
+        ]
+      },
+      {
+        "name": "Journey",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un 'journey' en arquitectura de software?", "answer": "El mapeo del recorrido de usuario/proceso a través de servicios, identificando etapas y puntos clave de interacción." },
+          { "level": "junior", "question": "¿Qué beneficio trae diseñar servicios según journeys?", "answer": "Alinea la arquitectura con procesos de negocio y facilita métricas y responsabilidad por etapa." },
+          { "level": "intermediate", "question": "¿Cómo subdividirías un proceso complejo en servicios basados en journey?", "answer": "Identificar etapas discretas, definir boundaries y eventos de transición, y crear servicios que posean datos y lógica de su etapa." },
+          { "level": "intermediate", "question": "Qué KPIs propondrías para monitorear un journey crítico?", "answer": "Tasa de éxito por etapa, latencia por etapa, tasa de abandono y tiempos medios de procesamiento." },
+          { "level": "senior", "question": "¿Cómo coordinarías ownership y datos en un journey distribuido entre equipos?", "answer": "Definir owners claros, contratos/SLAs, eventos estándar y procesos de reconciliación; usar gobernanza de datos para evitar duplicidad y conflictos." },
+          { "level": "senior", "question": "Propón una estrategia para refactorizar un monolito en servicios por journey.", "answer": "Aplicar el patrón strangler, priorizar journeys con mayor valor, extraer bounded contexts, crear eventos y contratos, y desplegar incrementalmente con pruebas contractuales." }
+        ]
+      }
     ]
   }
 ]
