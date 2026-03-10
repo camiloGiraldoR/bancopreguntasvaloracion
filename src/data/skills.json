@@ -3958,6 +3958,17 @@
         ]
       },
       {
+        "name": "Microservicio",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un microservicio?", "answer": "Un microservicio es una unidad pequeña, independiente y desplegable de forma autónoma que implementa una única capacidad de negocio; se comunica con otros servicios mediante APIs o mensajería y posee su propio ciclo de vida y datos." },
+          { "level": "junior", "question": "¿Cuál es la diferencia conceptual entre un microservicio y un monolito?", "answer": "Un monolito agrupa múltiples funcionalidades en una sola aplicación desplegable, mientras que un microservicio separa responsabilidades en servicios independientes que se despliegan y escalan por separado." },
+          { "level": "intermediate", "question": "¿Qué ventajas aporta la arquitectura de microservicios frente al monolito?", "answer": "Mejora la escalabilidad y el despliegue independiente, facilita la adopción de tecnologías heterogéneas por servicio y acelera ciclos de entrega; además reduce el blast radius de cambios." },
+          { "level": "intermediate", "question": "¿Qué retos operativos introduce pasar de un monolito a microservicios?", "answer": "Incrementa la complejidad operativa: gestión de despliegues, observabilidad distribuida, consistencia entre servicios, testing integrado y coordinación de versiones; requiere automatización de CI/CD y buenas prácticas de monitoring." },
+          { "level": "senior", "question": "¿Cuándo NO es recomendable usar microservicios y por qué?", "answer": "No es recomendable en apps muy simples o cuando el equipo es pequeño y la complejidad operacional supera los beneficios; los microservicios pueden introducir overhead innecesario y ralentizar la entrega si no se domina el ecosistema." },
+          { "level": "senior", "question": "Estrategias para migrar de monolito a microservicios minimizando riesgos.", "answer": "Extraer funcionalidades por bounded contexts, empezar por servicios read-only o de baja criticidad, usar strangler pattern, adoptar pruebas contractuales, observabilidad y despliegues canary; mantener integraciones claras y rollback sencillo." }
+        ]
+      },
+      {
         "name": "Database per service",
         "questions": [
           { "level": "junior", "question": "¿Qué significa 'database per service' y por qué se usa en microservicios?", "answer": "Cada servicio tiene su propia base de datos para evitar acoplamientos por esquema y permitir elegir tecnologías optimizadas por dominio." },
