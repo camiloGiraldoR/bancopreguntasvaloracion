@@ -630,6 +630,165 @@
     ]
   },
   {
+    "group": "Design Patterns",
+    "skills": [
+      {
+        "name": "Singleton-CRE",
+        "questions": [
+          { "level": "junior", "question": "¿Qué problema resuelve el patrón Singleton?", "answer": "Garantiza que exista una única instancia de una clase y proporciona un punto de acceso global a ella, útil para recursos compartidos como configuraciones o pools." },
+          { "level": "junior", "question": "Menciona una forma sencilla de implementar un Singleton en Java.", "answer": "Usando un campo estático privado y un método público estático que devuelve la instancia única; típicamente con inicialización perezosa y sincronización si es multi-hilo." },
+          { "level": "intermediate", "question": "¿Qué problemas trae la implementación clásica de Singleton en entornos multi-hilo?", "answer": "Sin sincronización puede crear múltiples instancias; sincronizar todo el método impacta rendimiento; soluciones incluyen doble-check locking o usar un enum en Java para seguridad contra serialización/reflexión." },
+          { "level": "intermediate", "question": "¿Por qué usar un Enum para Singleton en Java es recomendable?", "answer": "Un Enum garantiza una única instancia por la JVM, maneja correctamente serialización y evita ataques via reflexión, siendo la implementación más segura y simple." },
+          { "level": "senior", "question": "¿Cuándo NO deberías usar un Singleton?", "answer": "Cuando la dependencia global dificulta pruebas, provoca acoplamiento o cuando necesitas múltiples instancias con diferente configuración; en esos casos usar inyección de dependencias es mejor." },
+          { "level": "senior", "question": "Explica cómo el uso de Singletons afecta el diseño en arquitecturas de microservicios.", "answer": "Un Singleton local solo afecta la JVM; no garantiza unicidad distribuida. Para recursos globales entre servicios se requieren mecanismos distribuidos (coordinadores, locks distribuidos, bases de datos)." }
+        ]
+      },
+      {
+        "name": "FactoryMethod-CRE",
+        "questions": [
+          { "level": "junior", "question": "¿Qué objetivo tiene el Factory Method?", "answer": "Permitir que subclases decidan qué clase concreta instanciar, encapsulando la creación de objetos detrás de una interfaz o clase base." },
+          { "level": "junior", "question": "Diferencia básica entre Factory Method y new directamente.", "answer": "Factory Method delega la creación a una clase especializada, promoviendo flexibilidad; usar new acopla el código al tipo concreto." },
+          { "level": "intermediate", "question": "¿Cómo ayuda el Factory Method a cumplir el principio Open/Closed?", "answer": "Permite añadir nuevas familias de productos sin modificar el código cliente, extendiendo las fábricas concretas en lugar de cambiar lógica existente." },
+          { "level": "intermediate", "question": "Describe un caso real donde usarías Factory Method.", "answer": "Cuando una librería debe crear distintos tipos de objetos según configuración o plataforma (por ejemplo, crear diferentes implementaciones de un driver dependiendo del S.O.)." },
+          { "level": "senior", "question": "Comparar Factory Method con Abstract Factory: ¿cuando elegir uno u otro?", "answer": "Factory Method es para instanciar un producto concreto mediante herencia; Abstract Factory crea familias de productos relacionados sin especificar clases concretas. Usar Abstract Factory cuando necesitas coherencia entre múltiples objetos relacionados." },
+          { "level": "senior", "question": "Impacto del Factory Method en la testabilidad y desacoplamiento.", "answer": "Mejora testabilidad al permitir inyectar fábricas mock o stub; reduce acoplamiento del cliente a las clases concretas, facilitando sustitución y evolución." }
+        ]
+      },
+      {
+        "name": "AbstractFactory-CRE",
+        "questions": [
+          { "level": "junior", "question": "¿Qué hace un Abstract Factory?", "answer": "Proporciona una interfaz para crear familias de objetos relacionados sin especificar sus clases concretas." },
+          { "level": "junior", "question": "Ejemplo simple de uso de Abstract Factory.", "answer": "Una UI que crea controles para distintas plataformas; una AbstractFactory devuelve botones y ventanas para Windows o Mac sin que el cliente conozca las clases concretas." },
+          { "level": "intermediate", "question": "¿Cómo garantiza Abstract Factory la compatibilidad entre productos?", "answer": "Al proveer objetos de la misma familia mediante la misma fábrica, se asegura que los productos sean compatibles entre sí en API y comportamiento esperado." },
+          { "level": "intermediate", "question": "¿Qué coste estructural añade Abstract Factory?", "answer": "Aumenta el número de clases y fábricas; puede ser excesivo si solo hay una familia de productos o pocas variantes." },
+          { "level": "senior", "question": "Cuando migrar de Factory Method a Abstract Factory?", "answer": "Si aparecen varias familias de productos que deben coexistir y usarse de forma coherente, pasar a Abstract Factory ayuda a centralizar la creación y mantener compatibilidad." },
+          { "level": "senior", "question": "¿Cómo combinar Abstract Factory con DI (Inyección de Dependencias)?", "answer": "Registrar la fábrica concreta en el contenedor de DI y inyectarla donde se necesite, permitiendo cambiar familias en runtime según configuración o entorno." }
+        ]
+      },
+      {
+        "name": "Builder-CRE",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es la intención del patrón Builder?", "answer": "Separar la construcción de un objeto complejo de su representación, permitiendo pasos de construcción claros y reutilizables." },
+          { "level": "junior", "question": "Cuándo preferir Builder frente a un constructor con muchos parámetros.", "answer": "Cuando hay muchos parámetros opcionales o configuraciones; Builder mejora legibilidad y evita constructores telescópicos." },
+          { "level": "intermediate", "question": "¿Cómo implementarías un Builder fluido en Java?", "answer": "Crear una clase Builder con métodos encadenables para cada propiedad y un método build() que devuelve la instancia final inmutable." },
+          { "level": "intermediate", "question": "Builder y objetos inmutables: ¿cómo se relacionan?", "answer": "El Builder construye la instancia paso a paso y luego devuelve un objeto inmutable, evitando setters públicos y asegurando consistencia." },
+          { "level": "senior", "question": "Ventajas y desventajas de usar el patrón Builder en APIs públicas.", "answer": "Ventajas: API clara, compatibilidad futura, seguridad de tipos. Desventajas: mayor cantidad de clases y boilerplate; posible sobreingeniería si el objeto es simple." },
+          { "level": "senior", "question": "¿Cómo validar invariantes complejos en un Builder?", "answer": "Realizar validaciones en el método build(), lanzar excepciones si faltan parámetros obligatorios o si las combinaciones son inválidas; documentar claramente las precondiciones." }
+        ]
+      },
+      {
+        "name": "Prototype-CRE",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es el patrón Prototype?", "answer": "Permite crear nuevos objetos clonando instancias prototipo existentes en lugar de instanciarlas desde cero." },
+          { "level": "junior", "question": "Diferencia entre clonación superficial y profunda.", "answer": "La clonación superficial copia referencias a objetos internos; la profunda duplica también los objetos referenciados, evitando compartir estado mutable." },
+          { "level": "intermediate", "question": "¿Cuándo es útil Prototype en un sistema?", "answer": "Cuando la creación de objetos es costosa o compleja y es más eficiente clonar un prototipo preconfigurado que construir desde cero." },
+          { "level": "intermediate", "question": "Problemas comunes al implementar cloneable en Java.", "answer": "La interfaz Cloneable no define el método clone() público; la implementación por defecto es deprecada para clonación profunda; se prefieren constructores de copia o librerías de serialización para clonado profundo." },
+          { "level": "senior", "question": "Estrategias para clonar objetos complejos con dependencias externas.", "answer": "Usar patrones de serialización/deserialización, constructores de copia personalizados o fábricas que repliquen dependencias con cuidado; evitar compartir mutable state accidentalmente." },
+          { "level": "senior", "question": "Impacto del Prototype en consistencia y concurrencia.", "answer": "Clonar recursos compartidos sin protección puede causar condiciones de carrera; asegurar que el prototipo sea thread-safe o que el clon se inicialice correctamente antes de compartirse." }
+        ]
+      },
+      {
+        "name": "Adapter-ST",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es la función de un Adapter?", "answer": "Permitir que dos interfaces incompatibles trabajen juntas traduciendo llamadas de una interfaz a otra." },
+          { "level": "junior", "question": "Diferencia entre Adapter y Facade (básica).", "answer": "Adapter adapta una interfaz existente a otra; Facade simplifica el uso de subsistemas proporcionando una interfaz unificada." },
+          { "level": "intermediate", "question": "Adapter por herencia vs por composición: pros y contras.", "answer": "Herencia (class adapter) requiere compatibilidad con la jerarquía e impone acoplamiento; composición (object adapter) es más flexible y preferible cuando la herencia no es posible." },
+          { "level": "intermediate", "question": "Cuándo utilizar un Adapter en integraciones de sistemas legados.", "answer": "Cuando necesitas exponer una API moderna frente a una librería o servicio legado sin cambiar el código cliente; el Adapter encapsula la lógica de adaptación y conversiones." },
+          { "level": "senior", "question": "¿Cómo diseñar adapters que no filtren detalles de implementación?", "answer": "Mantener la traducción enfocada, evitar exponer estructuras internas del adaptado, y proveer pruebas que confirmen la compatibilidad y las transformaciones de datos." },
+          { "level": "senior", "question": "Impacto de adapters en rendimiento y cómo mitigarlo.", "answer": "Adapters introducen una capa de indirection y posibles conversiones costosas; mitigar con caching, transformaciones lazily evaluadas o by-reference cuando sea seguro." }
+        ]
+      },
+      {
+        "name": "Decorator-ST",
+        "questions": [
+          { "level": "junior", "question": "¿Qué aporta el patrón Decorator?", "answer": "Permite añadir responsabilidades dinámicamente a un objeto sin usar herencia, envolviéndolo en objetos decoradores." },
+          { "level": "junior", "question": "Ejemplo sencillo de uso de Decorator.", "answer": "Añadir funcionalidad de logging o caching a un servicio envolviéndolo en un decorador que implemente la misma interfaz y agregue comportamiento antes/después." },
+          { "level": "intermediate", "question": "Diferencias entre Decorator y Proxy.", "answer": "Proxy controla el acceso a un objeto (p. ej. lazy loading), Decorator añade responsabilidades adicionales sin cambiar la interfaz; ambos usan composición pero con intenciones distintas." },
+          { "level": "intermediate", "question": "Cómo mantener el orden correcto entre múltiples decoradores.", "answer": "Documentar las responsabilidades de cada decorador y componerlos en el orden apropiado; preferir decoradores atómicos y probar combinaciones críticas." },
+          { "level": "senior", "question": "Riesgos de abusar de Decorators en una arquitectura extensa.", "answer": "Puede generar una cadena larga de wrappers difícil de depurar y con overhead en llamadas; considerar otras alternativas como interceptores centralizados si se vuelve inmanejable." },
+          { "level": "senior", "question": "Estrategias de testing para objetos decorados.", "answer": "Probar decoradores individualmente y en combinaciones representativas; usar mocks para el componente base y verificar que las responsabilidades adicionales se ejecuten y propaguen correctamente las excepciones." }
+        ]
+      },
+      {
+        "name": "Proxy-ST",
+        "questions": [
+          { "level": "junior", "question": "¿Qué hace un Proxy?", "answer": "Actúa como sustituto o representante de otro objeto, controlando el acceso, adicionando verificación o gestionando recursos (p. ej. lazy loading)." },
+          { "level": "junior", "question": "Tipos comunes de proxy.", "answer": "Virtual Proxy (carga diferida), Remote Proxy (acceso remoto), Protection Proxy (control de acceso) y Smart Proxy (acciones adicionales al acceso)." },
+          { "level": "intermediate", "question": "¿Cómo implementa Hibernate el patrón Proxy?", "answer": "Usa proxies para entidades en lazy loading; crea objetos sustitutos que cargan datos de la base de datos sólo al acceder a atributos perezosos." },
+          { "level": "intermediate", "question": "Diferencia entre Proxy y Decorator en intención.", "answer": "Proxy controla acceso o representación del objeto por razones estructurales (acceso remoto, control), Decorator añade funcionalidad. En la práctica pueden parecer similares." },
+          { "level": "senior", "question": "Consideraciones de seguridad al usar proxies dinámicos.", "answer": "Validar que las llamadas interceptadas no expongan datos sensibles, controlar la serialización de proxies y proteger contra ejecución de código arbitrario si se permite generación dinámica." },
+          { "level": "senior", "question": "Impacto de proxies en trazabilidad y debugging.", "answer": "Proxies introducen capas que pueden ocultar el origen de llamadas; es importante habilitar logging context-aware y proveer herramientas para inspeccionar proxies en runtime." }
+        ]
+      },
+      {
+        "name": "Facade-ST",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es el objetivo del patrón Facade?", "answer": "Ofrecer una interfaz simple y unificada a un conjunto de interfaces de un subsistema, reduciendo la complejidad para el cliente." },
+          { "level": "junior", "question": "Ejemplo donde usar Facade.", "answer": "Unificar llamadas a múltiples servicios internos (autenticación, logging, notificaciones) mediante un único servicio de alto nivel para operaciones comunes." },
+          { "level": "intermediate", "question": "¿Cómo afecta Facade al acoplamiento entre capas?", "answer": "Reduce el acoplamiento del cliente al subsistema al depender únicamente del Facade, pero crea una dependencia en la fachada si esta concentra demasiada lógica." },
+          { "level": "intermediate", "question": "Cuándo NO usar un Facade.", "answer": "Si el subsistema es pequeño y simple o cuando el cliente necesita control fino sobre componentes internos; un Facade innecesario puede ocultar capacidades importantes." },
+          { "level": "senior", "question": "Diseño de una Facade que soporte evolución del subsistema.", "answer": "Mantener la Facade estable y mínima, delegar cambios internos sin exponer detalles y versionar la API de la Facade si se requieren cambios mayores para mantener compatibilidad." },
+          { "level": "senior", "question": "Cómo integrar Facade con patrones de orquestación en microservicios.", "answer": "Usar Facades en el borde del sistema (API Gateway o BFF) para orquestar llamadas a microservicios, aplicando retry, circuit breaker y agregaciones de forma centralizada." }
+        ]
+      },
+      {
+        "name": "Composite-ST",
+        "questions": [
+          { "level": "junior", "question": "¿Qué problema resuelve Composite?", "answer": "Permite tratar objetos individuales y composiciones de objetos (árboles) de la misma manera mediante una interfaz común." },
+          { "level": "junior", "question": "Ejemplo sencillo de Composite.", "answer": "Estructura de archivos: archivos y carpetas que implementan una interfaz común para listar tamaño y contenidos." },
+          { "level": "intermediate", "question": "Cómo manejar operaciones que solo aplican a hojas en un Composite.", "answer": "Definir la operación en la interfaz y, en componentes compuestos, propagarla a hijos; documentar que algunas operaciones son no-op en nodos compuestos o lanzar excepciones cuando no aplican." },
+          { "level": "intermediate", "question": "Ventajas y desventajas de usar Composite con estructuras profundas.", "answer": "Ventajas: uniformidad y flexibilidad. Desventajas: recorrido costoso, posible complejidad en sincronización y dificultades para ciertas operaciones que requieren contexto del árbol." },
+          { "level": "senior", "question": "Estrategias de concurrencia en árboles compuestos.", "answer": "Usar locks por nodo, versionado inmutable, o abordajes copy-on-write para evitar bloqueos globales; equilibrar granularidad de locks con rendimiento." },
+          { "level": "senior", "question": "Cómo serializar grafos compuestos manteniendo referencias compartidas.", "answer": "Implementar identificadores únicos para nodos y serializar referencias por id; al deserializar reconstruir la estructura preservando aliasing para evitar duplicar objetos compartidos." }
+        ]
+      },
+      {
+        "name": "Observer-COM",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es la idea central del patrón Observer?", "answer": "Un sujeto notifica a múltiples observadores cuando su estado cambia, permitiendo comunicación desacoplada entre emisor y receptores." },
+          { "level": "junior", "question": "Uso básico de Observer en UI.", "answer": "Actualizar componentes de la interfaz cuando cambian datos del modelo, suscribiéndose a eventos o propiedades observables." },
+          { "level": "intermediate", "question": "Diferencia entre Observer y Pub/Sub.", "answer": "Observer es un patrón local con vínculo directo entre sujeto y observadores; Pub/Sub desacopla completamente vía broker y a menudo permite comunicaciones entre procesos o servicios." },
+          { "level": "intermediate", "question": "¿Cómo evitar fugas de memoria con Observers?", "answer": "Asegurar que observadores se desregistren apropiadamente (por ejemplo en ciclos de vida de componentes) o usar weak references para permitir GC cuando el observador ya no esté en uso." },
+          { "level": "senior", "question": "Consideraciones de rendimiento en sistemas con muchos observadores.", "answer": "Usar batching, diferir notificaciones, aplicar filtros en el origen o usar arquitecturas basadas en streams para reducir sobrecarga; monitorear latencias y backpressure." },
+          { "level": "senior", "question": "Cómo garantizar orden y durabilidad en sistemas distribuídos basados en Observer/PubSub.", "answer": "Implementar mecanismos de entrega ordenada (particiones con orden), confirmar recepción (ack), y persistir eventos en un log duradero para reenviar y reconstruir estado." }
+        ]
+      },
+      {
+        "name": "Strategy-COM",
+        "questions": [
+          { "level": "junior", "question": "¿Qué problema resuelve Strategy?", "answer": "Permite encapsular algoritmos intercambiables y seleccionarlos en tiempo de ejecución sin cambiar el cliente." },
+          { "level": "junior", "question": "Ejemplo simple de Strategy.", "answer": "Implementar distintas estrategias de ordenamiento (por ejemplo por nombre o por fecha) e inyectar la estrategia deseada en el cliente." },
+          { "level": "intermediate", "question": "Strategy vs State: ¿cómo distinguirlos?", "answer": "Strategy define algoritmos intercambiables; State representa diferentes estados que cambian el comportamiento interno de un objeto; la intención es la diferencia clave." },
+          { "level": "intermediate", "question": "Cómo seleccionar Strategy en runtime de forma flexible.", "answer": "Usar un mapa de estrategias registradas, configuración externa o un contenedor DI para resolver la estrategia según contexto o políticas de negocio." },
+          { "level": "senior", "question": "Gestionar versiones de algoritmos con Strategy en producción.", "answer": "Versionar estrategias, permitir feature flags para conmutar en caliente y probar nuevas estrategias en canary antes de desplegar globalmente; mantener compatibilidad de contratos." },
+          { "level": "senior", "question": "Impacto en pruebas al usar Strategy y cómo mitigarlo.", "answer": "Aumenta la combinatoria de comportamientos; mitigar probando estrategias unitariamente, usar pruebas contractuales y pruebas de integración con combinaciones críticas." }
+        ]
+      },
+      {
+        "name": "Command-COM",
+        "questions": [
+          { "level": "junior", "question": "¿Qué facilita el patrón Command?", "answer": "Encapsula una petición como un objeto, permitiendo parametrizar clientes con operaciones, soportar undo/redo y colas de trabajos." },
+          { "level": "junior", "question": "Elementos básicos de Command.", "answer": "Comando (objeto), receptor (que ejecuta la acción) y un invocador que solicita la ejecución del comando." },
+          { "level": "intermediate", "question": "¿Cómo implementar undo/redo con Command?", "answer": "Guardar el estado necesario o comandos inversos en una pila al ejecutar; para undo ejecutar el comando inverso o restaurar el estado previo." },
+          { "level": "intermediate", "question": "Usos de Command en sistemas distribuidos.", "answer": "Enviar comandos a colas/colas de mensajes para ejecución asíncrona, diseñar idempotencia y compensaciones para garantizar consistencia eventual." },
+          { "level": "senior", "question": "Diseño de un Command bus con routing y seguridad.", "answer": "Implementar un bus que enrute comandos a handlers registrados, validar y autenticar comandos en capas previas, y aplicar middlewares para logging, retries y métricas." },
+          { "level": "senior", "question": "Consideraciones de rendimiento y durabilidad para comandos en alta escala.", "answer": "Persistir comandos en un log, particionar por agregados, asegurar handlers idempotentes y diseñar backpressure y reintentos controlados para evitar sobrecarga." }
+        ]
+      },
+      {
+        "name": "Chain of Responsibility-COM",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es la idea detrás de Chain of Responsibility?", "answer": "Encadenar objetos que pueden manejar una petición; la petición recorre la cadena hasta que un handler la procesa." },
+          { "level": "junior", "question": "Ventaja principal del patrón Chain of Responsibility.", "answer": "Desacopla el emisor de la petición de los receptores, permitiendo agregar/ordenar handlers sin modificar el emisor." },
+          { "level": "intermediate", "question": "Cómo evitar que una petición quede sin manejar en la cadena.", "answer": "Proveer un handler por defecto al final que registre o notifique el unhandled case, o diseñar la cadena para cubrir todos los tipos esperados." },
+          { "level": "intermediate", "question": "Implementar prioridades y short-circuit en la cadena.", "answer": "Ordenar handlers por prioridad, permitir que ciertos handlers detengan la propagación y retornar un resultado; usar políticas configurables para el flujo." },
+          { "level": "senior", "question": "Diseñar una cadena distribuida entre servicios.", "answer": "Implementar una orquestación que envíe la petición a distintos servicios según reglas, manejar latencias y fallos, y mantener trazabilidad para entender por qué un handler atendió o no la petición." },
+          { "level": "senior", "question": "Comparar Chain of Responsibility con Strategy y Pipeline.", "answer": "Strategy selecciona una implementación y la usa; Chain permite que múltiples handlers potencialmente procesen la misma petición; Pipeline aplica pasos secuenciales fijos; elegir según si se necesita múltiple evaluación, orden dinámico o selección única." }
+        ]
+      }
+    ]
+  },
+  {
     "group": "Object Oriented Programming",
     "skills": [
       {
@@ -982,41 +1141,7 @@
           }
         ]
       },
-      {
-        "name": "Design Patterns (Singleton, Factory, Decorator, etc)",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es el patrón Singleton?",
-            "answer": "Asegura que una clase tenga una única instancia y proporciona un punto de acceso global a ella."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuál es el propósito del Factory Method?",
-            "answer": "Define una interfaz para crear objetos, pero deja que las subclases decidan qué clase concreta instanciar."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Decorator y Herencia.",
-            "answer": "La herencia es estática y ocurre en compilación. El Decorador permite añadir responsabilidades de forma dinámica en tiempo de ejecución enganchando objetos."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el patrón Strategy.",
-            "answer": "Define una familia de algoritmos, los encapsula y los hace intercambiables, permitiendo que el algoritmo varíe independientemente del cliente que lo usa."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo usa JPA/Hibernate el patrón Proxy?",
-            "answer": "Para implementar el Lazy Loading. Crea un objeto 'sustituto' que intercepta llamadas y solo carga los datos de la DB cuando se accede a un atributo por primera vez."
-          },
-          {
-            "level": "senior",
-            "question": "Relación entre el patrón Observer y RxJS.",
-            "answer": "RxJS es una implementación avanzada de Observer. El Observable (Sujeto) emite datos a los Observers (Suscritores) de forma asíncrona mediante streams."
-          }
-        ]
-      },
+      
       {
         "name": "MVC - DAO / DTO / Repository / Controller",
         "questions": [
