@@ -200,6 +200,34 @@ Debido a que los JWT son autónomos y sin estado, permiten un escalado horizonta
 const token = header.payload.signature;
 // El servidor verifica la firma con su clave secreta
 ```
+ 
+---
+
+## 9. ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad)
+**Descripción**
+ACID es un conjunto de propiedades que garantizan el procesamiento confiable de transacciones en una base de datos. Atomicidad asegura que una transacción se ejecute completamente o no se ejecute; Consistencia garantiza que la transacción lleve a la base de datos de un estado válido a otro; Aislamiento controla cómo y cuándo los efectos de una transacción son visibles a otras; Durabilidad garantiza que los cambios confirmados sobrevivan a fallos y reinicios.
+
+**Consideraciones**
+* ACID es preferible en sistemas que requieren consistencia fuerte y exactitud (p. ej. sistemas financieros).
+* En entornos distribuidos, alcanzar ACID completo es costoso; protocolos como two-phase commit añaden latencia y complejidad. Alternativas prácticas incluyen sagas y compensaciones para alcanzar consistencia eventual.
+
+**Puntos Clave**
+*   Atomicidad: transacciones todo-o-nada.
+*   Consistencia: invariantes y restricciones preservadas.
+*   Aislamiento: controla anomalías de concurrencia (dirty reads, non-repeatable reads, phantom reads).
+*   Durabilidad: los commits persisten frente a fallos.
+
+**Ejemplo**
+```sql
+BEGIN TRANSACTION;
+    UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+    UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;
+```
+
+**Consejos prácticos**
+* Escoge el nivel de aislamiento adecuado según el workload para balancear corrección y rendimiento.
+* Para operaciones distribuidas, considera sagas o compensaciones en lugar de transacciones distribuidas bloqueantes cuando sea posible.
 
 ---
 

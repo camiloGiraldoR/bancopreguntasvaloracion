@@ -1122,6 +1122,18 @@
           }
         ]
       }
+      ,
+      {
+        "name": "ACID",
+        "questions": [
+          { "level": "junior", "question": "¿Qué significa el acrónimo ACID en bases de datos?", "answer": "ACID significa Atomicity, Consistency, Isolation, Durability: garantías básicas que una transacción debe ofrecer para mantener la integridad de datos." },
+          { "level": "junior", "question": "Explica con un ejemplo simple qué es Atomicity.", "answer": "Atomicity garantiza que una transacción se ejecute totalmente o no se ejecute; por ejemplo, al transferir dinero entre cuentas, o se debita y acredita, o no se hace ninguna de las dos acciones." },
+          { "level": "intermediate", "question": "Nombra niveles de aislamiento comunes y qué anomalías previenen.", "answer": "Niveles: READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE. Previenen anomalías como dirty reads, non-repeatable reads y phantom reads en distintos grados." },
+          { "level": "intermediate", "question": "¿Cómo impactan los distintos niveles de aislamiento al rendimiento?", "answer": "A mayor aislamiento (ej. SERIALIZABLE) hay mayor coste y menor concurrencia; niveles más laxos mejoran throughput pero permiten más anomalías." },
+          { "level": "senior", "question": "¿Cómo puedes proporcionar garantías ACID en sistemas distribuidos?", "answer": "Opciones incluyen protocolos de dos fases (2PC) o transacciones distribuidas, aunque suelen ser costosos; alternativas prácticas usan sagas o compensaciones para consistencia eventual." },
+          { "level": "senior", "question": "Discute trade-offs entre ACID y modelos BASE en arquitecturas distribuidas.", "answer": "ACID ofrece consistencia fuerte y facilidad mental para el programador; sin embargo, reduce disponibilidad y escalabilidad. BASE (Basically Available, Soft state, Eventual consistency) sacrifica consistencia inmediata para mejorar disponibilidad y particionado. La elección depende de requisitos del dominio." }
+        ]
+      }
     ]
   },
   {
