@@ -115,10 +115,7 @@ const SkillDetail = () => {
                             animate={{ opacity: 1, y: 0 }}
                             className="w-full bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 rounded-[2rem] p-8 relative overflow-hidden group"
                         >
-                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <Info size={80} />
-                            </div>
-                            <div className="relative z-10">
+                            <div className="relative z-20">
                                 <h2 className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                                     <Sparkles size={14} />
                                     Teoría y Características ({language.toUpperCase()})
