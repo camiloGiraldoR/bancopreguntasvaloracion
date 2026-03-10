@@ -3839,4 +3839,19 @@
       }
     ]
   }
+  ,
+  {
+    "group": "Microservices Patterns",
+    "skills": [
+      { "name": "CQRS", "questions": [] },
+      { "name": "Database per service", "questions": [] },
+      { "name": "Saga", "questions": [] },
+      { "name": "API Gateway", "questions": [] },
+      { "name": "Event Sourcing", "questions": [] },
+      { "name": "Sidecar", "questions": [] },
+      { "name": "Circuit Breaker", "questions": [] },
+      { "name": "BFF Pattern", "questions": [] },
+      { "name": "Journey", "questions": [] }
+    ]
+  }
 ]

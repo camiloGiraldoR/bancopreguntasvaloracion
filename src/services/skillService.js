@@ -17,6 +17,8 @@ const groupToFileMap = {
     'REST': 'rest',
     'Testing for developers': 'testing',
     'No SQL': 'nosql'
+    ,
+    'Microservices Patterns': 'microservices_patterns'
 };
 
 /**
