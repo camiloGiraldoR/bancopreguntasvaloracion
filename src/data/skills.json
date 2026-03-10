@@ -971,41 +971,7 @@
           }
         ]
       },
-      {
-        "name": "Node Js | Microservices Patterns",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es un Microservicio?",
-            "answer": "Arquitectura que divide una aplicación en servicios pequeños, independientes y comunicados por redes, cada uno enfocado en una capacidad de negocio."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cómo se comunican habitualmente dos microservicios?",
-            "answer": "Principalmente de forma sincrónica vía HTTP/REST o asincrónica mediante colas de mensajes (Brokers)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el patrón API Gateway.",
-            "answer": "Servicio que actúa como punto de entrada único para los clientes, encargándose de enrutar peticiones, agregación de datos y seguridad."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es el patrón Circuit Breaker?",
-            "answer": "Mecanismo que detecta fallos en un servicio remoto y 'abre el circuito' para evitar que el sistema se bloquee esperando respuestas que no llegarán."
-          },
-          {
-            "level": "senior",
-            "question": "Diferencia entre Orquestación y Coreografía en Sagas.",
-            "answer": "Orquestación: un controlador central dirige la secuencia. Coreografía: cada servicio reacciona a eventos y lanza nuevos eventos sin un coordinador central."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cuándo usarías CQRS en microservicios?",
-            "answer": "Cuando la complejidad de las consultas es muy diferente a la carga de escritura, permitiendo escalar y optimizar los modelos de lectura y escritura por separado."
-          }
-        ]
-      },
+      
       {
         "name": "Programming - SOLID",
         "questions": [
