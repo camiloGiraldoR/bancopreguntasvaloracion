@@ -1,5 +1,150 @@
 [
   {
+    "group": "Object Oriented Programming",
+    "skills": [
+      {
+        "name": "Encapsulation",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es el encapsulamiento y cómo se logra en Java?",
+            "answer": "Es ocultar el estado interno de un objeto y requerir que toda interacción se realice a través de métodos públicos. Se logra con modificadores de acceso como 'private' y usando getters/setters."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es el beneficio de usar getters y setters?",
+            "answer": "Permiten validar datos antes de asignarlos, controlar el acceso de solo lectura/escritura y cambiar la implementación interna sin afectar a los consumidores de la clase."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Encapsulamiento y Abstracción.",
+            "answer": "El encapsulamiento oculta 'cómo' se guardan los datos (privacidad). La abstracción oculta 'qué' hace el objeto (complejidad), mostrando solo lo que es relevante para el usuario."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es una 'Immutable Class' y cómo se relaciona con el encapsulamiento?",
+            "answer": "Es una clase que no puede cambiar su estado post-creación. Requiere campos private final y no setters, llevando el encapsulamiento al máximo nivel de seguridad de datos."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el concepto de 'Tell, Don't Ask' en relación al encapsulamiento.",
+            "answer": "Principio que sugiere no pedir datos a un objeto para tomar decisiones fuera de él, sino decirle al objeto qué hacer con sus propios datos para evitar exponer su estado interno."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo afecta el encapsulamiento al diseño de Microservicios?",
+            "answer": "Cada microservicio encapsula su propia lógica y base de datos, exponiendo solo contratos (APIs). Violar esto mediante bases de datos compartidas rompe el encapsulamiento del sistema."
+          }
+        ]
+      },
+      {
+        "name": "Abstraction",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es una clase abstracta en Java?",
+            "answer": "Una clase que no puede ser instanciada y sirve como modelo base. Puede contener métodos abstractos (sin cuerpo) y métodos concretos (con cuerpo)."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia básica entre Clase Abstracta e Interfaz.",
+            "answer": "Las interfaces definen comportamiento (contratos), mientras que las clases abstractas definen identidad y pueden mantener estado (campos de instancia)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cuándo preferirías una interfaz sobre una clase abstracta?",
+            "answer": "Cuando necesitas definir un contrato que será implementado por clases en diferentes jerarquías, o cuando necesitas simular herencia múltiple de tipos."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es la 'Abstracción por Capas' en arquitectura de software?",
+            "answer": "Separar la lógica en capas (Persistencia, Dominio, Aplicación) para que cada una solo conozca la abstracción de la capa inferior, facilitando mantenibilidad."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el principio 'Program to an interface, not an implementation'.",
+            "answer": "Significa que el código debe depender de abstracciones (interfaces) en lugar de clases concretas, permitiendo intercambiar implementaciones sin cambiar el código cliente."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo influye la abstracción en la reducción del acoplamiento (Coupling)?",
+            "answer": "Al interactuar a través de abstracciones, los componentes no necesitan conocer detalles internos de otros, permitiendo modificar uno sin romper el resto del sistema."
+          }
+        ]
+      },
+      {
+        "name": "Inheritance",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es la herencia y qué palabra clave se usa en Java?",
+            "answer": "Mecanismo donde una clase adquiere propiedades y métodos de otra. Se usa la palabra clave 'extends'."
+          },
+          {
+            "level": "junior",
+            "question": "¿Java soporta herencia múltiple de clases? ¿Por qué?",
+            "answer": "No, para evitar el 'diamante de la muerte' (ambigüedad). Sin embargo, permite implementar múltiples interfaces para heredar tipos."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Composición y Herencia. ¿Cuál es preferible?",
+            "answer": "Herencia es 'es un' (is-a), composición es 'tiene un' (has-a). Se prefiere la composición por ser más flexible y generar menos acoplamiento."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es el 'Shadowing' de variables en herencia?",
+            "answer": "Cuando una subclase declara una variable con el mismo nombre que una en la superclase, ocultando la original dentro del contexto de la subclase."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el Criterio de Liskov (LSP) en la herencia.",
+            "answer": "Principio de SOLID que dicta que una subclase debe poder sustituir a su superclase en cualquier parte del programa sin alterar su corrección."
+          },
+          {
+            "level": "senior",
+            "question": "Menciona los riesgos de jerarquías de herencia muy profundas.",
+            "answer": "Fragilidad del código (cambios en la base rompen todo), overhead cognitivo para entender el flujo y acoplamiento excesivo entre niveles."
+          }
+        ]
+      },
+      {
+        "name": "Polymorphism",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es el polimorfismo?",
+            "answer": "Capacidad de un objeto de tomar múltiples formas. Permite tratar objetos de diferentes subclases como si fueran de una superclase común."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia entre Overloading y Overriding.",
+            "answer": "Overloading: mismo nombre, diferentes parámetros (compilación). Overriding: redefinir un método de la superclase en la subclase (ejecución)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es el 'Dynamic Method Dispatch'?",
+            "answer": "Mecanismo por el cual la JVM decide qué implementación de un método ejecutar en tiempo de ejecución, basándose en el tipo real del objeto instanciado."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica el polimorfismo mediante interfaces.",
+            "answer": "Permite que objetos no relacionados jerárquicamente sean tratados igual si implementan la misma interfaz, facilitando el desacoplamiento."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo se implementa el polimorfismo internamente en la JVM?",
+            "answer": "Se utilizan tablas de métodos virtuales (vtable) para cada clase, que contienen punteros a las implementaciones correctas de los métodos sobrescritos."
+          },
+          {
+            "level": "senior",
+            "question": "Relación entre Polimorfismo y el Patrón de Diseño Strategy.",
+            "answer": "El patrón Strategy utiliza el polimorfismo para permitir que un algoritmo sea seleccionado e intercambiado en tiempo de ejecución según la necesidad del contexto."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "group": "Java",
     "skills": [
       {
@@ -630,6 +775,576 @@
     ]
   },
   {
+    "group": "Java Persistence",
+    "skills": [
+      {
+        "name": "EAGER vs LAZY",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "Diferencia entre FetchType.EAGER y FetchType.LAZY.",
+            "answer": "EAGER carga la entidad relacionada inmediatamente junto con la entidad principal. LAZY carga la relación bajo demanda, solo cuando se accede a ella por primera vez."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es el valor por defecto para @ManyToOne y @OneToMany?",
+            "answer": "@ManyToOne es EAGER por defecto. @OneToMany es LAZY por defecto."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica el problema de 'N+1 selects'.",
+            "answer": "Ocurre cuando cargas una lista de entidades (1 query) y luego, al iterar, el ORM lanza una consulta adicional por cada relación LAZY de cada entidad (N queries), degradando el rendimiento."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es una LazyInitializationException?",
+            "answer": "Excepción que lanza Hibernate cuando intentas acceder a una relación LAZY fuera de una sesión activa (ej: en la capa de vista después de cerrar la transacción)."
+          },
+          {
+            "level": "senior",
+            "question": "Estrategias para evitar N+1: JOIN FETCH vs EntityGraph.",
+            "answer": "JOIN FETCH se usa en JPQL para traer la relación en la misma consulta. EntityGraph permite definir planes de carga dinámicos y reutilizables de forma más declarativa."
+          },
+          {
+            "level": "senior",
+            "question": "Impacto de EAGER en grandes volúmenes de datos.",
+            "answer": "Puede causar una 'explosión' de memoria al cargar grafos de objetos masivos innecesariamente, además de generar JOINS complejos que ralentizan la consulta inicial."
+          }
+        ]
+      },
+      {
+        "name": "EntityManager, @transactional",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es el EntityManager?",
+            "answer": "Interfaz de JPA usada para interactuar con el contexto de persistencia (crear, buscar, eliminar y actualizar entidades)."
+          },
+          {
+            "level": "junior",
+            "question": "¿Para qué sirve la anotación @Transactional?",
+            "answer": "Define el alcance de una transacción de base de datos. Si el método termina bien, se hace Commit; si hay una RuntimeException, se hace Rollback."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre persist() y merge().",
+            "answer": "persist() hace que una instancia nueva pase a ser gestionada. merge() copia el estado de un objeto desasociado en una instancia gestionada existente."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica la propagación 'REQUIRED' vs 'REQUIRES_NEW'.",
+            "answer": "REQUIRED: usa la transacción existente o crea una si no hay. REQUIRES_NEW: siempre crea una transacción nueva suspendiendo la actual."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es el 'First Level Cache' del EntityManager?",
+            "answer": "Caché interno que asegura que durante una transacción, pedir la misma entidad por ID siempre devuelva la misma instancia de memoria sin ir a la DB."
+          },
+          {
+            "level": "senior",
+            "question": "Riesgos de usar @Transactional en métodos privados.",
+            "answer": "Spring usa Proxies para interceptar la transacción; al ser privado, el proxy no puede envolver el método y la anotación es ignorada silenciosamente."
+          }
+        ]
+      },
+      {
+        "name": "JDBC Prepare statement, Result Set",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Por qué usar PreparedStatement en lugar de Statement normal?",
+            "answer": "Principalmente por seguridad (previene SQL Injection) y por rendimiento (el motor puede pre-compilar y cachear el plan de ejecución)."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué es un ResultSet?",
+            "answer": "Objeto que contiene los resultados de una consulta SQL, permitiendo recorrer las filas una a una mediante un cursor."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre executeQuery(), executeUpdate() y execute().",
+            "answer": "executeQuery: para SELECT (devuelve ResultSet). executeUpdate: para INSERT/UPDATE/DELETE (devuelve filas afectadas). execute: para cualquier comando."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo se gestiona el cierre de recursos en JDBC manual?",
+            "answer": "Usando try-with-resources para asegurar que Connection, Statement y ResultSet se cierren siempre, evitando fugas de memoria."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es el Batch Processing en JDBC?",
+            "answer": "Enviar un grupo de comandos SQL al servidor en una sola llamada de red para mejorar drásticamente el rendimiento en inserciones masivas."
+          },
+          {
+            "level": "senior",
+            "question": "Concepto de Fetch Size en un ResultSet.",
+            "answer": "Parámetro que indica cuántas filas debe traer el driver de la DB al cliente en un solo viaje de red, optimizando el uso de memoria y red en consultas grandes."
+          }
+        ]
+      },
+      {
+        "name": "JPA cache",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "Diferencia básica entre L1 y L2 Cache.",
+            "answer": "L1 (Primer nivel) asociado al EntityManager/Sesión actual. L2 (Segundo nivel) compartido entre todas las sesiones de la aplicación."
+          },
+          {
+            "level": "junior",
+            "question": "¿JPA tiene L2 Cache activado por defecto?",
+            "answer": "No. L1 siempre está activo, pero L2 requiere configuración explícita y un proveedor externo como Ehcache o Caffeine."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica el 'Query Cache'.",
+            "answer": "Caché opcional de L2 que guarda los resultados de una consulta JPQL específica vinculada a sus parámetros de entrada."
+          },
+          {
+            "level": "intermediate",
+            "question": "Riesgos de inconsistencia con L2 Cache.",
+            "answer": "Si se modifica la base de datos por fuera de la aplicación (ej: script manual), el caché puede quedar 'sucio' devolviendo datos obsoletos."
+          },
+          {
+            "level": "senior",
+            "question": "Estrategias de expiración: Time-to-Live (TTL) y Evicción.",
+            "answer": "TTL define cuánto tiempo vive el objeto. La Evicción decide qué borrar cuando el caché está lleno (ej: LRU - Least Recently Used)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo afecta el L2 Cache a una arquitectura de microservicios con múltiples réplicas?",
+            "answer": "Cada réplica tendría su propio caché local incoherente. Se requiere un caché distribuido (ej: Redis) o invalidación mediante mensajes para mantener la sincronía."
+          }
+        ]
+      },
+      {
+        "name": "Locking/ Transaction",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "Diferencia entre Optimistic y Pessimistic Locking.",
+            "answer": "Optimistic: asume que no habrá choques (usa @Version). Pessimistic: bloquea la fila en la DB para que nadie más la toque mientras se procesa."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué representa la anotación @Version?",
+            "answer": "Campo numérico o timestamp que JPA usa para detectar si otra transacción modificó los datos desde que fueron leídos."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica los niveles de aislamiento: READ_COMMITTED vs REPEATABLE_READ.",
+            "answer": "COMMITTED: evita lecturas sucias. REPEATABLE: asegura que si lees dos veces lo mismo en la transacción, el valor no cambie."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es un 'Deadlock' en transacciones?",
+            "answer": "Dos transacciones bloqueadas mutuamente esperando un recurso que la otra tiene, haciendo que ninguna pueda avanzar."
+          },
+          {
+            "level": "senior",
+            "question": "Uso de LockModeType.PESSIMISTIC_WRITE.",
+            "answer": "Fuerza un 'SELECT FOR UPDATE' en la base de datos, bloqueando la fila inmediatamente en la lectura para asegurar exclusividad total."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo influye el nivel de aislamiento SERIALIZABLE en el rendimiento?",
+            "answer": "Es el nivel más seguro pero el más lento; bloquea rangos de tablas causando mucha contención y fallos por conflictos de serialización."
+          }
+        ]
+      },
+      {
+        "name": "JDBC query builders (jOOQ, MyBatys)",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es MyBatis?",
+            "answer": "Framework de persistencia que permite mapear SQL manual (en XML o anotaciones) directamente a objetos Java, dando control total sobre el SQL."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es la principal diferencia entre jOOQ e Hibernate?",
+            "answer": "Hibernate es un ORM (se enfoca en objetos). jOOQ es un Query Builder DSL (se enfoca en SQL puro con seguridad de tipos)."
+          },
+          {
+            "level": "intermediate",
+            "question": "Ventajas de jOOQ sobre JPQL/Criteria.",
+            "answer": "Seguridad de tipos en compilación (usa código generado), sintaxis idéntica a SQL y soporte para funciones específicas de cada motor de DB."
+          },
+          {
+            "level": "intermediate",
+            "question": "Uso de resultados dinámicos en MyBatis.",
+            "answer": "Permite construir sentencias SQL complejas usando etiquetas como <if>, <foreach> y <choose> dentro de los mappers."
+          },
+          {
+            "level": "senior",
+            "question": "Escenario ideal para usar jOOQ.",
+            "answer": "Aplicaciones con SQL altamente complejo, reportes avanzados o cuando se quiere aprovechar al máximo las capacidades nativas de una DB específica."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo se integra jOOQ en un proyecto con Spring Boot?",
+            "answer": "Se configura el DSLContext y se usa el plugin de generación de código de jOOQ para mapear el esquema de la DB a clases Java automáticamente."
+          }
+        ]
+      },
+      {
+        "name": "native query vs JPQL",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es JPQL?",
+            "answer": "Java Persistence Query Language. Lenguaje de consulta similar a SQL pero que opera sobre las entidades Java y sus atributos en lugar de tablas y columnas."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuándo usarías una Native Query?",
+            "answer": "Cuando necesitas usar funciones específicas de la base de datos que no están soportadas por JPA o para optimizar consultas muy pesadas."
+          },
+          {
+            "level": "intermediate",
+            "question": "Riesgos de usar Native Queries extensivamente.",
+            "answer": "Pierdes la abstracción de la DB (portabilidad), pierdes validaciones automáticas de entidades y el mapeo de resultados puede ser más verboso."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo se mapea una Native Query a un DTO?",
+            "answer": "Usando SqlResultSetMapping o interfaces de proyección (en Spring Data JPA) para convertir las columnas crudas en objetos Java."
+          },
+          {
+            "level": "senior",
+            "question": "¿JPQL usa caché de la misma forma que find()?",
+            "answer": "No. find() siempre consulta el L1 Cache primero. JPQL siempre lanza la consulta a la DB, aunque luego puede actualizar el L1 Cache con los resultados."
+          },
+          {
+            "level": "senior",
+            "question": "Impacto del polimorfismo en JPQL.",
+            "answer": "Al consultar una superclase en JPQL, el ORM genera automáticamente JOINS con todas sus subclases para traer los resultados correctos de forma polimórfica."
+          }
+        ]
+      },
+      {
+        "name": "JPA entity, @manytomany, @manytoone, @onetomany",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Para qué sirve @ManyToMany?",
+            "answer": "Define una relación donde muchos registros de una tabla se vinculan con muchos de otra (ej: Autores y Libros). Requiere una tabla intermedia."
+          },
+          {
+            "level": "junior",
+            "question": "Importancia de definir el 'Owner' de la relación (mappedBy).",
+            "answer": "Indica qué lado de la relación es el responsable de gestionar la columna de unión o tabla intermedia, evitando redundancia de metadatos."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Por qué evitar relaciones bidireccionales innecesarias?",
+            "answer": "Aumentan la complejidad del código, pueden causar bucles infinitos en toString/JSON y complican el mantenimiento del estado en memoria."
+          },
+          {
+            "level": "intermediate",
+            "question": "Uso de orphanRemoval=true.",
+            "answer": "Si eliminas una entidad de una colección @OneToMany, JPA automáticamente borra el registro hijo de la base de datos."
+          },
+          {
+            "level": "senior",
+            "question": "Estrategias de herencia: SINGLE_TABLE vs JOINED.",
+            "answer": "SINGLE_TABLE: todas las clases en una sola tabla (rápido pero con nulos). JOINED: cada clase en su propia tabla (normalizado pero con muchos JOINS)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo optimizar una relación ManyToMany con miles de registros?",
+            "answer": "En lugar de usar List, es mejor usar un Set o, mejor aún, mapear la tabla intermedia como una Entidad propia para tener control total del filtrado y paginación."
+          }
+        ]
+      },
+      {
+        "name": "JPA query builders (QueryDSL, Criteria Query, Specification)",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es la Criteria API?",
+            "answer": "Forma programática y orientada a objetos de construir consultas en JPA, evitando errores de sintaxis en strings de JPQL."
+          },
+          {
+            "level": "junior",
+            "question": "¿Para qué sirve Spring Data Specifications?",
+            "answer": "Permite definir filtros reutilizables y combinables para realizar búsquedas dinámicas de forma limpia."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Criteria API y QueryDSL.",
+            "answer": "QueryDSL es más legible, tiene mejores sugerencias de IDE (Type-safe) y requiere generación de código (Q-Classes). Criteria es el estándar oficial pero muy verboso."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo se combinan múltiples Specifications?",
+            "answer": "Usando los métodos estáticos where(), and() y or() para encadenar predicados de forma fluida."
+          },
+          {
+            "level": "senior",
+            "question": "Rendimiento de los Query Builders dinámicos.",
+            "answer": "Generan un pequeño overhead comparado con JPQL estático, pero la ganancia en mantenibilidad y seguridad de tipos suele compensar en aplicaciones empresariales."
+          },
+          {
+            "level": "senior",
+            "question": "Uso de Proyecciones dinámicas con Criteria API.",
+            "answer": "Permite construir objetos DTO directamente en la cláusula SELECT de la consulta, recuperando solo los campos necesarios de la DB."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "group": "Java SQL",
+    "skills": [
+      {
+        "name": "Query Optimization and indexes",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es un índice en una base de datos?",
+            "answer": "Es una estructura de datos que mejora la velocidad de las operaciones de búsqueda de datos en una tabla, a costa de espacio adicional y tiempo en las escrituras."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia entre Índice Primario y Secundario.",
+            "answer": "El primario se crea automáticamente sobre la Primary Key. El secundario se crea manualmente sobre otras columnas para agilizar consultas específicas."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo se usa el comando EXPLAIN?",
+            "answer": "Permite ver el plan de ejecución que seguirá el motor de base de datos, ayudando a identificar si se están usando índices o si se está haciendo un Scan completo de la tabla."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre B-Tree Index y Hash Index.",
+            "answer": "B-Tree es versátil para búsquedas de rango, ordenamiento y comparaciones. Hash Index es extremadamente rápido pero solo sirve para comparaciones de igualdad (=)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es un 'Covering Index'?",
+            "answer": "Índice que contiene todas las columnas requeridas por una consulta, permitiendo que el motor obtenga los datos directamente del índice sin tener que acceder a la tabla física (Heap)."
+          },
+          {
+            "level": "senior",
+            "question": "Impacto de la fragmentación de índices y cómo solucionarlo.",
+            "answer": "Ocurre tras muchas inserciones/borrados, degradando el rendimiento. Se soluciona mediante REINDEX o reconstrucción de índices para compactar el almacenamiento."
+          }
+        ]
+      },
+      {
+        "name": "Queries (SELECT, FROM, ORDER BY, LIMIT, JOIN, GROUP BY, MAX, MIN ,\r\n                            COUNT , SUM )",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "Diferencia entre WHERE y HAVING.",
+            "answer": "WHERE filtra filas antes de agrupar. HAVING filtra grupos después de aplicar GROUP BY y funciones de agregado."
+          },
+          {
+            "level": "junior",
+            "question": "¿Para qué sirve el comando JOIN?",
+            "answer": "Para combinar filas de dos o más tablas basándose en una columna relacionada entre ellas."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre LEFT JOIN e INNER JOIN.",
+            "answer": "INNER JOIN devuelve solo filas con coincidencias en ambas tablas. LEFT JOIN devuelve todas las filas de la tabla izquierda y las coincidencias de la derecha (o null si no hay)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cuándo usarías una Subconsulta vs un JOIN?",
+            "answer": "JOIN suele ser más eficiente. Las subconsultas son útiles para legibilidad o cuando necesitas realizar filtros basados en un conjunto de resultados temporal."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué son las Window Functions (ej: OVER, ROW_NUMBER)?",
+            "answer": "Funciones que realizan cálculos a través de un conjunto de filas relacionadas con la fila actual, sin agruparlas en una sola fila de salida (mantiene el detalle)."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el concepto de Common Table Expressions (CTE) y recursividad.",
+            "answer": "Permiten definir conjuntos de resultados temporales con nombre para usar dentro de una consulta. Las recursivas son ideales para recorrer estructuras jerárquicas (árboles)."
+          }
+        ]
+      },
+      {
+        "name": "PL/SQL",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es PL/SQL?",
+            "answer": "Extensión procedimental de SQL creada por Oracle que permite usar variables, condicionales, bucles y manejo de excepciones dentro de la base de datos."
+          },
+          {
+            "level": "junior",
+            "question": "Estructura básica de un bloque anónimo.",
+            "answer": "DECLARE (opcional), BEGIN (lógica), EXCEPTION (opcional), END;"
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Procedure y Function en PL/SQL.",
+            "answer": "Function DEBE retornar un valor y puede usarse en un SELECT. Procedure realiza acciones y no está obligado a retornar nada (usa parámetros OUT)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo se manejan las excepciones en PL/SQL?",
+            "answer": "Usando el bloque EXCEPTION con manejadores específicos (WHEN NO_DATA_FOUND) o genéricos (WHEN OTHERS)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué son las operaciones 'Bulk' (FORALL, BULK COLLECT)?",
+            "answer": "Permiten procesar múltiples filas en un solo cambio de contexto entre el motor PL/SQL y SQL, mejorando drásticamente el rendimiento en procesos masivos."
+          },
+          {
+            "level": "senior",
+            "question": "Ventajas de usar Packages en lugar de procedimientos sueltos.",
+            "answer": "Permiten encapsulamiento, modularidad, sobrecarga de métodos y mejoran el rendimiento mediante el cacheo del estado del paquete en memoria."
+          }
+        ]
+      },
+      {
+        "name": "Normalization and Constraints",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es una Primary Key?",
+            "answer": "Columna (o conjunto de ellas) que identifica de forma única a cada fila de una tabla. No permite valores nulos."
+          },
+          {
+            "level": "junior",
+            "question": "¿Para qué sirve una Foreign Key?",
+            "answer": "Para establecer un vínculo físico entre dos tablas, garantizando la integridad referencial (no puedes borrar un padre si tiene hijos vinculados)."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica la Tercera Forma Normal (3NF).",
+            "answer": "Una tabla está en 3NF si está en 2NF y todas sus columnas no clave dependen únicamente de la llave primaria (elimina dependencias transitivas)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cuándo es aceptable la Desnormalización?",
+            "answer": "En sistemas de solo lectura o analíticos (Data Warehouses) donde la velocidad de consulta es crítica y se prefiere duplicar datos para evitar JOINS costosos."
+          },
+          {
+            "level": "senior",
+            "question": "Diferencia entre Check Constraints y lógica de aplicación.",
+            "answer": "Check Constraints garantizan la integridad a nivel de motor de DB independientemente de quién inserte, siendo la última y más segura línea de defensa."
+          },
+          {
+            "level": "senior",
+            "question": "Impacto de múltiples Foreign Keys en el rendimiento de inserción.",
+            "answer": "Cada FK obliga al motor a realizar una búsqueda en la tabla referenciada para validar la integridad, lo que puede ralentizar cargas masivas de datos."
+          }
+        ]
+      },
+      {
+        "name": "Database Design",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es un diagrama Entidad-Relación (ER)?",
+            "answer": "Representación visual de las entidades del negocio, sus atributos y cómo se relacionan entre sí antes de llevarlas a tablas físicas."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cómo se implementa una relación Muchos a Muchos?",
+            "answer": "Creando una tabla intermedia (de unión) que contenga las Primary Keys de ambas tablas relacionadas como Foreign Keys."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es una Clave Compuesta?",
+            "answer": "Llave primaria formada por dos o más columnas, usada cuando una sola columna no es suficiente para garantizar la unicidad."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre 'Logical Design' y 'Physical Design'.",
+            "answer": "Lógico define el modelo sin importar la tecnología. Físico adapta el modelo a un motor específico (Oracle, MySQL) considerando tipos de datos e índices."
+          },
+          {
+            "level": "senior",
+            "question": "Estrategias de diseño para Multi-tenant (SaaS).",
+            "answer": "1. Base de datos por cliente (aislamiento total), 2. Esquema por cliente, 3. Tabla compartida con columna 'TenantID' (máxima escalabilidad)."
+          },
+          {
+            "level": "senior",
+            "question": "Impacto del diseño de base de datos en la escalabilidad horizontal.",
+            "answer": "Diseños muy normalizados y con muchas relaciones dificultan el Sharding (particionamiento distribuido), ya que los JOINS entre servidores son muy lentos."
+          }
+        ]
+      },
+      {
+        "name": "Clusters, Federation and Datamarts",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es un Cluster de Base de Datos?",
+            "answer": "Grupo de servidores de bases de datos que trabajan juntos para proporcionar alta disponibilidad y/o escalabilidad de carga."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué es la Alta Disponibilidad (HA)?",
+            "answer": "Garantizar que la base de datos esté operativa la mayor parte del tiempo, incluso ante fallos de hardware en algún nodo del cluster."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Data Mart y Data Warehouse.",
+            "answer": "Data Warehouse integra datos de toda la empresa. Data Mart es un subconjunto enfocado en un área específica (ej: Ventas o Marketing)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es la Federación de Bases de Datos?",
+            "answer": "Tecnología que permite consultar datos de múltiples fuentes heterogéneas (MySQL, Oracle, CSV) como si fueran una sola base de datos lógica."
+          },
+          {
+            "level": "senior",
+            "question": "Diferencia entre Replicación Síncrona y Asíncrona.",
+            "answer": "Síncrona: garantiza que el dato esté en el nodo esclavo antes de confirmar la escritura (segura pero lenta). Asíncrona: confirma rápido y replica después (rápida pero riesgo de pérdida)."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el concepto de Sharding.",
+            "answer": "Particionar horizontalmente los datos distribuyéndolos en múltiples servidores independientes basado en una clave (ej: ID de usuario), para manejar volúmenes masivos."
+          }
+        ]
+      },
+      {
+        "name": "DDL (Data Types, CREATE, ALTER, INSERT, UPDATE, DELETE, TRUNCATE)",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "Diferencia entre TRUNCATE y DELETE.",
+            "answer": "DELETE es DML, borra fila por fila y genera mucho log (permite WHERE). TRUNCATE es DDL, vacía la tabla entera rápidamente y resetea contadores de identidad."
+          },
+          {
+            "level": "junior",
+            "question": "Menciona 3 tipos de datos comunes en SQL.",
+            "answer": "VARCHAR (texto), INTEGER (números enteros), DATE/TIMESTAMP (fecha y hora)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Por qué evitar el uso de 'SELECT *' en producción?",
+            "answer": "Recupera columnas innecesarias (gasto de red), impide el uso de ciertos índices y puede romper la app si se añaden columnas nuevas a la tabla."
+          },
+          {
+            "level": "intermediate",
+            "question": "Uso de la cláusula DEFAULT en CREATE TABLE.",
+            "answer": "Permite asignar un valor automático a una columna si el INSERT no proporciona uno especifico."
+          },
+          {
+            "level": "senior",
+            "question": "Riesgos de ejecutar un ALTER TABLE en tablas con millones de filas.",
+            "answer": "Puede bloquear la tabla (Exclusive Lock) durante mucho tiempo mientras se reescribe el esquema físico, causando downtime en la aplicación."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es una Materialized View?",
+            "answer": "Vista cuyo resultado se almacena físicamente en disco. Requiere refresco manual o programado, pero ofrece respuestas instantáneas para consultas muy complejas."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "group": "Design Patterns",
     "skills": [
       {
@@ -784,151 +1499,6 @@
           { "level": "intermediate", "question": "Implementar prioridades y short-circuit en la cadena.", "answer": "Ordenar handlers por prioridad, permitir que ciertos handlers detengan la propagación y retornar un resultado; usar políticas configurables para el flujo." },
           { "level": "senior", "question": "Diseñar una cadena distribuida entre servicios.", "answer": "Implementar una orquestación que envíe la petición a distintos servicios según reglas, manejar latencias y fallos, y mantener trazabilidad para entender por qué un handler atendió o no la petición." },
           { "level": "senior", "question": "Comparar Chain of Responsibility con Strategy y Pipeline.", "answer": "Strategy selecciona una implementación y la usa; Chain permite que múltiples handlers potencialmente procesen la misma petición; Pipeline aplica pasos secuenciales fijos; elegir según si se necesita múltiple evaluación, orden dinámico o selección única." }
-        ]
-      }
-    ]
-  },
-  {
-    "group": "Object Oriented Programming",
-    "skills": [
-      {
-        "name": "Encapsulation",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es el encapsulamiento y cómo se logra en Java?",
-            "answer": "Es ocultar el estado interno de un objeto y requerir que toda interacción se realice a través de métodos públicos. Se logra con modificadores de acceso como 'private' y usando getters/setters."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuál es el beneficio de usar getters y setters?",
-            "answer": "Permiten validar datos antes de asignarlos, controlar el acceso de solo lectura/escritura y cambiar la implementación interna sin afectar a los consumidores de la clase."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Encapsulamiento y Abstracción.",
-            "answer": "El encapsulamiento oculta 'cómo' se guardan los datos (privacidad). La abstracción oculta 'qué' hace el objeto (complejidad), mostrando solo lo que es relevante para el usuario."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es una 'Immutable Class' y cómo se relaciona con el encapsulamiento?",
-            "answer": "Es una clase que no puede cambiar su estado post-creación. Requiere campos private final y no setters, llevando el encapsulamiento al máximo nivel de seguridad de datos."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el concepto de 'Tell, Don't Ask' en relación al encapsulamiento.",
-            "answer": "Principio que sugiere no pedir datos a un objeto para tomar decisiones fuera de él, sino decirle al objeto qué hacer con sus propios datos para evitar exponer su estado interno."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo afecta el encapsulamiento al diseño de Microservicios?",
-            "answer": "Cada microservicio encapsula su propia lógica y base de datos, exponiendo solo contratos (APIs). Violar esto mediante bases de datos compartidas rompe el encapsulamiento del sistema."
-          }
-        ]
-      },
-      {
-        "name": "Abstraction",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es una clase abstracta en Java?",
-            "answer": "Una clase que no puede ser instanciada y sirve como modelo base. Puede contener métodos abstractos (sin cuerpo) y métodos concretos (con cuerpo)."
-          },
-          {
-            "level": "junior",
-            "question": "Diferencia básica entre Clase Abstracta e Interfaz.",
-            "answer": "Las interfaces definen comportamiento (contratos), mientras que las clases abstractas definen identidad y pueden mantener estado (campos de instancia)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cuándo preferirías una interfaz sobre una clase abstracta?",
-            "answer": "Cuando necesitas definir un contrato que será implementado por clases en diferentes jerarquías, o cuando necesitas simular herencia múltiple de tipos."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es la 'Abstracción por Capas' en arquitectura de software?",
-            "answer": "Separar la lógica en capas (Persistencia, Dominio, Aplicación) para que cada una solo conozca la abstracción de la capa inferior, facilitando mantenibilidad."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el principio 'Program to an interface, not an implementation'.",
-            "answer": "Significa que el código debe depender de abstracciones (interfaces) en lugar de clases concretas, permitiendo intercambiar implementaciones sin cambiar el código cliente."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo influye la abstracción en la reducción del acoplamiento (Coupling)?",
-            "answer": "Al interactuar a través de abstracciones, los componentes no necesitan conocer detalles internos de otros, permitiendo modificar uno sin romper el resto del sistema."
-          }
-        ]
-      },
-      {
-        "name": "Inheritance",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es la herencia y qué palabra clave se usa en Java?",
-            "answer": "Mecanismo donde una clase adquiere propiedades y métodos de otra. Se usa la palabra clave 'extends'."
-          },
-          {
-            "level": "junior",
-            "question": "¿Java soporta herencia múltiple de clases? ¿Por qué?",
-            "answer": "No, para evitar el 'diamante de la muerte' (ambigüedad). Sin embargo, permite implementar múltiples interfaces para heredar tipos."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Composición y Herencia. ¿Cuál es preferible?",
-            "answer": "Herencia es 'es un' (is-a), composición es 'tiene un' (has-a). Se prefiere la composición por ser más flexible y generar menos acoplamiento."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es el 'Shadowing' de variables en herencia?",
-            "answer": "Cuando una subclase declara una variable con el mismo nombre que una en la superclase, ocultando la original dentro del contexto de la subclase."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el Criterio de Liskov (LSP) en la herencia.",
-            "answer": "Principio de SOLID que dicta que una subclase debe poder sustituir a su superclase en cualquier parte del programa sin alterar su corrección."
-          },
-          {
-            "level": "senior",
-            "question": "Menciona los riesgos de jerarquías de herencia muy profundas.",
-            "answer": "Fragilidad del código (cambios en la base rompen todo), overhead cognitivo para entender el flujo y acoplamiento excesivo entre niveles."
-          }
-        ]
-      },
-      {
-        "name": "Polymorphism",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es el polimorfismo?",
-            "answer": "Capacidad de un objeto de tomar múltiples formas. Permite tratar objetos de diferentes subclases como si fueran de una superclase común."
-          },
-          {
-            "level": "junior",
-            "question": "Diferencia entre Overloading y Overriding.",
-            "answer": "Overloading: mismo nombre, diferentes parámetros (compilación). Overriding: redefinir un método de la superclase en la subclase (ejecución)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es el 'Dynamic Method Dispatch'?",
-            "answer": "Mecanismo por el cual la JVM decide qué implementación de un método ejecutar en tiempo de ejecución, basándose en el tipo real del objeto instanciado."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el polimorfismo mediante interfaces.",
-            "answer": "Permite que objetos no relacionados jerárquicamente sean tratados igual si implementan la misma interfaz, facilitando el desacoplamiento."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo se implementa el polimorfismo internamente en la JVM?",
-            "answer": "Se utilizan tablas de métodos virtuales (vtable) para cada clase, que contienen punteros a las implementaciones correctas de los métodos sobrescritos."
-          },
-          {
-            "level": "senior",
-            "question": "Relación entre Polimorfismo y el Patrón de Diseño Strategy.",
-            "answer": "El patrón Strategy utiliza el polimorfismo para permitir que un algoritmo sea seleccionado e intercambiado en tiempo de ejecución según la necesidad del contexto."
-          }
         ]
       }
     ]
@@ -2043,791 +2613,6 @@
     ]
   },
   {
-    "group": "Java SQL",
-    "skills": [
-      {
-        "name": "Query Optimization and indexes",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es un índice en una base de datos?",
-            "answer": "Es una estructura de datos que mejora la velocidad de las operaciones de búsqueda de datos en una tabla, a costa de espacio adicional y tiempo en las escrituras."
-          },
-          {
-            "level": "junior",
-            "question": "Diferencia entre Índice Primario y Secundario.",
-            "answer": "El primario se crea automáticamente sobre la Primary Key. El secundario se crea manualmente sobre otras columnas para agilizar consultas específicas."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cómo se usa el comando EXPLAIN?",
-            "answer": "Permite ver el plan de ejecución que seguirá el motor de base de datos, ayudando a identificar si se están usando índices o si se está haciendo un Scan completo de la tabla."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre B-Tree Index y Hash Index.",
-            "answer": "B-Tree es versátil para búsquedas de rango, ordenamiento y comparaciones. Hash Index es extremadamente rápido pero solo sirve para comparaciones de igualdad (=)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es un 'Covering Index'?",
-            "answer": "Índice que contiene todas las columnas requeridas por una consulta, permitiendo que el motor obtenga los datos directamente del índice sin tener que acceder a la tabla física (Heap)."
-          },
-          {
-            "level": "senior",
-            "question": "Impacto de la fragmentación de índices y cómo solucionarlo.",
-            "answer": "Ocurre tras muchas inserciones/borrados, degradando el rendimiento. Se soluciona mediante REINDEX o reconstrucción de índices para compactar el almacenamiento."
-          }
-        ]
-      },
-      {
-        "name": "Queries (SELECT, FROM, ORDER BY, LIMIT, JOIN, GROUP BY, MAX, MIN ,\r\n                            COUNT , SUM )",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre WHERE y HAVING.",
-            "answer": "WHERE filtra filas antes de agrupar. HAVING filtra grupos después de aplicar GROUP BY y funciones de agregado."
-          },
-          {
-            "level": "junior",
-            "question": "¿Para qué sirve el comando JOIN?",
-            "answer": "Para combinar filas de dos o más tablas basándose en una columna relacionada entre ellas."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre LEFT JOIN e INNER JOIN.",
-            "answer": "INNER JOIN devuelve solo filas con coincidencias en ambas tablas. LEFT JOIN devuelve todas las filas de la tabla izquierda y las coincidencias de la derecha (o null si no hay)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cuándo usarías una Subconsulta vs un JOIN?",
-            "answer": "JOIN suele ser más eficiente. Las subconsultas son útiles para legibilidad o cuando necesitas realizar filtros basados en un conjunto de resultados temporal."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué son las Window Functions (ej: OVER, ROW_NUMBER)?",
-            "answer": "Funciones que realizan cálculos a través de un conjunto de filas relacionadas con la fila actual, sin agruparlas en una sola fila de salida (mantiene el detalle)."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el concepto de Common Table Expressions (CTE) y recursividad.",
-            "answer": "Permiten definir conjuntos de resultados temporales con nombre para usar dentro de una consulta. Las recursivas son ideales para recorrer estructuras jerárquicas (árboles)."
-          }
-        ]
-      },
-      {
-        "name": "PL/SQL",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es PL/SQL?",
-            "answer": "Extensión procedimental de SQL creada por Oracle que permite usar variables, condicionales, bucles y manejo de excepciones dentro de la base de datos."
-          },
-          {
-            "level": "junior",
-            "question": "Estructura básica de un bloque anónimo.",
-            "answer": "DECLARE (opcional), BEGIN (lógica), EXCEPTION (opcional), END;"
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Procedure y Function en PL/SQL.",
-            "answer": "Function DEBE retornar un valor y puede usarse en un SELECT. Procedure realiza acciones y no está obligado a retornar nada (usa parámetros OUT)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cómo se manejan las excepciones en PL/SQL?",
-            "answer": "Usando el bloque EXCEPTION con manejadores específicos (WHEN NO_DATA_FOUND) o genéricos (WHEN OTHERS)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué son las operaciones 'Bulk' (FORALL, BULK COLLECT)?",
-            "answer": "Permiten procesar múltiples filas en un solo cambio de contexto entre el motor PL/SQL y SQL, mejorando drásticamente el rendimiento en procesos masivos."
-          },
-          {
-            "level": "senior",
-            "question": "Ventajas de usar Packages en lugar de procedimientos sueltos.",
-            "answer": "Permiten encapsulamiento, modularidad, sobrecarga de métodos y mejoran el rendimiento mediante el cacheo del estado del paquete en memoria."
-          }
-        ]
-      },
-      {
-        "name": "Normalization and Constraints",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es una Primary Key?",
-            "answer": "Columna (o conjunto de ellas) que identifica de forma única a cada fila de una tabla. No permite valores nulos."
-          },
-          {
-            "level": "junior",
-            "question": "¿Para qué sirve una Foreign Key?",
-            "answer": "Para establecer un vínculo físico entre dos tablas, garantizando la integridad referencial (no puedes borrar un padre si tiene hijos vinculados)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica la Tercera Forma Normal (3NF).",
-            "answer": "Una tabla está en 3NF si está en 2NF y todas sus columnas no clave dependen únicamente de la llave primaria (elimina dependencias transitivas)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cuándo es aceptable la Desnormalización?",
-            "answer": "En sistemas de solo lectura o analíticos (Data Warehouses) donde la velocidad de consulta es crítica y se prefiere duplicar datos para evitar JOINS costosos."
-          },
-          {
-            "level": "senior",
-            "question": "Diferencia entre Check Constraints y lógica de aplicación.",
-            "answer": "Check Constraints garantizan la integridad a nivel de motor de DB independientemente de quién inserte, siendo la última y más segura línea de defensa."
-          },
-          {
-            "level": "senior",
-            "question": "Impacto de múltiples Foreign Keys en el rendimiento de inserción.",
-            "answer": "Cada FK obliga al motor a realizar una búsqueda en la tabla referenciada para validar la integridad, lo que puede ralentizar cargas masivas de datos."
-          }
-        ]
-      },
-      {
-        "name": "Database Design",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es un diagrama Entidad-Relación (ER)?",
-            "answer": "Representación visual de las entidades del negocio, sus atributos y cómo se relacionan entre sí antes de llevarlas a tablas físicas."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cómo se implementa una relación Muchos a Muchos?",
-            "answer": "Creando una tabla intermedia (de unión) que contenga las Primary Keys de ambas tablas relacionadas como Foreign Keys."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es una Clave Compuesta?",
-            "answer": "Llave primaria formada por dos o más columnas, usada cuando una sola columna no es suficiente para garantizar la unicidad."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre 'Logical Design' y 'Physical Design'.",
-            "answer": "Lógico define el modelo sin importar la tecnología. Físico adapta el modelo a un motor específico (Oracle, MySQL) considerando tipos de datos e índices."
-          },
-          {
-            "level": "senior",
-            "question": "Estrategias de diseño para Multi-tenant (SaaS).",
-            "answer": "1. Base de datos por cliente (aislamiento total), 2. Esquema por cliente, 3. Tabla compartida con columna 'TenantID' (máxima escalabilidad)."
-          },
-          {
-            "level": "senior",
-            "question": "Impacto del diseño de base de datos en la escalabilidad horizontal.",
-            "answer": "Diseños muy normalizados y con muchas relaciones dificultan el Sharding (particionamiento distribuido), ya que los JOINS entre servidores son muy lentos."
-          }
-        ]
-      },
-      {
-        "name": "Clusters, Federation and Datamarts",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es un Cluster de Base de Datos?",
-            "answer": "Grupo de servidores de bases de datos que trabajan juntos para proporcionar alta disponibilidad y/o escalabilidad de carga."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué es la Alta Disponibilidad (HA)?",
-            "answer": "Garantizar que la base de datos esté operativa la mayor parte del tiempo, incluso ante fallos de hardware en algún nodo del cluster."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Data Mart y Data Warehouse.",
-            "answer": "Data Warehouse integra datos de toda la empresa. Data Mart es un subconjunto enfocado en un área específica (ej: Ventas o Marketing)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es la Federación de Bases de Datos?",
-            "answer": "Tecnología que permite consultar datos de múltiples fuentes heterogéneas (MySQL, Oracle, CSV) como si fueran una sola base de datos lógica."
-          },
-          {
-            "level": "senior",
-            "question": "Diferencia entre Replicación Síncrona y Asíncrona.",
-            "answer": "Síncrona: garantiza que el dato esté en el nodo esclavo antes de confirmar la escritura (segura pero lenta). Asíncrona: confirma rápido y replica después (rápida pero riesgo de pérdida)."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el concepto de Sharding.",
-            "answer": "Particionar horizontalmente los datos distribuyéndolos en múltiples servidores independientes basado en una clave (ej: ID de usuario), para manejar volúmenes masivos."
-          }
-        ]
-      },
-      {
-        "name": "DDL (Data Types, CREATE, ALTER, INSERT, UPDATE, DELETE, TRUNCATE)",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre TRUNCATE y DELETE.",
-            "answer": "DELETE es DML, borra fila por fila y genera mucho log (permite WHERE). TRUNCATE es DDL, vacía la tabla entera rápidamente y resetea contadores de identidad."
-          },
-          {
-            "level": "junior",
-            "question": "Menciona 3 tipos de datos comunes en SQL.",
-            "answer": "VARCHAR (texto), INTEGER (números enteros), DATE/TIMESTAMP (fecha y hora)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Por qué evitar el uso de 'SELECT *' en producción?",
-            "answer": "Recupera columnas innecesarias (gasto de red), impide el uso de ciertos índices y puede romper la app si se añaden columnas nuevas a la tabla."
-          },
-          {
-            "level": "intermediate",
-            "question": "Uso de la cláusula DEFAULT en CREATE TABLE.",
-            "answer": "Permite asignar un valor automático a una columna si el INSERT no proporciona uno especifico."
-          },
-          {
-            "level": "senior",
-            "question": "Riesgos de ejecutar un ALTER TABLE en tablas con millones de filas.",
-            "answer": "Puede bloquear la tabla (Exclusive Lock) durante mucho tiempo mientras se reescribe el esquema físico, causando downtime en la aplicación."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es una Materialized View?",
-            "answer": "Vista cuyo resultado se almacena físicamente en disco. Requiere refresco manual o programado, pero ofrece respuestas instantáneas para consultas muy complejas."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "group": "Data Structures",
-    "skills": [
-      {
-        "name": "Arrays - Lists - Sets - Maps",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre Array y ArrayList en Java.",
-            "answer": "Array es de tamaño fijo y puede contener primitivos u objetos. ArrayList es dinámico (crece automáticamente), solo contiene objetos y ofrece métodos de utilidad como add() o remove()."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué caracteriza a un Set?",
-            "answer": "Es una colección que no permite elementos duplicados. Útil cuando necesitas asegurar la unicidad de los datos."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre HashMap y TreeMap.",
-            "answer": "HashMap no garantiza orden y es más rápido (O(1) promedio). TreeMap mantiene los elementos ordenados por su clave (Natural Order o Comparator) con costo O(log n)."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cuándo usarías una LinkedList en lugar de un ArrayList?",
-            "answer": "Cuando realizas muchas inserciones o eliminaciones en los extremos o en medio de la lista, ya que no requiere desplazar elementos en memoria como el ArrayList (O(1) vs O(n) en el peor caso de copia)."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el funcionamiento interno de un HashMap y el concepto de 'Hashing'.",
-            "answer": "Usa el hashCode() de la clave para determinar un 'bucket' (índice en un array interno). Si hay colisiones, usa una lista enlazada o un árbol rojo-negro (desde Java 8) para almacenar múltiples entradas en el mismo bucket."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es el 'Load Factor' en una HashTable/HashMap?",
-            "answer": "Es la medida que indica qué tan llena puede estar la tabla antes de que su capacidad sea aumentada automáticamente (redimensionamiento), equilibrando uso de memoria y rendimiento de búsqueda."
-          }
-        ]
-      },
-      {
-        "name": "NP Complete and NP Hard understanding",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué significan las siglas P y NP?",
-            "answer": "P: Problemas resolubles en tiempo polinomial. NP: Problemas cuya solución puede ser verificada en tiempo polinomial por una máquina no determinista."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuál es la pregunta fundamental de P vs NP?",
-            "answer": "¿Es todo problema cuya solución puede ser verificada rápidamente también resoluble rápidamente? (P = NP?)"
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre NP-Complete y NP-Hard.",
-            "answer": "NP-Complete: Problemas en NP a los que se puede reducir cualquier otro problema de NP. NP-Hard: Problemas al menos tan difíciles como los más difíciles de NP, pero que no necesariamente están en NP (pueden no ser verificables en tiempo polinomial)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Menciona un ejemplo clásico de un problema NP-Completo.",
-            "answer": "El Problema del Viajante (Traveling Salesperson Problem) o el Problema de la Mochila (Knapsack Problem)."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el concepto de 'Reducción Polinomial'.",
-            "answer": "Técnica para transformar un problema A en un problema B en tiempo polinomial, demostrando que si B es resoluble, A también lo es. Se usa para clasificar la dificultad de problemas nuevos."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué implicaría para la criptografía moderna si se demostrara que P = NP?",
-            "answer": "Sería catastrófico, ya que muchos algoritmos de cifrado (como RSA) se basan en la supuesta dificultad de resolver problemas NP (como la factorización) en tiempo polinomial."
-          }
-        ]
-      },
-      {
-        "name": "Heaps - Sufixes - Tries",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es un Heap (Montículo)?",
-            "answer": "Estructura de datos basada en un árbol binario completo donde el nodo raíz siempre contiene el valor máximo (Max-Heap) o mínimo (Min-Heap)."
-          },
-          {
-            "level": "junior",
-            "question": "¿Para qué se usa habitualmente un Heap?",
-            "answer": "Principalmente para implementar Colas de Prioridad eficientes, donde siempre necesitas acceder rápido al elemento con mayor jerarquía."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es un Trie (Árbol Prefijo)?",
-            "answer": "Árbol especializado para almacenar strings donde cada nodo representa un carácter. Muy eficiente para búsquedas de prefijos y diccionarios."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Min-Heap y Max-Heap.",
-            "answer": "En Min-Heap, el padre siempre es menor o igual que los hijos (raíz es el mínimo). En Max-Heap, el padre es mayor o igual (raíz es el máximo)."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el funcionamiento de un Suffix Tree.",
-            "answer": "Estructura que contiene todos los sufijos de un string dado, permitiendo búsquedas de sub-strings, repeticiones y patrones en tiempo lineal respecto al patrón."
-          },
-          {
-            "level": "senior",
-            "question": "Complejidad de tiempo para insertar y extraer en un Heap.",
-            "answer": "Ambas operaciones tienen una complejidad de O(log n), ya que el árbol debe mantenerse balanceado y cumplir la propiedad del montículo tras la operación."
-          }
-        ]
-      },
-      {
-        "name": "O(n) notation",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué mide la Notación Big O?",
-            "answer": "Describe el límite superior de la complejidad de un algoritmo en términos de tiempo de ejecución o espacio de memoria en función del tamaño de entrada (n)."
-          },
-          {
-            "level": "junior",
-            "question": "Diferencia entre O(1) y O(n).",
-            "answer": "O(1): Constante, el tiempo no cambia con la entrada. O(n): Lineal, el tiempo crece proporcionalmente al tamaño de la entrada."
-          },
-          {
-            "level": "intermediate",
-            "question": "Ordena de mejor a peor: O(n log n), O(n^2), O(n), O(log n).",
-            "answer": "1. O(log n) [Logarítmico], 2. O(n) [Lineal], 3. O(n log n) [Lineal-Logarítimico], 4. O(n^2) [Cuadrático]."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre el 'Peor Caso' y el 'Caso Promedio'.",
-            "answer": "Big O suele referirse al Peor Caso (límite superior). El Caso Promedio mide el rendimiento esperado en una entrada aleatoria típica."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es la Complejidad Espacial (Space Complexity)?",
-            "answer": "Cantidad de memoria extra que requiere un algoritmo para ejecutarse, además de la memoria ocupada por la entrada original."
-          },
-          {
-            "level": "senior",
-            "question": "Explica O(2^n) y su impacto en el escalado.",
-            "answer": "Complejidad Exponencial. Es extremadamente ineficiente; duplicar la entrada duplica el tiempo de ejecución. Común en algoritmos de fuerza bruta o recursión sin memoización."
-          }
-        ]
-      },
-      {
-        "name": "Sort Algorithms",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Menciona 3 algoritmos de ordenamiento comunes.",
-            "answer": "Bubble Sort, Insertion Sort, Merge Sort y Quick Sort."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué es un ordenamiento 'Estable'?",
-            "answer": "Aquel que preserva el orden relativo de los elementos que tienen claves iguales tras el ordenamiento."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Quick Sort y Merge Sort.",
-            "answer": "Quick Sort: Suele ser In-place (usa menos memoria), pero su peor caso es O(n^2). Merge Sort: Garantiza O(n log n) siempre, pero usa O(n) memoria extra para la mezcla."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cuándo usarías Insertion Sort?",
-            "answer": "Para listas muy pequeñas o listas que ya están casi ordenadas, ya que en esos casos es muy eficiente (O(n))."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el concepto de 'Divide y Vencerás' aplicado a Sort.",
-            "answer": "Estrategia de romper el problema grande en sub-problemas más pequeños (dividir la lista), resolverlos recursivamente (ordenar mitades) y combinar los resultados (merge)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cuál es el límite inferior teórico para el ordenamiento basado en comparaciones?",
-            "answer": "Es de Ω(n log n). Ningún algoritmo basado únicamente en comparar elementos puede ser más rápido que eso en el peor de los casos."
-          }
-        ]
-      },
-      {
-        "name": "Stacks - Queues - Trees - Graphs",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre Stack (Pila) y Queue (Cola).",
-            "answer": "Stack: LIFO (Last In, First Out). Queue: FIFO (First In, First Out)."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué es un Árbol Binario de Búsqueda (BST)?",
-            "answer": "Árbol donde cada nodo tiene a lo sumo dos hijos. El hijo izquierdo es menor que el padre y el derecho es mayor."
-          },
-          {
-            "level": "intermediate",
-            "question": "BFS vs DFS en Grafos.",
-            "answer": "BFS (Breadth-First Search): Explora nivel por nivel usando una Queue. DFS (Depth-First Search): Explora lo más profundo posible usando un Stack (o recursión)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre un Árbol Balanceado y uno Desbalanceado.",
-            "answer": "En un árbol balanceado, la altura de las ramas se mantiene similar (O(log n) búsquedas). Uno desbalanceado puede degradarse a una lista enlazada (O(n) búsquedas)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es un Grafo Acíclico Dirigido (DAG)?",
-            "answer": "Grafo cuyos bordes tienen dirección y no contiene ciclos. Fundamental en sistemas de workflows, dependencias de paquetes y bases de datos con transacciones."
-          },
-          {
-            "level": "senior",
-            "question": "Explica el uso de una Matriz de Adyacencia vs una Lista de Adyacencia.",
-            "answer": "Matriz: Usa O(V^2) espacio, rápida para verificar si existe un arco (O(1)). Lista: Usa O(V+E) espacio, mejor para grafos dispersos (sparse graphs) y para recorrer vecinos."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "group": "Java Persistence",
-    "skills": [
-      {
-        "name": "EAGER vs LAZY",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre FetchType.EAGER y FetchType.LAZY.",
-            "answer": "EAGER carga la entidad relacionada inmediatamente junto con la entidad principal. LAZY carga la relación bajo demanda, solo cuando se accede a ella por primera vez."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuál es el valor por defecto para @ManyToOne y @OneToMany?",
-            "answer": "@ManyToOne es EAGER por defecto. @OneToMany es LAZY por defecto."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el problema de 'N+1 selects'.",
-            "answer": "Ocurre cuando cargas una lista de entidades (1 query) y luego, al iterar, el ORM lanza una consulta adicional por cada relación LAZY de cada entidad (N queries), degradando el rendimiento."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es una LazyInitializationException?",
-            "answer": "Excepción que lanza Hibernate cuando intentas acceder a una relación LAZY fuera de una sesión activa (ej: en la capa de vista después de cerrar la transacción)."
-          },
-          {
-            "level": "senior",
-            "question": "Estrategias para evitar N+1: JOIN FETCH vs EntityGraph.",
-            "answer": "JOIN FETCH se usa en JPQL para traer la relación en la misma consulta. EntityGraph permite definir planes de carga dinámicos y reutilizables de forma más declarativa."
-          },
-          {
-            "level": "senior",
-            "question": "Impacto de EAGER en grandes volúmenes de datos.",
-            "answer": "Puede causar una 'explosión' de memoria al cargar grafos de objetos masivos innecesariamente, además de generar JOINS complejos que ralentizan la consulta inicial."
-          }
-        ]
-      },
-      {
-        "name": "EntityManager, @transactional",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es el EntityManager?",
-            "answer": "Interfaz de JPA usada para interactuar con el contexto de persistencia (crear, buscar, eliminar y actualizar entidades)."
-          },
-          {
-            "level": "junior",
-            "question": "¿Para qué sirve la anotación @Transactional?",
-            "answer": "Define el alcance de una transacción de base de datos. Si el método termina bien, se hace Commit; si hay una RuntimeException, se hace Rollback."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre persist() y merge().",
-            "answer": "persist() hace que una instancia nueva pase a ser gestionada. merge() copia el estado de un objeto desasociado en una instancia gestionada existente."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica la propagación 'REQUIRED' vs 'REQUIRES_NEW'.",
-            "answer": "REQUIRED: usa la transacción existente o crea una si no hay. REQUIRES_NEW: siempre crea una transacción nueva suspendiendo la actual."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es el 'First Level Cache' del EntityManager?",
-            "answer": "Caché interno que asegura que durante una transacción, pedir la misma entidad por ID siempre devuelva la misma instancia de memoria sin ir a la DB."
-          },
-          {
-            "level": "senior",
-            "question": "Riesgos de usar @Transactional en métodos privados.",
-            "answer": "Spring usa Proxies para interceptar la transacción; al ser privado, el proxy no puede envolver el método y la anotación es ignorada silenciosamente."
-          }
-        ]
-      },
-      {
-        "name": "JDBC Prepare statement, Result Set",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Por qué usar PreparedStatement en lugar de Statement normal?",
-            "answer": "Principalmente por seguridad (previene SQL Injection) y por rendimiento (el motor puede pre-compilar y cachear el plan de ejecución)."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué es un ResultSet?",
-            "answer": "Objeto que contiene los resultados de una consulta SQL, permitiendo recorrer las filas una a una mediante un cursor."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre executeQuery(), executeUpdate() y execute().",
-            "answer": "executeQuery: para SELECT (devuelve ResultSet). executeUpdate: para INSERT/UPDATE/DELETE (devuelve filas afectadas). execute: para cualquier comando."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cómo se gestiona el cierre de recursos en JDBC manual?",
-            "answer": "Usando try-with-resources para asegurar que Connection, Statement y ResultSet se cierren siempre, evitando fugas de memoria."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es el Batch Processing en JDBC?",
-            "answer": "Enviar un grupo de comandos SQL al servidor en una sola llamada de red para mejorar drásticamente el rendimiento en inserciones masivas."
-          },
-          {
-            "level": "senior",
-            "question": "Concepto de Fetch Size en un ResultSet.",
-            "answer": "Parámetro que indica cuántas filas debe traer el driver de la DB al cliente en un solo viaje de red, optimizando el uso de memoria y red en consultas grandes."
-          }
-        ]
-      },
-      {
-        "name": "JPA cache",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia básica entre L1 y L2 Cache.",
-            "answer": "L1 (Primer nivel) asociado al EntityManager/Sesión actual. L2 (Segundo nivel) compartido entre todas las sesiones de la aplicación."
-          },
-          {
-            "level": "junior",
-            "question": "¿JPA tiene L2 Cache activado por defecto?",
-            "answer": "No. L1 siempre está activo, pero L2 requiere configuración explícita y un proveedor externo como Ehcache o Caffeine."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el 'Query Cache'.",
-            "answer": "Caché opcional de L2 que guarda los resultados de una consulta JPQL específica vinculada a sus parámetros de entrada."
-          },
-          {
-            "level": "intermediate",
-            "question": "Riesgos de inconsistencia con L2 Cache.",
-            "answer": "Si se modifica la base de datos por fuera de la aplicación (ej: script manual), el caché puede quedar 'sucio' devolviendo datos obsoletos."
-          },
-          {
-            "level": "senior",
-            "question": "Estrategias de expiración: Time-to-Live (TTL) y Evicción.",
-            "answer": "TTL define cuánto tiempo vive el objeto. La Evicción decide qué borrar cuando el caché está lleno (ej: LRU - Least Recently Used)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo afecta el L2 Cache a una arquitectura de microservicios con múltiples réplicas?",
-            "answer": "Cada réplica tendría su propio caché local incoherente. Se requiere un caché distribuido (ej: Redis) o invalidación mediante mensajes para mantener la sincronía."
-          }
-        ]
-      },
-      {
-        "name": "Locking/ Transaction",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "Diferencia entre Optimistic y Pessimistic Locking.",
-            "answer": "Optimistic: asume que no habrá choques (usa @Version). Pessimistic: bloquea la fila en la DB para que nadie más la toque mientras se procesa."
-          },
-          {
-            "level": "junior",
-            "question": "¿Qué representa la anotación @Version?",
-            "answer": "Campo numérico o timestamp que JPA usa para detectar si otra transacción modificó los datos desde que fueron leídos."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica los niveles de aislamiento: READ_COMMITTED vs REPEATABLE_READ.",
-            "answer": "COMMITTED: evita lecturas sucias. REPEATABLE: asegura que si lees dos veces lo mismo en la transacción, el valor no cambie."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Qué es un 'Deadlock' en transacciones?",
-            "answer": "Dos transacciones bloqueadas mutuamente esperando un recurso que la otra tiene, haciendo que ninguna pueda avanzar."
-          },
-          {
-            "level": "senior",
-            "question": "Uso de LockModeType.PESSIMISTIC_WRITE.",
-            "answer": "Fuerza un 'SELECT FOR UPDATE' en la base de datos, bloqueando la fila inmediatamente en la lectura para asegurar exclusividad total."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo influye el nivel de aislamiento SERIALIZABLE en el rendimiento?",
-            "answer": "Es el nivel más seguro pero el más lento; bloquea rangos de tablas causando mucha contención y fallos por conflictos de serialización."
-          }
-        ]
-      },
-      {
-        "name": "JDBC query builders (jOOQ, MyBatys)",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es MyBatis?",
-            "answer": "Framework de persistencia que permite mapear SQL manual (en XML o anotaciones) directamente a objetos Java, dando control total sobre el SQL."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuál es la principal diferencia entre jOOQ e Hibernate?",
-            "answer": "Hibernate es un ORM (se enfoca en objetos). jOOQ es un Query Builder DSL (se enfoca en SQL puro con seguridad de tipos)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Ventajas de jOOQ sobre JPQL/Criteria.",
-            "answer": "Seguridad de tipos en compilación (usa código generado), sintaxis idéntica a SQL y soporte para funciones específicas de cada motor de DB."
-          },
-          {
-            "level": "intermediate",
-            "question": "Uso de resultados dinámicos en MyBatis.",
-            "answer": "Permite construir sentencias SQL complejas usando etiquetas como <if>, <foreach> y <choose> dentro de los mappers."
-          },
-          {
-            "level": "senior",
-            "question": "Escenario ideal para usar jOOQ.",
-            "answer": "Aplicaciones con SQL altamente complejo, reportes avanzados o cuando se quiere aprovechar al máximo las capacidades nativas de una DB específica."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo se integra jOOQ en un proyecto con Spring Boot?",
-            "answer": "Se configura el DSLContext y se usa el plugin de generación de código de jOOQ para mapear el esquema de la DB a clases Java automáticamente."
-          }
-        ]
-      },
-      {
-        "name": "native query vs JPQL",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es JPQL?",
-            "answer": "Java Persistence Query Language. Lenguaje de consulta similar a SQL pero que opera sobre las entidades Java y sus atributos en lugar de tablas y columnas."
-          },
-          {
-            "level": "junior",
-            "question": "¿Cuándo usarías una Native Query?",
-            "answer": "Cuando necesitas usar funciones específicas de la base de datos que no están soportadas por JPA o para optimizar consultas muy pesadas."
-          },
-          {
-            "level": "intermediate",
-            "question": "Riesgos de usar Native Queries extensivamente.",
-            "answer": "Pierdes la abstracción de la DB (portabilidad), pierdes validaciones automáticas de entidades y el mapeo de resultados puede ser más verboso."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cómo se mapea una Native Query a un DTO?",
-            "answer": "Usando SqlResultSetMapping o interfaces de proyección (en Spring Data JPA) para convertir las columnas crudas en objetos Java."
-          },
-          {
-            "level": "senior",
-            "question": "¿JPQL usa caché de la misma forma que find()?",
-            "answer": "No. find() siempre consulta el L1 Cache primero. JPQL siempre lanza la consulta a la DB, aunque luego puede actualizar el L1 Cache con los resultados."
-          },
-          {
-            "level": "senior",
-            "question": "Impacto del polimorfismo en JPQL.",
-            "answer": "Al consultar una superclase en JPQL, el ORM genera automáticamente JOINS con todas sus subclases para traer los resultados correctos de forma polimórfica."
-          }
-        ]
-      },
-      {
-        "name": "JPA entity, @manytomany, @manytoone, @onetomany",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Para qué sirve @ManyToMany?",
-            "answer": "Define una relación donde muchos registros de una tabla se vinculan con muchos de otra (ej: Autores y Libros). Requiere una tabla intermedia."
-          },
-          {
-            "level": "junior",
-            "question": "Importancia de definir el 'Owner' de la relación (mappedBy).",
-            "answer": "Indica qué lado de la relación es el responsable de gestionar la columna de unión o tabla intermedia, evitando redundancia de metadatos."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Por qué evitar relaciones bidireccionales innecesarias?",
-            "answer": "Aumentan la complejidad del código, pueden causar bucles infinitos en toString/JSON y complican el mantenimiento del estado en memoria."
-          },
-          {
-            "level": "intermediate",
-            "question": "Uso de orphanRemoval=true.",
-            "answer": "Si eliminas una entidad de una colección @OneToMany, JPA automáticamente borra el registro hijo de la base de datos."
-          },
-          {
-            "level": "senior",
-            "question": "Estrategias de herencia: SINGLE_TABLE vs JOINED.",
-            "answer": "SINGLE_TABLE: todas las clases en una sola tabla (rápido pero con nulos). JOINED: cada clase en su propia tabla (normalizado pero con muchos JOINS)."
-          },
-          {
-            "level": "senior",
-            "question": "¿Cómo optimizar una relación ManyToMany con miles de registros?",
-            "answer": "En lugar de usar List, es mejor usar un Set o, mejor aún, mapear la tabla intermedia como una Entidad propia para tener control total del filtrado y paginación."
-          }
-        ]
-      },
-      {
-        "name": "JPA query builders (QueryDSL, Criteria Query, Specification)",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es la Criteria API?",
-            "answer": "Forma programática y orientada a objetos de construir consultas en JPA, evitando errores de sintaxis en strings de JPQL."
-          },
-          {
-            "level": "junior",
-            "question": "¿Para qué sirve Spring Data Specifications?",
-            "answer": "Permite definir filtros reutilizables y combinables para realizar búsquedas dinámicas de forma limpia."
-          },
-          {
-            "level": "intermediate",
-            "question": "Diferencia entre Criteria API y QueryDSL.",
-            "answer": "QueryDSL es más legible, tiene mejores sugerencias de IDE (Type-safe) y requiere generación de código (Q-Classes). Criteria es el estándar oficial pero muy verboso."
-          },
-          {
-            "level": "intermediate",
-            "question": "¿Cómo se combinan múltiples Specifications?",
-            "answer": "Usando los métodos estáticos where(), and() y or() para encadenar predicados de forma fluida."
-          },
-          {
-            "level": "senior",
-            "question": "Rendimiento de los Query Builders dinámicos.",
-            "answer": "Generan un pequeño overhead comparado con JPQL estático, pero la ganancia en mantenibilidad y seguridad de tipos suele compensar en aplicaciones empresariales."
-          },
-          {
-            "level": "senior",
-            "question": "Uso de Proyecciones dinámicas con Criteria API.",
-            "answer": "Permite construir objetos DTO directamente en la cláusula SELECT de la consulta, recuperando solo los campos necesarios de la DB."
-          }
-        ]
-      }
-    ]
-  },
-  {
     "group": "Java Frameworks",
     "skills": [
       {
@@ -2897,46 +2682,6 @@
             "level": "senior",
             "question": "¿Cuándo usarías @Qualifier junto con @Autowired?",
             "answer": "Cuando existen múltiples beans del mismo tipo en el contexto y necesitas especificar exactamente cuál debe inyectarse para evitar ambigüedad."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "group": "JVM",
-    "skills": [
-      {
-        "name": "Java Virtual Machine",
-        "questions": [
-          {
-            "level": "junior",
-            "question": "¿Qué es la JVM?",
-            "answer": "Máquina virtual que ejecuta el bytecode de Java, permitiendo que el código sea independiente de la plataforma (Write Once, Run Anywhere)."
-          },
-          {
-            "level": "junior",
-            "question": "Diferencia entre JDK, JRE y JVM.",
-            "answer": "JDK (Desarrollo), JRE (Ejecución), JVM (El motor que corre el código dentro del JRE)."
-          },
-          {
-            "level": "intermediate",
-            "question": "Explica el Garbage Collector (GC).",
-            "answer": "Proceso automático que identifica y elimina objetos que ya no están en uso en el Heap, liberando memoria para la aplicación."
-          },
-          {
-            "level": "intermediate",
-            "question": "Heap vs Stack en memoria Java.",
-            "answer": "Heap: donde viven los objetos. Stack: donde viven las variables locales y llamadas a métodos (hilo específico)."
-          },
-          {
-            "level": "senior",
-            "question": "Compilación JIT (Just-In-Time).",
-            "answer": "Optimización que convierte el bytecode frecuentemente usado en código máquina nativo durante la ejecución para aumentar el rendimiento."
-          },
-          {
-            "level": "senior",
-            "question": "¿Qué es un 'Memory Leak' en Java si el GC es automático?",
-            "answer": "Ocurre cuando mantenemos referencias a objetos que ya no necesitamos (ej: en colecciones estáticas), impidiendo que el GC los pueda liberar."
           }
         ]
       }
@@ -3583,6 +3328,236 @@
     ]
   },
   {
+    "group": "Microservices Patterns",
+    "skills": [
+      {
+        "name": "CQRS",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es CQRS y en qué se diferencia del enfoque CRUD tradicional?", "answer": "CQRS (Command Query Responsibility Segregation) separa las operaciones de lectura (queries) de las de escritura (commands), permitiendo modelos optimizados para cada caso y a menudo diferentes stores para lectura/escritura." },
+          { "level": "junior", "question": "Menciona un caso simple donde CQRS aporte valor respecto a un CRUD único.", "answer": "Cuando las consultas son muy frecuentes y requieren agregaciones/pipelines distintas a las operaciones de escritura, por ejemplo dashboards en tiempo real." },
+          { "level": "intermediate", "question": "¿Qué es una proyección en CQRS y para qué sirve?", "answer": "Una proyección es un read model materializado creado a partir del write model o eventos para servir consultas de forma eficiente y especializada." },
+          { "level": "intermediate", "question": "¿Cómo gestionarías inconsistencias temporales entre write model y proyecciones?", "answer": "Aceptar consistencia eventual, implementar reintentos/idempotencia en los handlers de proyección y ofrecer mecanismos de reconciliación y reconciliación manual si es necesario." },
+          { "level": "senior", "question": "¿Qué impacto tiene CQRS en operaciones transaccionales y cómo lo resolverías?", "answer": "Introduce la necesidad de manejar consistencia eventual; se puede usar sagas, compensaciones y diseñar operaciones críticas con garantías adicionales o transacciones locales donde sea imprescindible." },
+          { "level": "senior", "question": "Propón una estrategia de despliegue para migrar partes de un monolito CRUD a CQRS sin interrumpir usuarios.", "answer": "Extraer funcionalidades de lectura con proyecciones, desplegar lecturas en paralelo y usar canary releases; mantener sincronización mediante eventos hasta completar la migración." }
+        ]
+      },
+      {
+        "name": "Microservicio",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un microservicio?", "answer": "Un microservicio es una unidad pequeña, independiente y desplegable de forma autónoma que implementa una única capacidad de negocio; se comunica con otros servicios mediante APIs o mensajería y posee su propio ciclo de vida y datos." },
+          { "level": "junior", "question": "¿Cuál es la diferencia conceptual entre un microservicio y un monolito?", "answer": "Un monolito agrupa múltiples funcionalidades en una sola aplicación desplegable, mientras que un microservicio separa responsabilidades en servicios independientes que se despliegan y escalan por separado." },
+          { "level": "intermediate", "question": "¿Qué ventajas aporta la arquitectura de microservicios frente al monolito?", "answer": "Mejora la escalabilidad y el despliegue independiente, facilita la adopción de tecnologías heterogéneas por servicio y acelera ciclos de entrega; además reduce el blast radius de cambios." },
+          { "level": "intermediate", "question": "¿Qué retos operativos introduce pasar de un monolito a microservicios?", "answer": "Incrementa la complejidad operativa: gestión de despliegues, observabilidad distribuida, consistencia entre servicios, testing integrado y coordinación de versiones; requiere automatización de CI/CD y buenas prácticas de monitoring." },
+          { "level": "senior", "question": "¿Cuándo NO es recomendable usar microservicios y por qué?", "answer": "No es recomendable en apps muy simples o cuando el equipo es pequeño y la complejidad operacional supera los beneficios; los microservicios pueden introducir overhead innecesario y ralentizar la entrega si no se domina el ecosistema." },
+          { "level": "senior", "question": "Estrategias para migrar de monolito a microservicios minimizando riesgos.", "answer": "Extraer funcionalidades por bounded contexts, empezar por servicios read-only o de baja criticidad, usar strangler pattern, adoptar pruebas contractuales, observabilidad y despliegues canary; mantener integraciones claras y rollback sencillo." }
+        ]
+      },
+      {
+        "name": "Database per service",
+        "questions": [
+          { "level": "junior", "question": "¿Qué significa 'database per service' y por qué se usa en microservicios?", "answer": "Cada servicio tiene su propia base de datos para evitar acoplamientos por esquema y permitir elegir tecnologías optimizadas por dominio." },
+          { "level": "junior", "question": "¿Cuál es un beneficio inmediato de tener bases separadas por servicio?", "answer": "Independencia en despliegue y cambios de esquema sin afectar otros servicios." },
+          { "level": "intermediate", "question": "¿Cómo compartirías información entre servicios cuando necesitan datos de otros dominios?", "answer": "Mediante APIs públicas, eventos publicados o proyecciones/replicación controlada; evitar accesos directos a la BD de otro servicio." },
+          { "level": "intermediate", "question": "¿Qué técnicas usas para consultas que combinarían datos de múltiples servicios?", "answer": "BFF/aggregator, materialized views, denormalización o pipelines ETL para conjuntos de datos de lectura." },
+          { "level": "senior", "question": "¿Cómo diseñas backups y restauraciones cuando hay dependencias cross-service?", "answer": "Planificar backups independientes, documentar órdenes de restauración y tener procesos de reconciliación y compensación para restaurar consistencia entre servicios." },
+          { "level": "senior", "question": "Explique trade-offs entre consistencia y disponibilidad al elegir bases por servicio.", "answer": "Mayor independencia mejora disponibilidad y escalabilidad, pero complica la consistencia y transacciones distribuidas; exige diseño para eventual consistency cuando sea aceptable." }
+        ]
+      },
+      {
+        "name": "Saga",
+        "questions": [
+          { "level": "junior", "question": "Define brevemente qué es una Saga en microservicios.", "answer": "Una Saga coordina una serie de pasos locales en múltiples servicios para lograr una operación distribuida, con acciones compensatorias en caso de fallo." },
+          { "level": "junior", "question": "¿Qué diferencia hay entre una saga coreografiada y una orquestada?", "answer": "Coreografiada: los servicios reaccionan a eventos. Orquestada: existe un coordinador que invoca los pasos y controla el flujo." },
+          { "level": "intermediate", "question": "Da un ejemplo de flujo que requiera una saga y su compensación.", "answer": "Proceso de pedido: reservar inventario, cobrar tarjeta, confirmar envío; si el cobro falla, la saga compensa liberando la reserva y notificando el pedido fallido." },
+          { "level": "intermediate", "question": "¿Cómo garantizas idempotencia en acciones de saga?", "answer": "Uso de identificadores de correlación y persistencia de eventos/estado para que reintentos no apliquen efectos duplicados." },
+          { "level": "senior", "question": "¿Qué retos trae el diagnóstico y depuración de sagas y cómo mitigarlos?", "answer": "El flujo distribuido dificulta trazabilidad; mitigar con trazas distribuidas (OpenTelemetry), logs correlacionados y visualización del estado de sagas." },
+          { "level": "senior", "question": "Diseña una estrategia para sagas de larga duración y manejo de expiraciones.", "answer": "Persistir checkpoints, definir timeouts y jobs de reconciliación periódica; diseñar pasos compensatorios seguros y notificaciones a operadores si la saga queda en estado indeterminado." }
+        ]
+      },
+      {
+        "name": "API Gateway",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es el propósito principal de un API Gateway?", "answer": "Servir como punto de entrada que enruta peticiones, aplica autenticación, caching y políticas de seguridad para los clientes." },
+          { "level": "junior", "question": "Enumera responsabilidades comunes que implementaría un gateway.", "answer": "Autenticación, rate limiting, enrutamiento, agregación de respuestas y manejo de CORS." },
+          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de APIs en un Gateway?", "answer": "Exponiendo rutas versionadas, usando headers para versionado y soportando transformaciones para compatibilidad entre versiones." },
+          { "level": "intermediate", "question": "¿Qué consideraciones de seguridad debe cubrir el gateway?", "answer": "Validación de tokens, limitación por cliente, protección contra ataques DDoS, sanitización de inputs y propagación segura de identidad a backend." },
+          { "level": "senior", "question": "¿Qué riesgos introduce y cómo diseñar redundancia para un Gateway?", "answer": "Riesgo de single point of failure y cuello de botella; mitigar con múltiples instancias, balanceo, CDNs y circuit breakers en el gateway mismo." },
+          { "level": "senior", "question": "Propón una arquitectura para offload de lógica no funcional (auth, caching) desde microservicios al gateway.", "answer": "Delegar autenticación y caching en el gateway, usar tokens mínimos para backend, y mantener mecanismos de revalidación/propagación de claims cuando sea necesario." }
+        ]
+      },
+      {
+        "name": "Event Sourcing",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es Event Sourcing en una frase?", "answer": "Persistir la secuencia de eventos que describen los cambios de estado en lugar de persistir solo el estado actual." },
+          { "level": "junior", "question": "Nombra una ventaja práctica de usar Event Sourcing.", "answer": "Permite reconstruir el estado en cualquier punto y ofrece un registro audit trail completo." },
+          { "level": "intermediate", "question": "¿Para qué sirven las proyecciones y snapshots?", "answer": "Proyecciones: vistas materializadas para consultas eficientes. Snapshots: puntos de partida para acelerar la reconstrucción evitando reprocesar todos los eventos." },
+          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de eventos?", "answer": "Usando formatos versionados, adaptadores en consumidores o migraciones de eventos para mantener compatibilidad hacia atrás." },
+          { "level": "senior", "question": "¿Qué retos operativos presenta Event Sourcing y cómo mitigarlos?", "answer": "Crecimiento de la store de eventos, complejidad en queries y migraciones; mitigarlos con particionado, archivado, snapshots y proyecciones eficientes." },
+          { "level": "senior", "question": "Explica cómo asegurar idempotencia y orden en el procesamiento de eventos en consumidores distribuidos.", "answer": "Persistir checkpoints, usar event ids para deduplicación y diseñar particionado por aggregate id que preserve orden por agregado." }
+        ]
+      },
+      {
+        "name": "Sidecar",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un sidecar en despliegues cloud-native?", "answer": "Un contenedor que corre junto al servicio principal para ofrecer funcionalidades transversales (proxy, logging, certs) sin modificar la aplicación." },
+          { "level": "junior", "question": "Da un ejemplo de herramienta usada como sidecar.", "answer": "Envoy como proxy de malla (service mesh) o un sidecar para recolección de métricas y logs." },
+          { "level": "intermediate", "question": "¿Qué costes y complicaciones operativas introduce el patrón sidecar?", "answer": "Mayor consumo de recursos por pod, complejidad en lifecycle y escalado, y necesidad de coordinar readiness/liveness entre contenedores." },
+          { "level": "intermediate", "question": "¿Cómo implementarías actualizaciones del sidecar sin interrumpir el servicio principal?", "answer": "Desplegar rolling updates, usar probes independientes y diseñar degradación si el sidecar no está disponible temporalmente." },
+          { "level": "senior", "question": "¿Qué estrategias usarías para aislar fallos del sidecar y evitar que afecten al servicio?", "answer": "Timeouts, circuit breakers y límites de recursos; diseñar paths alternativos si el sidecar falla y monitorizar health metrics del sidecar por separado." },
+          { "level": "senior", "question": "Compara sidecars con agentes centralizados en cuanto a seguridad y performance.", "answer": "Sidecars ofrecen aislamiento y proximidad (mejor latencia y control), mientras que agentes centralizados reducen overhead pero pueden ser puntos únicos de fallo y centralizar datos sensibles." }
+        ]
+      },
+      {
+        "name": "Circuit Breaker",
+        "questions": [
+          { "level": "junior", "question": "¿Qué función cumple un circuit breaker?", "answer": "Evitar que llamadas repetidas a un servicio fallido empeoren la situación, ofreciendo fallback o fallos rápidos." },
+          { "level": "junior", "question": "Enumera los estados principales de un circuit breaker.", "answer": "Closed, Open y Half-Open." },
+          { "level": "intermediate", "question": "¿Cómo configuras un circuit breaker para equilibrar sensibilidad y robustez?", "answer": "Ajustando umbrales de error, ventanas de tiempo para cálculo de tasas, periodos de prueba y backoff en reintentos." },
+          { "level": "intermediate", "question": "¿Qué fallback implementarías para llamadas a un servicio no crítico?", "answer": "Respuesta cacheada, default degradado o cola para procesar later, junto con alertas y métricas." },
+          { "level": "senior", "question": "¿Cómo evitas que retries empeoren una situación cuando el circuit breaker está detectando fallos?", "answer": "Limitar retries, aplicar exponential backoff y combinarlos con bulkheads para aislar recursos y evitar sobrecarga adicional." },
+          { "level": "senior", "question": "Qué métricas son más útiles para evaluar el comportamiento de un circuito en producción?", "answer": "Tasa de apertura, latencias, tasa de fallos, éxito de reintentos y número de invocaciones a fallbacks; correlacionarlas con incidentes para tuning." }
+        ]
+      },
+      {
+        "name": "BFF Pattern",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un BFF y por qué se crea uno?", "answer": "Backend For Frontend es una capa específica por tipo de cliente (mobile/web) que adapta y compone llamadas para optimizar la experiencia del cliente." },
+          { "level": "junior", "question": "Menciona una ventaja de usar BFFs.", "answer": "Reducción de llamadas desde el cliente y payloads adaptados a las necesidades del cliente, mejorando latencia y UX." },
+          { "level": "intermediate", "question": "¿Cómo evitarías la duplicación de lógica entre varios BFFs?", "answer": "Extraer utilidades y librerías compartidas, estandarizar contratos y usar tests contractuales para mantener coherencia." },
+          { "level": "intermediate", "question": "¿Qué responsabilidades de seguridad puede tener un BFF?", "answer": "Validar tokens, sanitizar inputs, gestionar sesiones y aplicar rate limiting por cliente." },
+          { "level": "senior", "question": "Describe una estrategia de despliegue para varios BFFs que deben evolucionar independientemente.", "answer": "Versionado por ruta/header, despliegues canary, pruebas contractuales y un repositorio de contratos/shared libs para evitar romper clientes." },
+          { "level": "senior", "question": "¿Cuándo NO recomendarías un BFF?", "answer": "Cuando la complejidad adicional y mantenimiento de múltiples BFFs supera los beneficios, por ejemplo en sistemas muy pequeños o con pocos tipos de clientes." }
+        ]
+      },
+      {
+        "name": "Journey",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un 'journey' en arquitectura de software?", "answer": "El mapeo del recorrido de usuario/proceso a través de servicios, identificando etapas y puntos clave de interacción." },
+          { "level": "junior", "question": "¿Qué beneficio trae diseñar servicios según journeys?", "answer": "Alinea la arquitectura con procesos de negocio y facilita métricas y responsabilidad por etapa." },
+          { "level": "intermediate", "question": "¿Cómo subdividirías un proceso complejo en servicios basados en journey?", "answer": "Identificar etapas discretas, definir boundaries y eventos de transición, y crear servicios que posean datos y lógica de su etapa." },
+          { "level": "intermediate", "question": "Qué KPIs propondrías para monitorear un journey crítico?", "answer": "Tasa de éxito por etapa, latencia por etapa, tasa de abandono y tiempos medios de procesamiento." },
+          { "level": "senior", "question": "¿Cómo coordinarías ownership y datos en un journey distribuido entre equipos?", "answer": "Definir owners claros, contratos/SLAs, eventos estándar y procesos de reconciliación; usar gobernanza de datos para evitar duplicidad y conflictos." },
+          { "level": "senior", "question": "Propón una estrategia para refactorizar un monolito en servicios por journey.", "answer": "Aplicar el patrón strangler, priorizar journeys con mayor valor, extraer bounded contexts, crear eventos y contratos, y desplegar incrementalmente con pruebas contractuales." }
+        ]
+      }
+    ]
+  },
+  {
+    "group": "Seguridad API",
+    "skills": [
+      {
+        "name": "OAUTH2",
+        "questions": [
+          { "level": "junior", "question": "¿Qué propósito tiene OAuth2?", "answer": "Permitir autorización delegada: que un cliente obtenga acceso limitado a recursos sin compartir credenciales del usuario." },
+          { "level": "junior", "question": "Nombra un flujo de OAuth2 común y su uso típico.", "answer": "Authorization Code: usado por aplicaciones con backend para obtener tokens de forma segura." },
+          { "level": "intermediate", "question": "¿Qué es PKCE y por qué usarlo?", "answer": "PKCE evita interceptación de códigos de autorización en clientes públicos (SPAs/móviles). Añade un verifier/challenge para mitigar ataques de código." },
+          { "level": "intermediate", "question": "Diferencia entre tokens opacos y JWTs.", "answer": "Opacos requieren introspección en el servidor de autorización; JWTs son auto-verificables por firma, sin llamada extra, pero tienen retos de revocación." },
+          { "level": "senior", "question": "¿Cómo implementarías rotación de refresh tokens?", "answer": "Emitir refresh tokens rotativos donde cada uso intercambia el token por uno nuevo y el anterior se invalida, reduciendo replay." },
+          { "level": "senior", "question": "Medidas para mitigar la exposición de tokens en apps web.", "answer": "Usar cookies HttpOnly/Secure con SameSite, evitar localStorage, aplicar CSP y short-lived access tokens con refresh seguros." }
+        ]
+      },
+      {
+        "name": "OPENID",
+        "questions": [
+          { "level": "junior", "question": "¿Qué añade OpenID Connect sobre OAuth2?", "answer": "Una capa de identidad que emite un id_token con claims que prueban quién se autenticó." },
+          { "level": "junior", "question": "¿Qué es el id_token?", "answer": "Un token (normalmente JWT) que contiene información de identidad sobre el usuario y el evento de autenticación." },
+          { "level": "intermediate", "question": "¿Para qué sirve el endpoint /.well-known/openid-configuration?", "answer": "Permite descubrir dinámicamente endpoints (authorization, token, jwks) y capacidades del IdP." },
+          { "level": "intermediate", "question": "Cómo manejar la rotación de claves JWKS en clientes.", "answer": "Cachear JWKS con TTL, re-intentar fetch en fallo y soportar múltiples claves para transición sin downtime." },
+          { "level": "senior", "question": "Validaciones necesarias sobre un id_token.", "answer": "Verificar firma, issuer (iss), audience (aud), nonce, exp/iat y claims mínimos requeridos antes de confiar en el token." },
+          { "level": "senior", "question": "Estrategias para minimizar exposición de PII al usar OIDC.", "answer": "Solicitar solo claims necesarios, encriptar datos en reposo y anonimizar logs que contengan claims personales." }
+        ]
+      },
+      {
+        "name": "Autenticación",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es la autenticación?", "answer": "El proceso de verificar la identidad de un usuario o sistema." },
+          { "level": "junior", "question": "Menciona un mecanismo fuerte de autenticación moderna.", "answer": "MFA (contraseña + token/app) o FIDO2 basados en llaves públicas." },
+          { "level": "intermediate", "question": "Buenas prácticas para almacenar contraseñas.", "answer": "Usar hashing adaptativo (bcrypt/argon2) con salt único y parámetros ajustables para la carga de CPU/memoria." },
+          { "level": "intermediate", "question": "Cómo detectar intentos de acceso maliciosos.", "answer": "Implementar rate limiting, bloqueo temporal, análisis de anomalías (IP, device fingerprint) y alertas de seguridad." },
+          { "level": "senior", "question": "Diseño de flujos de recuperación de cuenta seguros.", "answer": "Usar vérificación multifactor, límites de intentos, validación de propiedad (email/phone) y revisión manual para casos sensibles." },
+          { "level": "senior", "question": "Ventajas de usar un IdP en lugar de autenticación local.", "answer": "Centraliza identidad, facilita SSO, rotación de claves/patching y permite políticas homogéneas y auditoría centralizada." }
+        ]
+      },
+      {
+        "name": "Autorización",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es la autorización?", "answer": "Determina qué acciones o recursos puede usar una identidad autenticada." },
+          { "level": "junior", "question": "Diferencia básica entre RBAC y ABAC.", "answer": "RBAC usa roles para permisos; ABAC usa atributos (usuario, recurso, entorno) para decisiones más finas." },
+          { "level": "intermediate", "question": "Uso de scopes en APIs.", "answer": "Scopes limitan acciones que un token puede realizar; se validan en el resource server para aplicar least-privilege." },
+          { "level": "intermediate", "question": "Qué es una política de autorización centralizada.", "answer": "Un servicio que toma decisiones de acceso (ej: OPA) para evitar lógica duplicada y facilitar auditoría." },
+          { "level": "senior", "question": "Cómo auditar decisiones de autorización a escala.", "answer": "Emitir logs estructurados con contexto (principal, action, resource, reason) y usar pipeline de observabilidad para alertas y análisis forense." },
+          { "level": "senior", "question": "Estrategias para minimizar privilege creep.", "answer": "Revisiones periódicas de roles, implementación de just-in-time access y separación de duties en funciones críticas." }
+        ]
+      },
+      {
+        "name": "IDP",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un Identity Provider (IdP)?", "answer": "Un servicio que autentica usuarios y emite tokens/claims para aplicaciones y APIs." },
+          { "level": "junior", "question": "Nombra un IdP popular.", "answer": "Keycloak, Auth0, Okta o Azure AD son ejemplos comunes." },
+          { "level": "intermediate", "question": "Funciones importantes de un IdP empresarial.", "answer": "Soporte OIDC/SAML, JWKS, alta disponibilidad, gestión de usuarios y aprovisionamiento (SCIM)." },
+          { "level": "intermediate", "question": "Qué considerar al diseñar multi-tenant en un IdP.", "answer": "Aislamiento de datos, límites de cuota, configuración por tenant y separación de claves/tenancy-aware routing." },
+          { "level": "senior", "question": "Estrategia de rotación de claves y continuidad.", "answer": "Publicar claves nuevas en JWKS, soportar múltiples claves simultáneamente y planificar retiros con períodos de gracia y tests de validación." },
+          { "level": "senior", "question": "Cómo integrar un IdP con sistemas legados.", "answer": "Usar capas de adaptación (token exchange, claim mapping), sincronización selectiva (SCIM) y migración de sesiones con validación incremental." }
+        ]
+      },
+      {
+        "name": "SSO",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es SSO?", "answer": "Single Sign-On: autenticación centralizada que permite acceder a múltiples aplicaciones con una sola credencial." },
+          { "level": "junior", "question": "Protocolos comunes para SSO.", "answer": "SAML y OpenID Connect son los protocolos más usados para SSO en empresas." },
+          { "level": "intermediate", "question": "Retos del logout en SSO.", "answer": "El logout distribuido puede ser parcial; no todos los SP limpian sesiones, por lo que se implementan mecanismos best-effort y expiraciones cortas de tokens." },
+          { "level": "intermediate", "question": "Cómo manejar SSO en móviles y SPAs.", "answer": "Usar Authorization Code + PKCE, gestionar refresh tokens de forma segura y considerar sesiones server-side cuando sea posible." },
+          { "level": "senior", "question": "Diseñar SSO para partners externos (federación).", "answer": "Usar estándares (SAML/OIDC), establecer trust anchors, mapeo de atributos y políticas de seguridad compartidas (auditoría/SLAs)." },
+          { "level": "senior", "question": "Riesgos de seguridad específicos de SSO.", "answer": "Compromiso del IdP impacta múltiples aplicaciones; mitigar con MFA, monitorización y límites de sesión, además de análisis de comportamiento." }
+        ]
+      },
+      {
+        "name": "Spring Security Configuration",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es Spring Security?", "answer": "Framework de seguridad para aplicaciones Spring que proporciona autenticación y autorización." },
+          { "level": "junior", "question": "¿Qué es un SecurityFilterChain?", "answer": "Una cadena de filtros que procesa peticiones para aplicar CORS, CSRF, autenticación y autorización." },
+          { "level": "intermediate", "question": "Cómo configurar una aplicación como resource-server JWT.", "answer": "Habilitar support de resource-server en Spring Boot y configurar la validación JWT con jwk-set-uri o introspección." },
+          { "level": "intermediate", "question": "Orden de filtros: por qué importa.", "answer": "El orden define qué filtros ven/modifican la petición primero; p. ej. CORS debe ejecutarse antes de la autenticación para no bloquear orígenes legítimos." },
+          { "level": "senior", "question": "Estrategias de cache para validación de tokens a alta escala.", "answer": "Cachear decisiones de validación con TTLs cortos, usar cache distribuido y invalidación en eventos críticos (revocación)." },
+          { "level": "senior", "question": "Cómo mover políticas complejas fuera de filtros en Spring.", "answer": "Delegar a un servicio de autorización externo (policy engine) y aplicar resultados en filtros ligeros para mantener performance y testabilidad." }
+        ]
+      },
+      {
+        "name": "Spring Security Annotations",
+        "questions": [
+          { "level": "junior", "question": "¿Qué hace @PreAuthorize?", "answer": "Evalúa una expresión antes de invocar el método para determinar si el acceso está permitido." },
+          { "level": "junior", "question": "¿Qué es @Secured?", "answer": "Anotación para declarar roles requeridos en un método (más simple que @PreAuthorize)." },
+          { "level": "intermediate", "question": "Ventajas de usar anotaciones vs filtros centralizados.", "answer": "Anotaciones permiten declarar políticas cerca del código; filtros centralizados facilitan auditoría y consistencia global." },
+          { "level": "intermediate", "question": "Cómo pasar contexto de seguridad a llamadas internas.", "answer": "Usar SecurityContext/Authentication para propagar el principal o mapear claims a objetos de dominio aceptados por el downstream." },
+          { "level": "senior", "question": "Diseño para tests de unidades con @PreAuthorize.", "answer": "Mantener reglas simples en anotaciones y convertir lógica compleja en servicios testeables; usar mocks del SecurityContext en pruebas unitarias." },
+          { "level": "senior", "question": "Limitaciones de usar SpEL en anotaciones a gran escala.", "answer": "Expresiones complejas pueden volverse difíciles de mantener y de depurar; mejor extraer a funciones nombradas o policy services." }
+        ]
+      },
+      {
+        "name": "Recurso Downstream",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un downstream?", "answer": "Un servicio al que tu API llama como parte del procesamiento de una petición." },
+          { "level": "junior", "question": "Por qué no confiar ciegamente en la validez de un token al pasar a un downstream.", "answer": "Porque el downstream puede requerir audiencias distintas o validar tokens de forma independiente; hay que adaptar o revalidar según el caso." },
+          { "level": "intermediate", "question": "Cuándo usar token exchange hacia un downstream.", "answer": "Cuando el downstream necesita un token con audiencia distinta o permisos reducidos para minimizar alcance en delegación." },
+          { "level": "intermediate", "question": "Cómo manejar timeouts y retries con downstreams.", "answer": "Configurar timeouts conservadores, circuit breakers y retires con backoff exponencial, evitando retries en idempotent operations solamente." },
+          { "level": "senior", "question": "Estrategias de tracing y correlación con downstreams.", "answer": "Propagar trace ids, usar logs estructurados y correlacionar con métricas para localizar problemas y analizar latencia de llamadas." },
+          { "level": "senior", "question": "Consideraciones de seguridad al compartir tokens con terceros.", "answer": "Limitar scopes, usar token exchange, acordar contratos de seguridad y auditar uso para detectar abuso." }
+        ]
+      },
+      {
+        "name": "HTTPS & TLS",
+        "questions": [
+          { "level": "junior", "question": "¿Por qué HTTPS es importante para APIs?", "answer": "Encripta tráfico para proteger confidencialidad e integridad, evitando eavesdropping y manipulación en tránsito." },
+          { "level": "junior", "question": "Qué es un certificado TLS.", "answer": "Un certificado emitido por una CA que vincula la identidad del servidor con una clave pública usada en TLS." },
+          { "level": "intermediate", "question": "Buenas prácticas para configuración TLS.", "answer": "Forzar TLS 1.2+/1.3, deshabilitar cifrados débiles, habilitar HSTS y usar OCSP stapling para revocación." },
+          { "level": "intermediate", "question": "Qué es mTLS y cuándo usarlo.", "answer": "Mutual TLS exige certificados en ambos extremos para autenticación mutua; útil en comunicación entre servicios internos de confianza." },
+          { "level": "senior", "question": "Decisión sobre terminación TLS en la arquitectura.", "answer": "Balanceadores suelen terminar TLS por performance; si se requiere confidencialidad end-to-end, re-establecer TLS hacia backends o usar passthrough." },
+          { "level": "senior", "question": "Cómo automatizar la gestión de certificados a escala.", "answer": "Integrar ACME/Let's Encrypt o soluciones de gestión interna, automatizar renovación y rotación y monitorizar expiraciones." }
+        ]
+      }
+    ]
+  },
+  {
     "group": "Testing for developers",
     "skills": [
       {
@@ -3943,231 +3918,256 @@
     ]
   },
   {
-    "group": "Microservices Patterns",
+    "group": "Data Structures",
     "skills": [
       {
-        "name": "CQRS",
+        "name": "Arrays - Lists - Sets - Maps",
         "questions": [
-          { "level": "junior", "question": "¿Qué es CQRS y en qué se diferencia del enfoque CRUD tradicional?", "answer": "CQRS (Command Query Responsibility Segregation) separa las operaciones de lectura (queries) de las de escritura (commands), permitiendo modelos optimizados para cada caso y a menudo diferentes stores para lectura/escritura." },
-          { "level": "junior", "question": "Menciona un caso simple donde CQRS aporte valor respecto a un CRUD único.", "answer": "Cuando las consultas son muy frecuentes y requieren agregaciones/pipelines distintas a las operaciones de escritura, por ejemplo dashboards en tiempo real." },
-          { "level": "intermediate", "question": "¿Qué es una proyección en CQRS y para qué sirve?", "answer": "Una proyección es un read model materializado creado a partir del write model o eventos para servir consultas de forma eficiente y especializada." },
-          { "level": "intermediate", "question": "¿Cómo gestionarías inconsistencias temporales entre write model y proyecciones?", "answer": "Aceptar consistencia eventual, implementar reintentos/idempotencia en los handlers de proyección y ofrecer mecanismos de reconciliación y reconciliación manual si es necesario." },
-          { "level": "senior", "question": "¿Qué impacto tiene CQRS en operaciones transaccionales y cómo lo resolverías?", "answer": "Introduce la necesidad de manejar consistencia eventual; se puede usar sagas, compensaciones y diseñar operaciones críticas con garantías adicionales o transacciones locales donde sea imprescindible." },
-          { "level": "senior", "question": "Propón una estrategia de despliegue para migrar partes de un monolito CRUD a CQRS sin interrumpir usuarios.", "answer": "Extraer funcionalidades de lectura con proyecciones, desplegar lecturas en paralelo y usar canary releases; mantener sincronización mediante eventos hasta completar la migración." }
+          {
+            "level": "junior",
+            "question": "Diferencia entre Array y ArrayList en Java.",
+            "answer": "Array es de tamaño fijo y puede contener primitivos u objetos. ArrayList es dinámico (crece automáticamente), solo contiene objetos y ofrece métodos de utilidad como add() o remove()."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué caracteriza a un Set?",
+            "answer": "Es una colección que no permite elementos duplicados. Útil cuando necesitas asegurar la unicidad de los datos."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre HashMap y TreeMap.",
+            "answer": "HashMap no garantiza orden y es más rápido (O(1) promedio). TreeMap mantiene los elementos ordenados por su clave (Natural Order o Comparator) con costo O(log n)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cuándo usarías una LinkedList en lugar de un ArrayList?",
+            "answer": "Cuando realizas muchas inserciones o eliminaciones en los extremos o en medio de la lista, ya que no requiere desplazar elementos en memoria como el ArrayList (O(1) vs O(n) en el peor caso de copia)."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el funcionamiento interno de un HashMap y el concepto de 'Hashing'.",
+            "answer": "Usa el hashCode() de la clave para determinar un 'bucket' (índice en un array interno). Si hay colisiones, usa una lista enlazada o un árbol rojo-negro (desde Java 8) para almacenar múltiples entradas en el mismo bucket."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es el 'Load Factor' en una HashTable/HashMap?",
+            "answer": "Es la medida que indica qué tan llena puede estar la tabla antes de que su capacidad sea aumentada automáticamente (redimensionamiento), equilibrando uso de memoria y rendimiento de búsqueda."
+          }
         ]
       },
       {
-        "name": "Microservicio",
+        "name": "NP Complete and NP Hard understanding",
         "questions": [
-          { "level": "junior", "question": "¿Qué es un microservicio?", "answer": "Un microservicio es una unidad pequeña, independiente y desplegable de forma autónoma que implementa una única capacidad de negocio; se comunica con otros servicios mediante APIs o mensajería y posee su propio ciclo de vida y datos." },
-          { "level": "junior", "question": "¿Cuál es la diferencia conceptual entre un microservicio y un monolito?", "answer": "Un monolito agrupa múltiples funcionalidades en una sola aplicación desplegable, mientras que un microservicio separa responsabilidades en servicios independientes que se despliegan y escalan por separado." },
-          { "level": "intermediate", "question": "¿Qué ventajas aporta la arquitectura de microservicios frente al monolito?", "answer": "Mejora la escalabilidad y el despliegue independiente, facilita la adopción de tecnologías heterogéneas por servicio y acelera ciclos de entrega; además reduce el blast radius de cambios." },
-          { "level": "intermediate", "question": "¿Qué retos operativos introduce pasar de un monolito a microservicios?", "answer": "Incrementa la complejidad operativa: gestión de despliegues, observabilidad distribuida, consistencia entre servicios, testing integrado y coordinación de versiones; requiere automatización de CI/CD y buenas prácticas de monitoring." },
-          { "level": "senior", "question": "¿Cuándo NO es recomendable usar microservicios y por qué?", "answer": "No es recomendable en apps muy simples o cuando el equipo es pequeño y la complejidad operacional supera los beneficios; los microservicios pueden introducir overhead innecesario y ralentizar la entrega si no se domina el ecosistema." },
-          { "level": "senior", "question": "Estrategias para migrar de monolito a microservicios minimizando riesgos.", "answer": "Extraer funcionalidades por bounded contexts, empezar por servicios read-only o de baja criticidad, usar strangler pattern, adoptar pruebas contractuales, observabilidad y despliegues canary; mantener integraciones claras y rollback sencillo." }
+          {
+            "level": "junior",
+            "question": "¿Qué significan las siglas P y NP?",
+            "answer": "P: Problemas resolubles en tiempo polinomial. NP: Problemas cuya solución puede ser verificada en tiempo polinomial por una máquina no determinista."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es la pregunta fundamental de P vs NP?",
+            "answer": "¿Es todo problema cuya solución puede ser verificada rápidamente también resoluble rápidamente? (P = NP?)"
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre NP-Complete y NP-Hard.",
+            "answer": "NP-Complete: Problemas en NP a los que se puede reducir cualquier otro problema de NP. NP-Hard: Problemas al menos tan difíciles como los más difíciles de NP, pero que no necesariamente están en NP (pueden no ser verificables en tiempo polinomial)."
+          },
+          {
+            "level": "intermediate",
+            "question": "Menciona un ejemplo clásico de un problema NP-Completo.",
+            "answer": "El Problema del Viajante (Traveling Salesperson Problem) o el Problema de la Mochila (Knapsack Problem)."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el concepto de 'Reducción Polinomial'.",
+            "answer": "Técnica para transformar un problema A en un problema B en tiempo polinomial, demostrando que si B es resoluble, A también lo es. Se usa para clasificar la dificultad de problemas nuevos."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué implicaría para la criptografía moderna si se demostrara que P = NP?",
+            "answer": "Sería catastrófico, ya que muchos algoritmos de cifrado (como RSA) se basan en la supuesta dificultad de resolver problemas NP (como la factorización) en tiempo polinomial."
+          }
         ]
       },
       {
-        "name": "Database per service",
+        "name": "Heaps - Sufixes - Tries",
         "questions": [
-          { "level": "junior", "question": "¿Qué significa 'database per service' y por qué se usa en microservicios?", "answer": "Cada servicio tiene su propia base de datos para evitar acoplamientos por esquema y permitir elegir tecnologías optimizadas por dominio." },
-          { "level": "junior", "question": "¿Cuál es un beneficio inmediato de tener bases separadas por servicio?", "answer": "Independencia en despliegue y cambios de esquema sin afectar otros servicios." },
-          { "level": "intermediate", "question": "¿Cómo compartirías información entre servicios cuando necesitan datos de otros dominios?", "answer": "Mediante APIs públicas, eventos publicados o proyecciones/replicación controlada; evitar accesos directos a la BD de otro servicio." },
-          { "level": "intermediate", "question": "¿Qué técnicas usas para consultas que combinarían datos de múltiples servicios?", "answer": "BFF/aggregator, materialized views, denormalización o pipelines ETL para conjuntos de datos de lectura." },
-          { "level": "senior", "question": "¿Cómo diseñas backups y restauraciones cuando hay dependencias cross-service?", "answer": "Planificar backups independientes, documentar órdenes de restauración y tener procesos de reconciliación y compensación para restaurar consistencia entre servicios." },
-          { "level": "senior", "question": "Explique trade-offs entre consistencia y disponibilidad al elegir bases por servicio.", "answer": "Mayor independencia mejora disponibilidad y escalabilidad, pero complica la consistencia y transacciones distribuidas; exige diseño para eventual consistency cuando sea aceptable." }
+          {
+            "level": "junior",
+            "question": "¿Qué es un Heap (Montículo)?",
+            "answer": "Estructura de datos basada en un árbol binario completo donde el nodo raíz siempre contiene el valor máximo (Max-Heap) o mínimo (Min-Heap)."
+          },
+          {
+            "level": "junior",
+            "question": "¿Para qué se usa habitualmente un Heap?",
+            "answer": "Principalmente para implementar Colas de Prioridad eficientes, donde siempre necesitas acceder rápido al elemento con mayor jerarquía."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Qué es un Trie (Árbol Prefijo)?",
+            "answer": "Árbol especializado para almacenar strings donde cada nodo representa un carácter. Muy eficiente para búsquedas de prefijos y diccionarios."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Min-Heap y Max-Heap.",
+            "answer": "En Min-Heap, el padre siempre es menor o igual que los hijos (raíz es el mínimo). En Max-Heap, el padre es mayor o igual (raíz es el máximo)."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el funcionamiento de un Suffix Tree.",
+            "answer": "Estructura que contiene todos los sufijos de un string dado, permitiendo búsquedas de sub-strings, repeticiones y patrones en tiempo lineal respecto al patrón."
+          },
+          {
+            "level": "senior",
+            "question": "Complejidad de tiempo para insertar y extraer en un Heap.",
+            "answer": "Ambas operaciones tienen una complejidad de O(log n), ya que el árbol debe mantenerse balanceado y cumplir la propiedad del montículo tras la operación."
+          }
         ]
       },
       {
-        "name": "Saga",
+        "name": "O(n) notation",
         "questions": [
-          { "level": "junior", "question": "Define brevemente qué es una Saga en microservicios.", "answer": "Una Saga coordina una serie de pasos locales en múltiples servicios para lograr una operación distribuida, con acciones compensatorias en caso de fallo." },
-          { "level": "junior", "question": "¿Qué diferencia hay entre una saga coreografiada y una orquestada?", "answer": "Coreografiada: los servicios reaccionan a eventos. Orquestada: existe un coordinador que invoca los pasos y controla el flujo." },
-          { "level": "intermediate", "question": "Da un ejemplo de flujo que requiera una saga y su compensación.", "answer": "Proceso de pedido: reservar inventario, cobrar tarjeta, confirmar envío; si el cobro falla, la saga compensa liberando la reserva y notificando el pedido fallido." },
-          { "level": "intermediate", "question": "¿Cómo garantizas idempotencia en acciones de saga?", "answer": "Uso de identificadores de correlación y persistencia de eventos/estado para que reintentos no apliquen efectos duplicados." },
-          { "level": "senior", "question": "¿Qué retos trae el diagnóstico y depuración de sagas y cómo mitigarlos?", "answer": "El flujo distribuido dificulta trazabilidad; mitigar con trazas distribuidas (OpenTelemetry), logs correlacionados y visualización del estado de sagas." },
-          { "level": "senior", "question": "Diseña una estrategia para sagas de larga duración y manejo de expiraciones.", "answer": "Persistir checkpoints, definir timeouts y jobs de reconciliación periódica; diseñar pasos compensatorios seguros y notificaciones a operadores si la saga queda en estado indeterminado." }
+          {
+            "level": "junior",
+            "question": "¿Qué mide la Notación Big O?",
+            "answer": "Describe el límite superior de la complejidad de un algoritmo en términos de tiempo de ejecución o espacio de memoria en función del tamaño de entrada (n)."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia entre O(1) y O(n).",
+            "answer": "O(1): Constante, el tiempo no cambia con la entrada. O(n): Lineal, el tiempo crece proporcionalmente al tamaño de la entrada."
+          },
+          {
+            "level": "intermediate",
+            "question": "Ordena de mejor a peor: O(n log n), O(n^2), O(n), O(log n).",
+            "answer": "1. O(log n) [Logarítmico], 2. O(n) [Lineal], 3. O(n log n) [Lineal-Logarítimico], 4. O(n^2) [Cuadrático]."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre el 'Peor Caso' y el 'Caso Promedio'.",
+            "answer": "Big O suele referirse al Peor Caso (límite superior). El Caso Promedio mide el rendimiento esperado en una entrada aleatoria típica."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es la Complejidad Espacial (Space Complexity)?",
+            "answer": "Cantidad de memoria extra que requiere un algoritmo para ejecutarse, además de la memoria ocupada por la entrada original."
+          },
+          {
+            "level": "senior",
+            "question": "Explica O(2^n) y su impacto en el escalado.",
+            "answer": "Complejidad Exponencial. Es extremadamente ineficiente; duplicar la entrada duplica el tiempo de ejecución. Común en algoritmos de fuerza bruta o recursión sin memoización."
+          }
         ]
       },
       {
-        "name": "API Gateway",
+        "name": "Sort Algorithms",
         "questions": [
-          { "level": "junior", "question": "¿Cuál es el propósito principal de un API Gateway?", "answer": "Servir como punto de entrada que enruta peticiones, aplica autenticación, caching y políticas de seguridad para los clientes." },
-          { "level": "junior", "question": "Enumera responsabilidades comunes que implementaría un gateway.", "answer": "Autenticación, rate limiting, enrutamiento, agregación de respuestas y manejo de CORS." },
-          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de APIs en un Gateway?", "answer": "Exponiendo rutas versionadas, usando headers para versionado y soportando transformaciones para compatibilidad entre versiones." },
-          { "level": "intermediate", "question": "¿Qué consideraciones de seguridad debe cubrir el gateway?", "answer": "Validación de tokens, limitación por cliente, protección contra ataques DDoS, sanitización de inputs y propagación segura de identidad a backend." },
-          { "level": "senior", "question": "¿Qué riesgos introduce y cómo diseñar redundancia para un Gateway?", "answer": "Riesgo de single point of failure y cuello de botella; mitigar con múltiples instancias, balanceo, CDNs y circuit breakers en el gateway mismo." },
-          { "level": "senior", "question": "Propón una arquitectura para offload de lógica no funcional (auth, caching) desde microservicios al gateway.", "answer": "Delegar autenticación y caching en el gateway, usar tokens mínimos para backend, y mantener mecanismos de revalidación/propagación de claims cuando sea necesario." }
+          {
+            "level": "junior",
+            "question": "Menciona 3 algoritmos de ordenamiento comunes.",
+            "answer": "Bubble Sort, Insertion Sort, Merge Sort y Quick Sort."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué es un ordenamiento 'Estable'?",
+            "answer": "Aquel que preserva el orden relativo de los elementos que tienen claves iguales tras el ordenamiento."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Quick Sort y Merge Sort.",
+            "answer": "Quick Sort: Suele ser In-place (usa menos memoria), pero su peor caso es O(n^2). Merge Sort: Garantiza O(n log n) siempre, pero usa O(n) memoria extra para la mezcla."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cuándo usarías Insertion Sort?",
+            "answer": "Para listas muy pequeñas o listas que ya están casi ordenadas, ya que en esos casos es muy eficiente (O(n))."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el concepto de 'Divide y Vencerás' aplicado a Sort.",
+            "answer": "Estrategia de romper el problema grande en sub-problemas más pequeños (dividir la lista), resolverlos recursivamente (ordenar mitades) y combinar los resultados (merge)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cuál es el límite inferior teórico para el ordenamiento basado en comparaciones?",
+            "answer": "Es de Ω(n log n). Ningún algoritmo basado únicamente en comparar elementos puede ser más rápido que eso en el peor de los casos."
+          }
         ]
       },
       {
-        "name": "Event Sourcing",
+        "name": "Stacks - Queues - Trees - Graphs",
         "questions": [
-          { "level": "junior", "question": "¿Qué es Event Sourcing en una frase?", "answer": "Persistir la secuencia de eventos que describen los cambios de estado en lugar de persistir solo el estado actual." },
-          { "level": "junior", "question": "Nombra una ventaja práctica de usar Event Sourcing.", "answer": "Permite reconstruir el estado en cualquier punto y ofrece un registro audit trail completo." },
-          { "level": "intermediate", "question": "¿Para qué sirven las proyecciones y snapshots?", "answer": "Proyecciones: vistas materializadas para consultas eficientes. Snapshots: puntos de partida para acelerar la reconstrucción evitando reprocesar todos los eventos." },
-          { "level": "intermediate", "question": "¿Cómo manejarías el versionado de eventos?", "answer": "Usando formatos versionados, adaptadores en consumidores o migraciones de eventos para mantener compatibilidad hacia atrás." },
-          { "level": "senior", "question": "¿Qué retos operativos presenta Event Sourcing y cómo mitigarlos?", "answer": "Crecimiento de la store de eventos, complejidad en queries y migraciones; mitigarlos con particionado, archivado, snapshots y proyecciones eficientes." },
-          { "level": "senior", "question": "Explica cómo asegurar idempotencia y orden en el procesamiento de eventos en consumidores distribuidos.", "answer": "Persistir checkpoints, usar event ids para deduplicación y diseñar particionado por aggregate id que preserve orden por agregado." }
-        ]
-      },
-      {
-        "name": "Sidecar",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es un sidecar en despliegues cloud-native?", "answer": "Un contenedor que corre junto al servicio principal para ofrecer funcionalidades transversales (proxy, logging, certs) sin modificar la aplicación." },
-          { "level": "junior", "question": "Da un ejemplo de herramienta usada como sidecar.", "answer": "Envoy como proxy de malla (service mesh) o un sidecar para recolección de métricas y logs." },
-          { "level": "intermediate", "question": "¿Qué costes y complicaciones operativas introduce el patrón sidecar?", "answer": "Mayor consumo de recursos por pod, complejidad en lifecycle y escalado, y necesidad de coordinar readiness/liveness entre contenedores." },
-          { "level": "intermediate", "question": "¿Cómo implementarías actualizaciones del sidecar sin interrumpir el servicio principal?", "answer": "Desplegar rolling updates, usar probes independientes y diseñar degradación si el sidecar no está disponible temporalmente." },
-          { "level": "senior", "question": "¿Qué estrategias usarías para aislar fallos del sidecar y evitar que afecten al servicio?", "answer": "Timeouts, circuit breakers y límites de recursos; diseñar paths alternativos si el sidecar falla y monitorizar health metrics del sidecar por separado." },
-          { "level": "senior", "question": "Compara sidecars con agentes centralizados en cuanto a seguridad y performance.", "answer": "Sidecars ofrecen aislamiento y proximidad (mejor latencia y control), mientras que agentes centralizados reducen overhead pero pueden ser puntos únicos de fallo y centralizar datos sensibles." }
-        ]
-      },
-      {
-        "name": "Circuit Breaker",
-        "questions": [
-          { "level": "junior", "question": "¿Qué función cumple un circuit breaker?", "answer": "Evitar que llamadas repetidas a un servicio fallido empeoren la situación, ofreciendo fallback o fallos rápidos." },
-          { "level": "junior", "question": "Enumera los estados principales de un circuit breaker.", "answer": "Closed, Open y Half-Open." },
-          { "level": "intermediate", "question": "¿Cómo configuras un circuit breaker para equilibrar sensibilidad y robustez?", "answer": "Ajustando umbrales de error, ventanas de tiempo para cálculo de tasas, periodos de prueba y backoff en reintentos." },
-          { "level": "intermediate", "question": "¿Qué fallback implementarías para llamadas a un servicio no crítico?", "answer": "Respuesta cacheada, default degradado o cola para procesar later, junto con alertas y métricas." },
-          { "level": "senior", "question": "¿Cómo evitas que retries empeoren una situación cuando el circuit breaker está detectando fallos?", "answer": "Limitar retries, aplicar exponential backoff y combinarlos con bulkheads para aislar recursos y evitar sobrecarga adicional." },
-          { "level": "senior", "question": "Qué métricas son más útiles para evaluar el comportamiento de un circuito en producción?", "answer": "Tasa de apertura, latencias, tasa de fallos, éxito de reintentos y número de invocaciones a fallbacks; correlacionarlas con incidentes para tuning." }
-        ]
-      },
-      {
-        "name": "BFF Pattern",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es un BFF y por qué se crea uno?", "answer": "Backend For Frontend es una capa específica por tipo de cliente (mobile/web) que adapta y compone llamadas para optimizar la experiencia del cliente." },
-          { "level": "junior", "question": "Menciona una ventaja de usar BFFs.", "answer": "Reducción de llamadas desde el cliente y payloads adaptados a las necesidades del cliente, mejorando latencia y UX." },
-          { "level": "intermediate", "question": "¿Cómo evitarías la duplicación de lógica entre varios BFFs?", "answer": "Extraer utilidades y librerías compartidas, estandarizar contratos y usar tests contractuales para mantener coherencia." },
-          { "level": "intermediate", "question": "¿Qué responsabilidades de seguridad puede tener un BFF?", "answer": "Validar tokens, sanitizar inputs, gestionar sesiones y aplicar rate limiting por cliente." },
-          { "level": "senior", "question": "Describe una estrategia de despliegue para varios BFFs que deben evolucionar independientemente.", "answer": "Versionado por ruta/header, despliegues canary, pruebas contractuales y un repositorio de contratos/shared libs para evitar romper clientes." },
-          { "level": "senior", "question": "¿Cuándo NO recomendarías un BFF?", "answer": "Cuando la complejidad adicional y mantenimiento de múltiples BFFs supera los beneficios, por ejemplo en sistemas muy pequeños o con pocos tipos de clientes." }
-        ]
-      },
-      {
-        "name": "Journey",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es un 'journey' en arquitectura de software?", "answer": "El mapeo del recorrido de usuario/proceso a través de servicios, identificando etapas y puntos clave de interacción." },
-          { "level": "junior", "question": "¿Qué beneficio trae diseñar servicios según journeys?", "answer": "Alinea la arquitectura con procesos de negocio y facilita métricas y responsabilidad por etapa." },
-          { "level": "intermediate", "question": "¿Cómo subdividirías un proceso complejo en servicios basados en journey?", "answer": "Identificar etapas discretas, definir boundaries y eventos de transición, y crear servicios que posean datos y lógica de su etapa." },
-          { "level": "intermediate", "question": "Qué KPIs propondrías para monitorear un journey crítico?", "answer": "Tasa de éxito por etapa, latencia por etapa, tasa de abandono y tiempos medios de procesamiento." },
-          { "level": "senior", "question": "¿Cómo coordinarías ownership y datos en un journey distribuido entre equipos?", "answer": "Definir owners claros, contratos/SLAs, eventos estándar y procesos de reconciliación; usar gobernanza de datos para evitar duplicidad y conflictos." },
-          { "level": "senior", "question": "Propón una estrategia para refactorizar un monolito en servicios por journey.", "answer": "Aplicar el patrón strangler, priorizar journeys con mayor valor, extraer bounded contexts, crear eventos y contratos, y desplegar incrementalmente con pruebas contractuales." }
+          {
+            "level": "junior",
+            "question": "Diferencia entre Stack (Pila) y Queue (Cola).",
+            "answer": "Stack: LIFO (Last In, First Out). Queue: FIFO (First In, First Out)."
+          },
+          {
+            "level": "junior",
+            "question": "¿Qué es un Árbol Binario de Búsqueda (BST)?",
+            "answer": "Árbol donde cada nodo tiene a lo sumo dos hijos. El hijo izquierdo es menor que el padre y el derecho es mayor."
+          },
+          {
+            "level": "intermediate",
+            "question": "BFS vs DFS en Grafos.",
+            "answer": "BFS (Breadth-First Search): Explora nivel por nivel usando una Queue. DFS (Depth-First Search): Explora lo más profundo posible usando un Stack (o recursión)."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre un Árbol Balanceado y uno Desbalanceado.",
+            "answer": "En un árbol balanceado, la altura de las ramas se mantiene similar (O(log n) búsquedas). Uno desbalanceado puede degradarse a una lista enlazada (O(n) búsquedas)."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es un Grafo Acíclico Dirigido (DAG)?",
+            "answer": "Grafo cuyos bordes tienen dirección y no contiene ciclos. Fundamental en sistemas de workflows, dependencias de paquetes y bases de datos con transacciones."
+          },
+          {
+            "level": "senior",
+            "question": "Explica el uso de una Matriz de Adyacencia vs una Lista de Adyacencia.",
+            "answer": "Matriz: Usa O(V^2) espacio, rápida para verificar si existe un arco (O(1)). Lista: Usa O(V+E) espacio, mejor para grafos dispersos (sparse graphs) y para recorrer vecinos."
+          }
         ]
       }
     ]
   },
   {
-    "group": "Seguridad API",
+    "group": "JVM",
     "skills": [
       {
-        "name": "OAUTH2",
+        "name": "Java Virtual Machine",
         "questions": [
-          { "level": "junior", "question": "¿Qué propósito tiene OAuth2?", "answer": "Permitir autorización delegada: que un cliente obtenga acceso limitado a recursos sin compartir credenciales del usuario." },
-          { "level": "junior", "question": "Nombra un flujo de OAuth2 común y su uso típico.", "answer": "Authorization Code: usado por aplicaciones con backend para obtener tokens de forma segura." },
-          { "level": "intermediate", "question": "¿Qué es PKCE y por qué usarlo?", "answer": "PKCE evita interceptación de códigos de autorización en clientes públicos (SPAs/móviles). Añade un verifier/challenge para mitigar ataques de código." },
-          { "level": "intermediate", "question": "Diferencia entre tokens opacos y JWTs.", "answer": "Opacos requieren introspección en el servidor de autorización; JWTs son auto-verificables por firma, sin llamada extra, pero tienen retos de revocación." },
-          { "level": "senior", "question": "¿Cómo implementarías rotación de refresh tokens?", "answer": "Emitir refresh tokens rotativos donde cada uso intercambia el token por uno nuevo y el anterior se invalida, reduciendo replay." },
-          { "level": "senior", "question": "Medidas para mitigar la exposición de tokens en apps web.", "answer": "Usar cookies HttpOnly/Secure con SameSite, evitar localStorage, aplicar CSP y short-lived access tokens con refresh seguros." }
-        ]
-      },
-      {
-        "name": "OPENID",
-        "questions": [
-          { "level": "junior", "question": "¿Qué añade OpenID Connect sobre OAuth2?", "answer": "Una capa de identidad que emite un id_token con claims que prueban quién se autenticó." },
-          { "level": "junior", "question": "¿Qué es el id_token?", "answer": "Un token (normalmente JWT) que contiene información de identidad sobre el usuario y el evento de autenticación." },
-          { "level": "intermediate", "question": "¿Para qué sirve el endpoint /.well-known/openid-configuration?", "answer": "Permite descubrir dinámicamente endpoints (authorization, token, jwks) y capacidades del IdP." },
-          { "level": "intermediate", "question": "Cómo manejar la rotación de claves JWKS en clientes.", "answer": "Cachear JWKS con TTL, re-intentar fetch en fallo y soportar múltiples claves para transición sin downtime." },
-          { "level": "senior", "question": "Validaciones necesarias sobre un id_token.", "answer": "Verificar firma, issuer (iss), audience (aud), nonce, exp/iat y claims mínimos requeridos antes de confiar en el token." },
-          { "level": "senior", "question": "Estrategias para minimizar exposición de PII al usar OIDC.", "answer": "Solicitar solo claims necesarios, encriptar datos en reposo y anonimizar logs que contengan claims personales." }
-        ]
-      },
-      {
-        "name": "Autenticación",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es la autenticación?", "answer": "El proceso de verificar la identidad de un usuario o sistema." },
-          { "level": "junior", "question": "Menciona un mecanismo fuerte de autenticación moderna.", "answer": "MFA (contraseña + token/app) o FIDO2 basados en llaves públicas." },
-          { "level": "intermediate", "question": "Buenas prácticas para almacenar contraseñas.", "answer": "Usar hashing adaptativo (bcrypt/argon2) con salt único y parámetros ajustables para la carga de CPU/memoria." },
-          { "level": "intermediate", "question": "Cómo detectar intentos de acceso maliciosos.", "answer": "Implementar rate limiting, bloqueo temporal, análisis de anomalías (IP, device fingerprint) y alertas de seguridad." },
-          { "level": "senior", "question": "Diseño de flujos de recuperación de cuenta seguros.", "answer": "Usar vérificación multifactor, límites de intentos, validación de propiedad (email/phone) y revisión manual para casos sensibles." },
-          { "level": "senior", "question": "Ventajas de usar un IdP en lugar de autenticación local.", "answer": "Centraliza identidad, facilita SSO, rotación de claves/patching y permite políticas homogéneas y auditoría centralizada." }
-        ]
-      },
-      {
-        "name": "Autorización",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es la autorización?", "answer": "Determina qué acciones o recursos puede usar una identidad autenticada." },
-          { "level": "junior", "question": "Diferencia básica entre RBAC y ABAC.", "answer": "RBAC usa roles para permisos; ABAC usa atributos (usuario, recurso, entorno) para decisiones más finas." },
-          { "level": "intermediate", "question": "Uso de scopes en APIs.", "answer": "Scopes limitan acciones que un token puede realizar; se validan en el resource server para aplicar least-privilege." },
-          { "level": "intermediate", "question": "Qué es una política de autorización centralizada.", "answer": "Un servicio que toma decisiones de acceso (ej: OPA) para evitar lógica duplicada y facilitar auditoría." },
-          { "level": "senior", "question": "Cómo auditar decisiones de autorización a escala.", "answer": "Emitir logs estructurados con contexto (principal, action, resource, reason) y usar pipeline de observabilidad para alertas y análisis forense." },
-          { "level": "senior", "question": "Estrategias para minimizar privilege creep.", "answer": "Revisiones periódicas de roles, implementación de just-in-time access y separación de duties en funciones críticas." }
-        ]
-      },
-      {
-        "name": "IDP",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es un Identity Provider (IdP)?", "answer": "Un servicio que autentica usuarios y emite tokens/claims para aplicaciones y APIs." },
-          { "level": "junior", "question": "Nombra un IdP popular.", "answer": "Keycloak, Auth0, Okta o Azure AD son ejemplos comunes." },
-          { "level": "intermediate", "question": "Funciones importantes de un IdP empresarial.", "answer": "Soporte OIDC/SAML, JWKS, alta disponibilidad, gestión de usuarios y aprovisionamiento (SCIM)." },
-          { "level": "intermediate", "question": "Qué considerar al diseñar multi-tenant en un IdP.", "answer": "Aislamiento de datos, límites de cuota, configuración por tenant y separación de claves/tenancy-aware routing." },
-          { "level": "senior", "question": "Estrategia de rotación de claves y continuidad.", "answer": "Publicar claves nuevas en JWKS, soportar múltiples claves simultáneamente y planificar retiros con períodos de gracia y tests de validación." },
-          { "level": "senior", "question": "Cómo integrar un IdP con sistemas legados.", "answer": "Usar capas de adaptación (token exchange, claim mapping), sincronización selectiva (SCIM) y migración de sesiones con validación incremental." }
-        ]
-      },
-      {
-        "name": "SSO",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es SSO?", "answer": "Single Sign-On: autenticación centralizada que permite acceder a múltiples aplicaciones con una sola credencial." },
-          { "level": "junior", "question": "Protocolos comunes para SSO.", "answer": "SAML y OpenID Connect son los protocolos más usados para SSO en empresas." },
-          { "level": "intermediate", "question": "Retos del logout en SSO.", "answer": "El logout distribuido puede ser parcial; no todos los SP limpian sesiones, por lo que se implementan mecanismos best-effort y expiraciones cortas de tokens." },
-          { "level": "intermediate", "question": "Cómo manejar SSO en móviles y SPAs.", "answer": "Usar Authorization Code + PKCE, gestionar refresh tokens de forma segura y considerar sesiones server-side cuando sea posible." },
-          { "level": "senior", "question": "Diseñar SSO para partners externos (federación).", "answer": "Usar estándares (SAML/OIDC), establecer trust anchors, mapeo de atributos y políticas de seguridad compartidas (auditoría/SLAs)." },
-          { "level": "senior", "question": "Riesgos de seguridad específicos de SSO.", "answer": "Compromiso del IdP impacta múltiples aplicaciones; mitigar con MFA, monitorización y límites de sesión, además de análisis de comportamiento." }
-        ]
-      },
-      {
-        "name": "Spring Security Configuration",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es Spring Security?", "answer": "Framework de seguridad para aplicaciones Spring que proporciona autenticación y autorización." },
-          { "level": "junior", "question": "¿Qué es un SecurityFilterChain?", "answer": "Una cadena de filtros que procesa peticiones para aplicar CORS, CSRF, autenticación y autorización." },
-          { "level": "intermediate", "question": "Cómo configurar una aplicación como resource-server JWT.", "answer": "Habilitar support de resource-server en Spring Boot y configurar la validación JWT con jwk-set-uri o introspección." },
-          { "level": "intermediate", "question": "Orden de filtros: por qué importa.", "answer": "El orden define qué filtros ven/modifican la petición primero; p. ej. CORS debe ejecutarse antes de la autenticación para no bloquear orígenes legítimos." },
-          { "level": "senior", "question": "Estrategias de cache para validación de tokens a alta escala.", "answer": "Cachear decisiones de validación con TTLs cortos, usar cache distribuido y invalidación en eventos críticos (revocación)." },
-          { "level": "senior", "question": "Cómo mover políticas complejas fuera de filtros en Spring.", "answer": "Delegar a un servicio de autorización externo (policy engine) y aplicar resultados en filtros ligeros para mantener performance y testabilidad." }
-        ]
-      },
-      {
-        "name": "Spring Security Annotations",
-        "questions": [
-          { "level": "junior", "question": "¿Qué hace @PreAuthorize?", "answer": "Evalúa una expresión antes de invocar el método para determinar si el acceso está permitido." },
-          { "level": "junior", "question": "¿Qué es @Secured?", "answer": "Anotación para declarar roles requeridos en un método (más simple que @PreAuthorize)." },
-          { "level": "intermediate", "question": "Ventajas de usar anotaciones vs filtros centralizados.", "answer": "Anotaciones permiten declarar políticas cerca del código; filtros centralizados facilitan auditoría y consistencia global." },
-          { "level": "intermediate", "question": "Cómo pasar contexto de seguridad a llamadas internas.", "answer": "Usar SecurityContext/Authentication para propagar el principal o mapear claims a objetos de dominio aceptados por el downstream." },
-          { "level": "senior", "question": "Diseño para tests de unidades con @PreAuthorize.", "answer": "Mantener reglas simples en anotaciones y convertir lógica compleja en servicios testeables; usar mocks del SecurityContext en pruebas unitarias." },
-          { "level": "senior", "question": "Limitaciones de usar SpEL en anotaciones a gran escala.", "answer": "Expresiones complejas pueden volverse difíciles de mantener y de depurar; mejor extraer a funciones nombradas o policy services." }
-        ]
-      },
-      {
-        "name": "Recurso Downstream",
-        "questions": [
-          { "level": "junior", "question": "¿Qué es un downstream?", "answer": "Un servicio al que tu API llama como parte del procesamiento de una petición." },
-          { "level": "junior", "question": "Por qué no confiar ciegamente en la validez de un token al pasar a un downstream.", "answer": "Porque el downstream puede requerir audiencias distintas o validar tokens de forma independiente; hay que adaptar o revalidar según el caso." },
-          { "level": "intermediate", "question": "Cuándo usar token exchange hacia un downstream.", "answer": "Cuando el downstream necesita un token con audiencia distinta o permisos reducidos para minimizar alcance en delegación." },
-          { "level": "intermediate", "question": "Cómo manejar timeouts y retries con downstreams.", "answer": "Configurar timeouts conservadores, circuit breakers y retires con backoff exponencial, evitando retries en idempotent operations solamente." },
-          { "level": "senior", "question": "Estrategias de tracing y correlación con downstreams.", "answer": "Propagar trace ids, usar logs estructurados y correlacionar con métricas para localizar problemas y analizar latencia de llamadas." },
-          { "level": "senior", "question": "Consideraciones de seguridad al compartir tokens con terceros.", "answer": "Limitar scopes, usar token exchange, acordar contratos de seguridad y auditar uso para detectar abuso." }
-        ]
-      },
-      {
-        "name": "HTTPS & TLS",
-        "questions": [
-          { "level": "junior", "question": "¿Por qué HTTPS es importante para APIs?", "answer": "Encripta tráfico para proteger confidencialidad e integridad, evitando eavesdropping y manipulación en tránsito." },
-          { "level": "junior", "question": "Qué es un certificado TLS.", "answer": "Un certificado emitido por una CA que vincula la identidad del servidor con una clave pública usada en TLS." },
-          { "level": "intermediate", "question": "Buenas prácticas para configuración TLS.", "answer": "Forzar TLS 1.2+/1.3, deshabilitar cifrados débiles, habilitar HSTS y usar OCSP stapling para revocación." },
-          { "level": "intermediate", "question": "Qué es mTLS y cuándo usarlo.", "answer": "Mutual TLS exige certificados en ambos extremos para autenticación mutua; útil en comunicación entre servicios internos de confianza." },
-          { "level": "senior", "question": "Decisión sobre terminación TLS en la arquitectura.", "answer": "Balanceadores suelen terminar TLS por performance; si se requiere confidencialidad end-to-end, re-establecer TLS hacia backends o usar passthrough." },
-          { "level": "senior", "question": "Cómo automatizar la gestión de certificados a escala.", "answer": "Integrar ACME/Let's Encrypt o soluciones de gestión interna, automatizar renovación y rotación y monitorizar expiraciones." }
+          {
+            "level": "junior",
+            "question": "¿Qué es la JVM?",
+            "answer": "Máquina virtual que ejecuta el bytecode de Java, permitiendo que el código sea independiente de la plataforma (Write Once, Run Anywhere)."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia entre JDK, JRE y JVM.",
+            "answer": "JDK (Desarrollo), JRE (Ejecución), JVM (El motor que corre el código dentro del JRE)."
+          },
+          {
+            "level": "intermediate",
+            "question": "Explica el Garbage Collector (GC).",
+            "answer": "Proceso automático que identifica y elimina objetos que ya no están en uso en el Heap, liberando memoria para la aplicación."
+          },
+          {
+            "level": "intermediate",
+            "question": "Heap vs Stack en memoria Java.",
+            "answer": "Heap: donde viven los objetos. Stack: donde viven las variables locales y llamadas a métodos (hilo específico)."
+          },
+          {
+            "level": "senior",
+            "question": "Compilación JIT (Just-In-Time).",
+            "answer": "Optimización que convierte el bytecode frecuentemente usado en código máquina nativo durante la ejecución para aumentar el rendimiento."
+          },
+          {
+            "level": "senior",
+            "question": "¿Qué es un 'Memory Leak' en Java si el GC es automático?",
+            "answer": "Ocurre cuando mantenemos referencias a objetos que ya no necesitamos (ej: en colecciones estáticas), impidiendo que el GC los pueda liberar."
+          }
         ]
       }
     ]
