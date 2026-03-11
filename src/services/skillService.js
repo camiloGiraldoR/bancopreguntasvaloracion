@@ -18,7 +18,8 @@ const groupToFileMap = {
     'No SQL': 'nosql',
     'Microservices Patterns': 'microservices_patterns',
     'Design Patterns': 'design_patterns',
-    'Seguridad API': 'security_api'
+    'Seguridad API': 'security_api',
+    'Reactive Programming': 'reactive_programming'
 };
 
 /**

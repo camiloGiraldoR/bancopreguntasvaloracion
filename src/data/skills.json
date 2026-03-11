@@ -3921,5 +3921,215 @@
         ]
       }
     ]
+  },
+  {
+    "group": "Reactive Programming",
+    "skills": [
+      {
+        "name": "Responsive",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué significa 'Responsive' en el Manifiesto Reactivo?",
+            "answer": "Que el sistema responda de manera rápida y consistente a los usuarios. El tiempo de respuesta debe ser predecible y acotado."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo la Reactividad logra sistemas Responsivos?",
+            "answer": "Mediante el procesamiento no-bloqueante de eventos y el uso eficiente de recursos, evitando esperas innecesarias y manteniendo latencias bajas."
+          },
+          {
+            "level": "senior",
+            "question": "Diferencia entre responsividad y throughput en sistemas reactivos.",
+            "answer": "Responsividad es el tiempo de respuesta a un evento individual. Throughput es cuántas operaciones se completan en un período. Ambos son importantes en sistemas reactivos."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo mides la responsividad en un sistema reactivo?",
+            "answer": "Mediante métricas como latencia P50, P95, P99 (percentiles de respuesta), y monitoreando el comportamiento consistente bajo diferentes cargas."
+          }
+        ]
+      },
+      {
+        "name": "Resilient",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué significa 'Resilient' en el Manifiesto Reactivo?",
+            "answer": "Que el sistema continúe operando ante fallos. La resiliencia se logra mediante aislamiento de componentes y recuperación automática."
+          },
+          {
+            "level": "intermediate",
+            "question": "Patrones para lograr resiliencia: Circuit Breaker, Retry, Fallback.",
+            "answer": "Circuit Breaker: abre el circuito si falla demasiado. Retry: reintentos exponenciales. Fallback: proporciona un valor alternativo en caso de fallo."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo se relacionan la resiliencia con el aislamiento de fallos?",
+            "answer": "El aislamiento asegura que el fallo de un componente no cascada a otros. Bulkheads (compartimentos) limitan el impacto, permitiendo que partes sanas sigan operando."
+          },
+          {
+            "level": "senior",
+            "question": "Principio de 'Let It Fail' vs 'Defensive Programming' en sistemas reactivos.",
+            "answer": "En sistemas reactivos, es mejor deixar fallar componentes de forma aislada y recuperarse automáticamente que intentar prever todos los problemas."
+          }
+        ]
+      },
+      {
+        "name": "Elastic",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué significa 'Elastic' en el Manifiesto Reactivo?",
+            "answer": "Que el sistema pueda escalar (aumentar o disminuir) recursos automáticamente según la carga, sin necesidad de cambios en el código."
+          },
+          {
+            "level": "intermediate",
+            "question": "Diferencia entre Horizontal Scaling y Vertical Scaling.",
+            "answer": "Horizontal: agregar más máquinas/instancias. Vertical: aumentar recursos de una máquina (CPU, RAM). Los sistemas reactivos facilitan scaling horizontal."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo logran los sistemas reactivos escalabilidad elástica?",
+            "answer": "Mediante arquitecturas distribuidas, ubicación dinámica de recursos, no uso de estado compartido, y métricas en tiempo real para auto-escalado."
+          },
+          {
+            "level": "senior",
+            "question": "Relación entre Elasticidad y Costos en Cloud Computing.",
+            "answer": "La elasticidad permite pagar solo por recursos usados. Durante períodos de baja carga, el sistema puede reducir instancias, optimizando costos."
+          }
+        ]
+      },
+      {
+        "name": "Message Driven",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué significa 'Message Driven' en el Manifiesto Reactivo?",
+            "answer": "Que los componentes del sistema se comunican mediante el envío de mensajes asincronos en lugar de llamadas síncronas directas."
+          },
+          {
+            "level": "intermediate",
+            "question": "Ventajas de la comunicación basada en mensajes sobre RPC.",
+            "answer": "Desacoplamiento de componentes, mejor escalabilidad, mayor resiliencia a fallos, y mejor aprovechamiento de recursos."
+          },
+          {
+            "level": "senior",
+            "question": "Patrones de mensajería: Pub-Sub vs Request-Reply.",
+            "answer": "Pub-Sub: Múltiples suscriptores reciben mensajes de un tópico. Request-Reply: Comunicación de uno-a-uno donde se espera una respuesta."
+          },
+          {
+            "level": "senior",
+            "question": "Garantías de entrega en sistemas message-driven: At-Most-Once, At-Least-Once, Exactly-Once.",
+            "answer": "At-Most-Once: puede perderse, no hay duplicados. At-Least-Once: sin pérdidas pero puede duplicarse. Exactly-Once: sin pérdidas ni duplicados (más costoso)."
+          }
+        ]
+      },
+      {
+        "name": "Java WebFlux",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es Spring WebFlux?",
+            "answer": "Framework reactivo de Spring basado en Project Reactor para construir aplicaciones web no-bloqueantes con arquitectura reactiva."
+          },
+          {
+            "level": "junior",
+            "question": "Diferencia entre Spring MVC y Spring WebFlux.",
+            "answer": "MVC: servlet bloqueante (thread por request). WebFlux: no-bloqueante, event-driven, mejor aprovechamiento de recursos con muchas conexiones."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo configurar un controlador WebFlux?",
+            "answer": "Usar @RestController con métodos que retornen Mono<T> o Flux<T>, o usar functional endpoints con RouterFunction."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo manejar errores en WebFlux?",
+            "answer": "Usar operadores como onErrorReturn(), onErrorResume(), doOnError() en la cadena reactiva, o @ExceptionHandler en controladores."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cuándo usar WebFlux vs MVC?",
+            "answer": "WebFlux: I/O-bound, muchas conexiones, sistemas event-driven. MVC: procesamiento CPU-heavy, equipos que entienden mejor arquitecturas bloqueantes."
+          },
+          {
+            "level": "senior",
+            "question": "Backpressure en WebFlux: ¿Qué es y cómo se maneja?",
+            "answer": "Control de tasa de consumo de datos. El suscriptor informa cuántos elementos puede procesar usando request(n), evitando saturación."
+          }
+        ]
+      },
+      {
+        "name": "Mono",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es Mono en Project Reactor?",
+            "answer": "Un stream reactivo que emite 0 o 1 elemento (y opcionalmente una señal de error o completación). Ideal para operaciones de un único resultado."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es la diferencia entre Mono y Optional?",
+            "answer": "Optional es síncrono y eagerly evaluated. Mono es asíncrono y lazy, permitiendo encadenar operaciones y manejar asincronía."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo crear un Mono? Ejemplos: just(), fromCallable(), defer().",
+            "answer": "just(value): valor inmediato. fromCallable(supplier): evaluación lazy. defer(supplier): genera un nuevo Mono cada vez que se suscribe."
+          },
+          {
+            "level": "intermediate",
+            "question": "Operaciones comunes en Mono: map(), flatMap(), filter(), zipWith().",
+            "answer": "map(): transforma el valor. flatMap(): encadena monos. filter(): descarta basado en predicado. zipWith(): combina dos monos en tupla."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo manejar un Mono vacío o error sin bloquear?",
+            "answer": "Usar doOnNext(), doOnEmpty(), doOnError(), onErrorResume() para ejecutar acciones sin bloquear, o subscribir con suscriptores que manejen cada caso."
+          },
+          {
+            "level": "senior",
+            "question": "Diferencia entre Mono.block() y Mono.subscribe().",
+            "answer": "block(): espera sincronamente el resultado (peligroso en contextos reactivos). subscribe(): ejecuta asincrónamente sin esperar (forma reactiva correcta)."
+          }
+        ]
+      },
+      {
+        "name": "Flux",
+        "questions": [
+          {
+            "level": "junior",
+            "question": "¿Qué es Flux en Project Reactor?",
+            "answer": "Un stream reactivo que emite 0 a N elementos (y opcionalmente una señal de error o completación). Ideal para secuencias de datos."
+          },
+          {
+            "level": "junior",
+            "question": "¿Cuál es la diferencia entre Flux y List?",
+            "answer": "List es síncrono, con todos los elementos en memoria. Flux es asíncrono, perezoso (lazy), y puede emitir datos bajo demanda (backpressure)."
+          },
+          {
+            "level": "intermediate",
+            "question": "¿Cómo crear un Flux? Ejemplos: fromIterable(), range(), interval().",
+            "answer": "fromIterable(list): desde una colección. range(start, count): secuencia numérica. interval(duration): emite números en intervalos de tiempo."
+          },
+          {
+            "level": "intermediate",
+            "question": "Operadores de transformación en Flux: map(), flatMap(), concatMap().",
+            "answer": "map(): transforma cada elemento. flatMap(): encadena fluxes (sin garantizar orden). concatMap(): encadena preservando orden."
+          },
+          {
+            "level": "senior",
+            "question": "¿Cómo combinar múltiples Flux? zip(), merge(), concat().",
+            "answer": "zip(): espera elementos de todos al mismo tiempo (tuplas). merge(): combina asincrónicamente. concat(): concatena secuencialmente."
+          },
+          {
+            "level": "senior",
+            "question": "Manejo de errores en Flux: retry(), onErrorResume(), onErrorComplete().",
+            "answer": "retry(times): reintentos. onErrorResume(fallback): proporciona flujo alternativo. onErrorComplete(): completa en error sin propagar excepción."
+          }
+        ]
+      }
+    ]
   }
 ]
