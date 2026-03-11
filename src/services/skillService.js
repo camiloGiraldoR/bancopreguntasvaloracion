@@ -8,18 +8,15 @@ const groupToFileMap = {
     'Core Design Principles': 'core_design',
     'Architecture Principles': 'architecture',
     'Cloud for developers': 'cloud',
-    'Java SQL': 'sql',
+    'Database': 'database',
     'Data Structures': 'data_structures',
-    'Java Persistence': 'persistence',
     'Java Frameworks': 'frameworks',
     'JVM': 'jvm',
     'Functional Programming': 'functional',
     'REST': 'rest',
     'Testing for developers': 'testing',
-    'No SQL': 'nosql'
-    ,
-    'Microservices Patterns': 'microservices_patterns'
-    ,
+    'No SQL': 'nosql',
+    'Microservices Patterns': 'microservices_patterns',
     'Design Patterns': 'design_patterns',
     'Seguridad API': 'security_api'
 };
