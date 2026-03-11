@@ -20,7 +20,8 @@ const groupToFileMap = {
     ,
     'Microservices Patterns': 'microservices_patterns'
     ,
-    'Design Patterns': 'design_patterns'
+    'Design Patterns': 'design_patterns',
+    'Seguridad API': 'security_api'
 };
 
 /**
