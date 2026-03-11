@@ -3941,8 +3941,7 @@
         ]
       }
     ]
-  }
-  ,
+  },
   {
     "group": "Microservices Patterns",
     "skills": [
@@ -4054,6 +4053,110 @@
           { "level": "intermediate", "question": "Qué KPIs propondrías para monitorear un journey crítico?", "answer": "Tasa de éxito por etapa, latencia por etapa, tasa de abandono y tiempos medios de procesamiento." },
           { "level": "senior", "question": "¿Cómo coordinarías ownership y datos en un journey distribuido entre equipos?", "answer": "Definir owners claros, contratos/SLAs, eventos estándar y procesos de reconciliación; usar gobernanza de datos para evitar duplicidad y conflictos." },
           { "level": "senior", "question": "Propón una estrategia para refactorizar un monolito en servicios por journey.", "answer": "Aplicar el patrón strangler, priorizar journeys con mayor valor, extraer bounded contexts, crear eventos y contratos, y desplegar incrementalmente con pruebas contractuales." }
+        ]
+      }
+    ]
+  },
+  {
+    "group": "Seguridad API",
+    "skills": [
+      {
+        "name": "OAUTH2",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es OAuth2 y para qué se utiliza?", "answer": "OAuth2 es un protocolo de autorización que permite a aplicaciones obtener acceso limitado a recursos en nombre de un usuario sin compartir sus credenciales; define roles como resource owner, client, authorization server y resource server." },
+          { "level": "junior", "question": "¿Qué diferencia hay entre Access Token y Refresh Token?", "answer": "El Access Token representa la autorización temporal para acceder a recursos. El Refresh Token se usa para obtener nuevos access tokens cuando estos expiran sin volver a pedir las credenciales del usuario." },
+          { "level": "intermediate", "question": "Explica el flujo Authorization Code y cuándo usar PKCE.", "answer": "Authorization Code es un flujo recomendado para aplicaciones con backend que pueden proteger un secreto. PKCE añade protección para clientes públicos (ej. SPAs o mobile) evitando interceptación del code mediante un challenge/verifier." },
+          { "level": "intermediate", "question": "¿Qué son los scopes y por qué son importantes?", "answer": "Los scopes definen el alcance de acceso solicitado por el cliente (ej: leer perfil, escribir datos). Permiten aplicar el principio de menor privilegio y limitar lo que un token autoriza." },
+          { "level": "senior", "question": "Menciona buenas prácticas para proteger tokens OAuth2 en producción.", "answer": "Usar short-lived access tokens, almacenar refresh tokens de forma segura (httpOnly cookies o almacenes cifrados), usar rotating refresh tokens, validar aud y iss, y habilitar revocación/discovery en el Authorization Server." },
+          { "level": "senior", "question": "¿Cómo manejarías la revocación de tokens y el logout global?", "answer": "Implementar endpoints de revocación y listas de tokens revocados o introspección; para logout coordinado invalidar refresh tokens y limpiar sesiones en todos los clientes y recursos que confían en el token." }
+        ]
+      },
+      {
+        "name": "OPENID",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es OpenID Connect (OIDC)?", "answer": "OIDC es una capa de identidad construida sobre OAuth2 que permite autenticar usuarios y obtener información del perfil (id_token) además de autorización." },
+          { "level": "junior", "question": "¿Qué contiene un id_token y para qué sirve?", "answer": "El id_token es un JWT que contiene claims sobre la identidad del usuario (sub, name, email, exp). Se usa para identificar al usuario tras autenticación." },
+          { "level": "intermediate", "question": "¿Qué es el discovery endpoint y por qué usarlo?", "answer": "El discovery (/.well-known/openid-configuration) expone metadatos del Identity Provider (endpoints, algoritmos), permitiendo a clientes configurar dinámicamente la integración de forma segura." },
+          { "level": "intermediate", "question": "Explica el uso del Claim 'nonce' y su propósito.", "answer": "Nonce es un valor único enviado por el cliente para asociarlo al id_token y prevenir replay attacks en flujos front-channel; el cliente verifica que el nonce en el id_token coincide con el enviado." },
+          { "level": "senior", "question": "¿Cómo gestionarías la sincronización de atributos de usuario entre el IdP y el servicio (provisioning)?", "answer": "Usar SCIM para aprovisionamiento automático o listeners que sincronicen cambios vía webhooks; definir un modelo canonizado de claims y reglas de mapeo y reconciliación." },
+          { "level": "senior", "question": "Riesgos comunes al integrar OIDC y cómo mitigarlos.", "answer": "Errores: aceptar tokens sin verificar firma/aud/iss, no validar exp/nonce/state. Mitigar verificando firma, validando claims, usando HTTPS y rotación de claves (JWKS) con caching controlado." }
+        ]
+      },
+      {
+        "name": "Authenticacion",
+        "questions": [
+          { "level": "junior", "question": "¿Qué diferencia hay entre autenticación y autorización?", "answer": "Autenticación verifica la identidad del usuario (quién eres). Autorización decide qué recursos o acciones puede realizar esa identidad (qué puedes hacer)." },
+          { "level": "junior", "question": "Menciona dos factores comunes de autenticación (MFA).", "answer": "Contraseña + OTP (SMS o app autenticadora) o contraseña + factor biométrico; MFA combina algo que sabes y algo que tienes/eres para aumentar seguridad." },
+          { "level": "intermediate", "question": "Buenas prácticas para almacenar credenciales en servidor.", "answer": "Nunca guardar contraseñas en texto; usar hashing fuerte y adaptativo (bcrypt/argon2) con salt único por usuario, y limitar intentos para prevenir fuerza bruta." },
+          { "level": "intermediate", "question": "¿Qué es 'passwordless' y cuándo es apropiado?", "answer": "Autenticación sin contraseña (ej: magic links, FIDO2). Aumenta UX y reduce riesgos de reuse; apropiado para servicios con buen soporte de correo/clave pública y donde se puede desplegar MFA alternativo." },
+          { "level": "senior", "question": "Diseña un flujo de autenticación robusto para mobile y web.", "answer": "Usar OIDC Authorization Code + PKCE para clientes públicos, short-lived tokens, refresh tokens guardados secure/httpOnly en mobile native, mitigaciones XSS/CSRF en web y monitoreo de anomalías de login." },
+          { "level": "senior", "question": "Cómo detectar y mitigar ataques de credential stuffing en producción.", "answer": "Implementar rate limiting por IP/username, detector de velocidad, bloquear IPs maliciosas, forzar MFA tras patrones sospechosos y usar servicios de reputación/blacklists." }
+        ]
+      },
+      {
+        "name": "Autorizacion",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es RBAC?", "answer": "Role-Based Access Control: asigna permisos a roles y usuarios obtienen permisos al pertenecer a roles, simplificando la gestión de permisos comunes." },
+          { "level": "junior", "question": "¿Qué significa principio de 'least privilege'?", "answer": "Dar a cada usuario o servicio solo los permisos estrictamente necesarios para realizar su trabajo; reduce impacto de compromisos." },
+          { "level": "intermediate", "question": "Comparación entre RBAC y ABAC.", "answer": "RBAC basa decisiones en roles; ABAC (Attribute-Based) usa atributos del sujeto, recurso y contexto para decisiones más granulares y dinámicas." },
+          { "level": "intermediate", "question": "¿Cómo usar claims en un JWT para control de acceso?", "answer": "Incluir claims como roles, scope, resource_access o custom permissions y validar aud/exp en el servicio; aplicar autorización basada en estos claims antes de otorgar acceso." },
+          { "level": "senior", "question": "Diseña un modelo de autorización para APIs pública y privada coexistentes.", "answer": "Separar scopes por audiencia, usar OAuth2 con aud claim, aplicar policies centradas en atributos, auditar decisiones y exponer endpoints introspection para verificar permisos de forma centralizada." },
+          { "level": "senior", "question": "Estrategias para auditar y probar reglas de autorización en producción.", "answer": "Mantener logging detallado de decisiones (who/what/why), usar pruebas contractuales y simulaciones de permisos, y ejecutar revisiones periódicas de roles/privilegios (access reviews)." }
+        ]
+      },
+      {
+        "name": "IDP",
+        "questions": [
+          { "level": "junior", "question": "¿Qué es un Identity Provider (IdP)?", "answer": "Servicio que autentica identidades y emite tokens/claims consumidos por aplicaciones (ej: Keycloak, Auth0, Azure AD)." },
+          { "level": "junior", "question": "¿Qué protocolo suele soportar un IdP moderno?", "answer": "OIDC (OpenID Connect) y OAuth2. Muchos también soportan SAML para integraciones corporativas legacy." },
+          { "level": "intermediate", "question": "¿Qué es federation entre IdPs y por qué se usa?", "answer": "Federación permite que una organización confíe en otro IdP para autenticar usuarios (ej: SAML/WS-Fed/OIDC federation), útil para colaboración entre dominios o SSO entre empresas." },
+          { "level": "intermediate", "question": "Consideraciones al configurar un IdP en alta disponibilidad.", "answer": "Desplegar en cluster, compartir configuración via backing store, replicar JWKS/keys, usar balanceo y asegurar sincronización de usuarios y políticas; plan de rotación de claves con zero-downtime." },
+          { "level": "senior", "question": "¿Cómo diseñarías el onboarding de múltiples tenants en un IdP multi-tenant?", "answer": "Usar tenant isolation en configuración, mapeo de claims por tenant, aprovisionamiento automatizado (SCIM) y plantillas de políticas para mantener gobernanza centralizada con personalización local." },
+          { "level": "senior", "question": "Riesgos operativos de delegar autenticación a un proveedor externo y mitigaciones.", "answer": "Riesgos: dependencia externa, outage, fuga de datos. Mitigar con SLAs, fallback auth, caching de tokens mínimos, monitorización y planes de rescate/rollback para emergencia." }
+        ]
+      },
+      {
+        "name": "SSO",
+        "questions": [
+          { "level": "junior", "question": "¿Qué significa SSO (Single Sign-On)?", "answer": "SSO permite que un usuario se autentique una vez y acceda a múltiples aplicaciones sin volver a autenticarse." },
+          { "level": "junior", "question": "Ejemplo de protocolo usado para SSO corporativo.", "answer": "SAML es común en entornos corporativos para SSO entre IdP y SP (Service Provider). También se usa OIDC para escenarios modernos." },
+          { "level": "intermediate", "question": "Diferencias entre SSO basado en cookies y en tokens.", "answer": "Cookies suelen ser para navegadores con sesión mantenida en el dominio; tokens (JWT) permiten escenarios apátridos y APIs móviles, pero requieren estrategias de revocación y almacenamiento seguro." },
+          { "level": "intermediate", "question": "Cómo manejar logout único (single logout) en un ecosistema SSO.", "answer": "Implementar mecanismos de logout centralizado que invoquen notificaciones a SPs (SAML logout, front/back-channel) y limpiar sesiones locales; diseñar para tolerar SPs que no soporten logout perfecto." },
+          { "level": "senior", "question": "Problemas de seguridad comunes en SSO y contramedidas.", "answer": "Replay attacks, session fixation o tokens persistentes. Mitigar con binding de tokens a client, rotación de claves, cookies secure/HttpOnly, CSRF protections y short token lifetimes." },
+          { "level": "senior", "question": "Estrategias de migración a SSO para múltiples aplicaciones legadas.", "answer": "Adoptar un IdP central, usar adaptadores/Proxies (BFF o Gateway) para traducir sesiones, implementar SSO progresivo por grupos de aplicaciones y validar integraciones con pruebas contractuales y pilotos." }
+        ]
+      },
+      {
+        "name": "Spring Security Configuration",
+        "questions": [
+          { "level": "junior", "question": "¿Cuál es la responsabilidad principal de Spring Security?", "answer": "Proveer autenticación y autorización en aplicaciones Spring, integrando filtros, providers y configuración declarativa para proteger endpoints." },
+          { "level": "junior", "question": "¿Qué clase se suele usar para configurar la seguridad HTTP en Spring Boot?", "answer": "Se usa una clase con @Configuration y @EnableWebSecurity que expone un bean SecurityFilterChain o extiende WebSecurityConfigurerAdapter (legacy)." },
+          { "level": "intermediate", "question": "Explica el orden de los filtros de seguridad y su impacto.", "answer": "El SecurityFilterChain encadena filtros (CSRF, CORS, auth filters). El orden determina qué filtro procesa la petición primero; la colocación correcta es clave para que autenticación/CSRF/CORS funcionen correctamente." },
+          { "level": "intermediate", "question": "¿Cómo habilitar OAuth2 Resource Server en Spring?", "answer": "Configurar spring-boot-starter-oauth2-resource-server y en SecurityFilterChain usar oauth2ResourceServer().jwt() o .opaqueToken() según el token usado, además de configurar jwk-set-uri o introspection endpoint." },
+          { "level": "senior", "question": "Mejoras para rendimiento y seguridad en cadenas de filtros en apps de alta carga.", "answer": "Cachear validaciones de tokens (introspection) con TTL, usar JWT verificación local cuando sea posible, minimizar lógica en filtros críticos y externalizar políticas complejas a gateways para reducir per-request work." },
+          { "level": "senior", "question": "Cómo diseñar pruebas automáticas para la configuración de Spring Security.", "answer": "Usar pruebas de integración que carguen el contexto de seguridad, MockMvc con usuarios autenticados, y tests contractuales que verifiquen reglas de acceso por roles y respuesta en endpoints públicos/privados." }
+        ]
+      },
+      {
+        "name": "Spring security annotations",
+        "questions": [
+          { "level": "junior", "question": "¿Qué hace @PreAuthorize en Spring Security?", "answer": "Permite declarar expresiones SpEL sobre métodos para autorizar invocaciones (ej: @PreAuthorize(\"hasRole('ADMIN')\"))." },
+          { "level": "junior", "question": "¿Qué anotación usarías para habilitar seguridad a nivel de método?", "answer": "@EnableGlobalMethodSecurity (o @EnableMethodSecurity en versiones más nuevas) junto con @PreAuthorize/@PostAuthorize o @Secured." },
+          { "level": "intermediate", "question": "Diferencia entre @Secured y @PreAuthorize.", "answer": "@Secured solo soporta roles estáticos (Strings). @PreAuthorize permite expresiones SpEL más ricas, evaluando claims, métodos o condiciones dinámicas." },
+          { "level": "intermediate", "question": "Cómo acceder a información del principal en una expresión SpEL?", "answer": "Usando 'authentication' o 'principal' en la expresión, por ejemplo @PreAuthorize(\"authentication.name == #username\")." },
+          { "level": "senior", "question": "Consideraciones de rendimiento y mantenimiento al usar muchas anotaciones de seguridad, y alternativas.", "answer": "Demasiadas anotaciones dispersas dificultan mantenimiento. Alternativas: centralizar políticas en servicios de autorización (OPA) o usar aspectos/interceptors con reglas reusables; también documentar y probar las reglas automáticamente." },
+          { "level": "senior", "question": "Cómo integrar Spring Security annotations con un motor de políticas externo (ej: OPA).", "answer": "En lugar de lógica SpEL compleja, llamar a un AuthorizationService que delegue a OPA para evaluar políticas y devolver booleans; mantener anotaciones simples y delegar decisión a un componente desacoplado." }
+        ]
+      },
+      {
+        "name": "Recurso downstream",
+        "questions": [
+          { "level": "junior", "question": "¿Qué entendemos por recurso downstream en una arquitectura de APIs?", "answer": "Un recurso downstream es el servicio o API al que una aplicación hace llamadas para obtener datos o realizar acciones; suele ser un servicio dependiente en la cadena de llamadas." },
+          { "level": "junior", "question": "¿Por qué es importante validar tokens antes de llamar a un downstream?", "answer": "Para asegurarse de que la petición tiene permisos válidos y evitar propagar tokens inválidos o maliciosos a servicios dependientes." },
+          { "level": "intermediate", "question": "¿Qué es el token forwarding y cuándo se debe usar?", "answer": "Forwarding: reenviar el token original al downstream para que el servicio reciba el contexto de autorización. Útil cuando el downstream necesita tomar decisiones basadas en el usuario; hay que asegurarse de confianza y scopes apropiados." },
+          { "level": "intermediate", "question": "Explica el concepto de Token Exchange (RFC 8693).", "answer": "Token Exchange permite intercambiar un token por otro con diferentes audiencia/claims (ej: delegación de permisos) evitando exponer credenciales y adaptando tokens para el downstream." },
+          { "level": "senior", "question": "Estrategias para asegurar llamadas a downstreams en un ecosistema de microservicios.", "answer": "Usar mTLS entre servicios para autenticación mutua, aud y scope en tokens, aplicar circuit breakers y rate limiting, y usar token exchange para minimizar permisos y limitar blast radius." },
+          { "level": "senior", "question": "Cómo auditar acceso a recursos downstream y conservar privacidad del usuario.", "answer": "Registrar eventos relevantes (who/what/aud) con pseudonimización cuando sea necesario, limitar logs de PII, y usar trazabilidad distribuida (trace ids) para correlacionar llamadas sin revelar datos sensibles en logs centralizados." }
         ]
       }
     ]
