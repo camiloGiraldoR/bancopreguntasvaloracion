@@ -60,7 +60,7 @@ const Sidebar = () => {
     };
 
     return (
-        <aside className="fixed left-0 top-0 h-screen w-80 bg-[#121212] border-r border-white/10 text-gray-300 overflow-y-auto no-scrollbar shadow-2xl z-50">
+        <aside className="h-full w-full bg-white/[0.02] backdrop-blur-3xl border-r border-white/5 text-gray-300 overflow-y-auto no-scrollbar flex flex-col">
             <div className="p-6 border-b border-white/5">
                 <Link to="/" className="block group">
                     <h2 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-purple-400 transition-all">
@@ -78,7 +78,7 @@ const Sidebar = () => {
                         placeholder="Search skills..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-10 text-sm text-gray-200 outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-gray-600"
+                        className="w-full bg-[#0a0a0a]/50 border border-white/10 rounded-xl py-2.5 pl-10 pr-10 text-sm text-gray-200 outline-none focus:border-blue-500/50 focus:bg-[#0a0a0a]/80 focus:ring-1 focus:ring-blue-500/30 focus:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all placeholder:text-gray-600"
                     />
                     {searchTerm && (
                         <button
@@ -106,11 +106,14 @@ const Sidebar = () => {
                         <div key={index} className="group/item">
                             <button
                                 onClick={() => toggleGroup(item.group)}
-                                className={`w-full flex items-center justify-between p-3 rounded-xl transition-all duration-200 ${isExpanded
-                                    ? 'bg-blue-500/5 text-blue-400'
-                                    : 'hover:bg-white/5 hover:text-white'
+                                className={`w-full flex items-center justify-between p-3 rounded-xl transition-all duration-200 relative overflow-hidden group/btn ${isExpanded
+                                    ? 'bg-gradient-to-r from-blue-500/10 to-transparent text-white border border-blue-500/20'
+                                    : 'hover:bg-white/5 hover:text-white border border-transparent'
                                     }`}
                             >
+                                {isExpanded && (
+                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 rounded-r-full" />
+                                )}
                                 <div className="flex items-center gap-3">
                                     <span className={`${isExpanded
                                         ? 'text-blue-400'

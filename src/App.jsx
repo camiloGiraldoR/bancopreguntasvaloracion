@@ -6,19 +6,27 @@ import SkillDetail from './components/SkillDetail';
 
 function App() {
   return (
-    <div className="flex bg-[#0a0a0a] min-h-screen font-sans selection:bg-blue-500/30 selection:text-blue-200 overflow-x-hidden">
-      {/* Sidebar - Always visible */}
-      <Sidebar />
+    <div className="flex bg-[#0a0a0a] min-h-screen font-sans selection:bg-blue-500/30 selection:text-blue-200 overflow-hidden relative">
+      {/* Dynamic Background Effects */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[150px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[150px] rounded-full mix-blend-screen" />
+      </div>
 
-      {/* Dynamic Content Area */}
-      <Routes>
-        <Route path="/" element={<MainContent />} />
-        <Route path="/skill/:skillName" element={<SkillDetail />} />
-      </Routes>
+      {/* Sidebar - Fixed with specific width */}
+      <div className="w-80 flex-shrink-0 z-20">
+        <Sidebar />
+      </div>
 
-      {/* Background Glows */}
-      <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
-      <div className="fixed bottom-[-10%] right-[20%] w-[30%] h-[30%] bg-purple-600/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
+      {/* Main Content Area - Scrollable with padding */}
+      <div className="flex-1 flex flex-col h-screen overflow-y-auto overflow-x-hidden relative z-10 scroll-smooth">
+        <div className="min-h-full max-w-7xl mx-auto w-full p-6 lg:p-10">
+          <Routes>
+            <Route path="/" element={<MainContent />} />
+            <Route path="/skill/:skillName" element={<SkillDetail />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }

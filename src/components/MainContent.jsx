@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const MainContent = () => {
     return (
-        <main className="flex-1 ml-80 min-h-screen bg-[#0a0a0a] text-white p-8">
+        <main className="w-full animation-fade-in">
             {/* Header */}
             <header className="flex items-center justify-between mb-12">
                 <div className="space-y-1">
@@ -26,22 +26,25 @@ const MainContent = () => {
                     <motion.div
                         key={i}
                         whileHover={{ y: -5 }}
-                        className="p-6 rounded-[2.5rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 group cursor-default"
+                        className="p-6 rounded-[2rem] bg-white/[0.02] backdrop-blur-md border border-white/[0.05] group cursor-default shadow-xl relative overflow-hidden hover:border-white/10 transition-colors"
                     >
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} p-[1px] mb-4`}>
-                            <div className="w-full h-full rounded-[15px] bg-[#0a0a0a] flex items-center justify-center text-white">
-                                {stat.icon}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative z-10">
+                            <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} p-[1px] mb-4 shadow-lg`}>
+                                <div className="w-full h-full rounded-[15px] bg-[#0a0a0a] flex items-center justify-center text-white">
+                                    {stat.icon}
+                                </div>
                             </div>
+                            <p className="text-gray-400 text-sm font-medium mb-1 font-mono tracking-tighter">{stat.label}</p>
+                            <h3 className="text-3xl font-black text-white">{stat.value}</h3>
                         </div>
-                        <p className="text-gray-400 text-sm font-medium mb-1 font-mono tracking-tighter">{stat.label}</p>
-                        <h3 className="text-3xl font-black text-white">{stat.value}</h3>
                     </motion.div>
                 ))}
             </div>
 
             {/* Main Grid Content Area (Placeholder for actual content implementation) */}
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                <div className="rounded-[3rem] bg-white/[0.02] border border-white/5 p-10 min-h-[400px] relative overflow-hidden group">
+                <div className="rounded-[2.5rem] bg-white/[0.02] backdrop-blur-xl border border-white/5 p-8 lg:p-10 min-h-[400px] relative overflow-hidden group hover:border-white/10 transition-colors shadow-2xl">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] -z-10 group-hover:bg-blue-500/20 transition-colors" />
                     <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
                         <span className="w-2 h-8 bg-blue-500 rounded-full" />
@@ -57,7 +60,7 @@ const MainContent = () => {
                     </div>
                 </div>
 
-                <div className="rounded-[3rem] bg-white/[0.02] border border-white/5 p-10 min-h-[400px] relative overflow-hidden group">
+                <div className="rounded-[2.5rem] bg-white/[0.02] backdrop-blur-xl border border-white/5 p-8 lg:p-10 min-h-[400px] relative overflow-hidden group hover:border-white/10 transition-colors shadow-2xl">
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] -z-10 group-hover:bg-purple-500/20 transition-colors" />
                     <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
                         <span className="w-2 h-8 bg-purple-500 rounded-full" />

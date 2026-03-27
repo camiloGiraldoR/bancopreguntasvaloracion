@@ -40,7 +40,7 @@ const SkillDetail = () => {
 
     if (!currentSkill) {
         return (
-            <div className="flex-1 ml-80 min-h-screen bg-[#0a0a0a] text-white p-8 flex flex-col items-center justify-center">
+            <div className="w-full h-full flex flex-col items-center justify-center mt-20">
                 <h2 className="text-2xl font-bold mb-4">Skill not found</h2>
                 <Link to="/" className="text-blue-400 hover:underline">Return to Dashboard</Link>
             </div>
@@ -64,7 +64,7 @@ const SkillDetail = () => {
     ];
 
     return (
-        <main className="flex-1 ml-80 min-h-screen bg-[#0a0a0a] text-white p-8">
+        <main className="w-full animation-fade-in pb-20">
             <header className="mb-8">
                 <Link to="/" className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-4 text-sm font-medium uppercase tracking-widest">
                     <ChevronLeft size={16} />
@@ -176,9 +176,10 @@ const SkillDetail = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="rounded-[2.5rem] bg-white/[0.03] border border-white/10 overflow-hidden group"
+                            className="rounded-[2rem] bg-white/[0.02] backdrop-blur-md border border-white/[0.05] overflow-hidden group shadow-xl hover:border-white/10 transition-colors relative"
                         >
-                            <div className="p-8">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="p-8 relative z-10">
                                 <div className="flex gap-6">
                                     <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-blue-400">
                                         <HelpCircle size={24} />
